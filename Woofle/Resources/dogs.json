@@ -1,0 +1,2308 @@
+[
+  {
+    "id": "73703d80-521d-4f01-9c6f-eedf938dc57d",
+    "name": "Buddy",
+    "gender": "female",
+    "breed": "Chihuahua",
+    "ageInMonths": 45,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_1.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-07-23T13:05:41.217Z"
+  },
+  {
+    "id": "cbd2279b-5b2b-4a1b-92be-4ef827bec29f",
+    "name": "Bella",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 85,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_2.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "independent",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-04-17T13:05:41.218Z"
+  },
+  {
+    "id": "0b312158-0e5b-4e05-94b9-d13bd93c22e3",
+    "name": "Charlie",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 15,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_3.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "playful",
+        "calm",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-04T13:05:41.218Z"
+  },
+  {
+    "id": "a94fea9f-2902-4dab-8d4a-f76ed57ac2e9",
+    "name": "Luna",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 60,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_4.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "calm",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-20T13:05:41.218Z"
+  },
+  {
+    "id": "8385afdf-292a-4f89-8482-999d8c343400",
+    "name": "Max",
+    "gender": "female",
+    "breed": "Pomeranian",
+    "ageInMonths": 7,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_5.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-02T13:05:41.218Z"
+  },
+  {
+    "id": "95a22f8b-7ece-4ea6-8e03-c480217ffca0",
+    "name": "Lucy",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 90,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_6.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-05-16T13:05:41.219Z"
+  },
+  {
+    "id": "fe3d6680-35a4-418e-bbc7-a4f6834e66db",
+    "name": "Rocky",
+    "gender": "male",
+    "breed": "Beagle",
+    "ageInMonths": 29,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_7.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-03-13T13:05:41.219Z"
+  },
+  {
+    "id": "51f11c5e-d740-40f6-80d4-171a1f49ab26",
+    "name": "Daisy",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 31,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_8.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "affectionate",
+        "independent",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-01-13T13:05:41.219Z"
+  },
+  {
+    "id": "45829477-5a22-4a97-a0e4-681d96100b67",
+    "name": "Toby",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 71,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_9.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-02-13T13:05:41.219Z"
+  },
+  {
+    "id": "47aa483b-b089-4558-84c9-d73218f76580",
+    "name": "Molly",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 36,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_10.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-04-12T13:05:41.220Z"
+  },
+  {
+    "id": "68d11903-38a4-425e-a8de-eefc568fd71c",
+    "name": "Bailey",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 61,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_11.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-01-30T13:05:41.220Z"
+  },
+  {
+    "id": "c6e42645-8d47-4d21-8e5b-747f7a7981f5",
+    "name": "Sadie",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 20,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_12.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-03-19T13:05:41.220Z"
+  },
+  {
+    "id": "beb73635-7e51-4db0-8965-ca27d7542368",
+    "name": "Jack",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 19,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_13.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-04-06T13:05:41.220Z"
+  },
+  {
+    "id": "30fd7120-c59f-444c-b7eb-7dd657e54078",
+    "name": "Chloe",
+    "gender": "male",
+    "breed": "Beagle",
+    "ageInMonths": 92,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_14.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "protective",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-08T13:05:41.220Z"
+  },
+  {
+    "id": "dbc867a2-47fc-4df3-8f30-165340ca7414",
+    "name": "Duke",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 16,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_15.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective",
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-24T13:05:41.220Z"
+  },
+  {
+    "id": "aed2aa92-829b-4e51-ac92-a388848cd69a",
+    "name": "Lola",
+    "gender": "female",
+    "breed": "Chihuahua",
+    "ageInMonths": 43,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_16.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-25T13:05:41.220Z"
+  },
+  {
+    "id": "72a87a9f-17a7-4eb4-bade-c185cd6b53ed",
+    "name": "Bear",
+    "gender": "female",
+    "breed": "Beagle",
+    "ageInMonths": 82,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_17.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "calm",
+        "independent",
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-22T13:05:41.220Z"
+  },
+  {
+    "id": "4749eb9a-7a82-4af3-8ff7-4a3d2e526c94",
+    "name": "Maggie",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 79,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_18.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "calm",
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-09-03T13:05:41.220Z"
+  },
+  {
+    "id": "64435166-75dd-4893-a27e-c3128c3e7f04",
+    "name": "Oliver",
+    "gender": "male",
+    "breed": "Bulldog",
+    "ageInMonths": 82,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_19.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-09-28T13:05:41.220Z"
+  },
+  {
+    "id": "9b9dfd2b-8293-4c0f-83f6-ebc76958fe5a",
+    "name": "Sophie",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 45,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_20.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "high",
+      "personalityTags": [
+        "playful",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-28T13:05:41.220Z"
+  },
+  {
+    "id": "d811a32d-174d-4772-a851-6fffa46bd9a9",
+    "name": "Leo",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 26,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_21.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "affectionate",
+        "playful",
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-01-16T13:05:41.220Z"
+  },
+  {
+    "id": "301d4841-84e9-432a-936d-43e8b979b891",
+    "name": "Roxy",
+    "gender": "female",
+    "breed": "German Shepherd",
+    "ageInMonths": 64,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_22.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious",
+        "protective",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-12-01T13:05:41.220Z"
+  },
+  {
+    "id": "932985f0-dc5e-4af5-a3c6-7e1a33883c32",
+    "name": "Bentley",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 62,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_23.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "independent",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-01-18T13:05:41.220Z"
+  },
+  {
+    "id": "9f8ef5c6-e378-41af-9fa0-245318cf8402",
+    "name": "Stella",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 18,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_24.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-14T13:05:41.220Z"
+  },
+  {
+    "id": "22213c0d-f5e1-47bf-a77c-ed8e2371b013",
+    "name": "Zeus",
+    "gender": "female",
+    "breed": "Chihuahua",
+    "ageInMonths": 6,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_25.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-26T13:05:41.220Z"
+  },
+  {
+    "id": "f7d61c49-4489-46b5-a2a1-ed58c08ef745",
+    "name": "Coco",
+    "gender": "female",
+    "breed": "Chihuahua",
+    "ageInMonths": 55,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_26.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "affectionate",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-21T13:05:41.220Z"
+  },
+  {
+    "id": "6402c6d5-3f45-4eeb-9559-4ddf0371982c",
+    "name": "Finn",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 79,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_27.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-06-13T13:05:41.221Z"
+  },
+  {
+    "id": "4dc5c413-6492-457f-afb5-eb071a61512d",
+    "name": "Nala",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 43,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_28.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-08-28T13:05:41.221Z"
+  },
+  {
+    "id": "20d7509f-cbfd-481c-a55f-ce30be5444e7",
+    "name": "Teddy",
+    "gender": "male",
+    "breed": "Beagle",
+    "ageInMonths": 7,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_29.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-06T13:05:41.221Z"
+  },
+  {
+    "id": "5ff20675-3b48-44b7-8e43-6726828efd05",
+    "name": "Ruby",
+    "gender": "female",
+    "breed": "Beagle",
+    "ageInMonths": 55,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_30.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-19T13:05:41.221Z"
+  },
+  {
+    "id": "4df5aa5d-6f1a-40b1-bf57-f508a1ec5e03",
+    "name": "Oscar",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 34,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_31.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "playful",
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-04T13:05:41.221Z"
+  },
+  {
+    "id": "481c15fc-63b8-4478-8b2e-c89fc50f6e56",
+    "name": "Rosie",
+    "gender": "male",
+    "breed": "Beagle",
+    "ageInMonths": 72,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_32.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-29T13:05:41.221Z"
+  },
+  {
+    "id": "f26f0ca6-e7fc-4b8f-9417-9a896e45630f",
+    "name": "Winston",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 9,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_33.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-27T13:05:41.221Z"
+  },
+  {
+    "id": "af0ae889-285e-495f-aad7-f5bb9ec4e7f6",
+    "name": "Ellie",
+    "gender": "male",
+    "breed": "Pomeranian",
+    "ageInMonths": 16,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_34.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-06-14T13:05:41.221Z"
+  },
+  {
+    "id": "a66e6905-2b08-4831-a0f1-deaa90fcea06",
+    "name": "Marley",
+    "gender": "male",
+    "breed": "Beagle",
+    "ageInMonths": 38,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_35.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm",
+        "independent",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-01-22T13:05:41.221Z"
+  },
+  {
+    "id": "d438f5de-09ef-451b-a3a7-8adcb0ba05c1",
+    "name": "Lilly",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 83,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_36.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-08-15T13:05:41.221Z"
+  },
+  {
+    "id": "68e06b9f-bb0c-4c95-9f47-064b4bf003cb",
+    "name": "Murphy",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 69,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_37.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "curious",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-30T13:05:41.221Z"
+  },
+  {
+    "id": "8d6c19e2-113a-426b-b17f-245425a68447",
+    "name": "Mia",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 50,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_38.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-16T13:05:41.221Z"
+  },
+  {
+    "id": "009bfda6-2ecc-41b6-acd3-f03af1ca9aee",
+    "name": "Thor",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 92,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_39.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-06-24T13:05:41.221Z"
+  },
+  {
+    "id": "d6d25c8a-6f2f-4dc5-aea3-9ec60d15668e",
+    "name": "Zoe",
+    "gender": "male",
+    "breed": "Bulldog",
+    "ageInMonths": 81,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_40.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-05-04T13:05:41.221Z"
+  },
+  {
+    "id": "54d58331-329e-4e0c-8130-0ffb5e95c4ac",
+    "name": "Louie",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 19,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_41.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "playful",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-05T13:05:41.221Z"
+  },
+  {
+    "id": "1715afd0-20a5-49be-87b2-a1e4192359b7",
+    "name": "Penny",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 80,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_42.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-09-30T13:05:41.221Z"
+  },
+  {
+    "id": "96bcb715-9c50-46e3-a558-2b3c065e9cab",
+    "name": "Jasper",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 31,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_43.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "affectionate",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-20T13:05:41.221Z"
+  },
+  {
+    "id": "27abad15-26bd-4b3d-a790-b75b31a4088c",
+    "name": "Gracie",
+    "gender": "male",
+    "breed": "Golden Retriever",
+    "ageInMonths": 17,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_44.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "calm",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-29T13:05:41.221Z"
+  },
+  {
+    "id": "fefdbe30-cce2-4c90-995e-efdcfccd225b",
+    "name": "Henry",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 19,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_45.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-15T13:05:41.221Z"
+  },
+  {
+    "id": "9a31f491-57ef-4d6f-8d8c-8bca6f1a5f05",
+    "name": "Abby",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 38,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_46.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-17T13:05:41.221Z"
+  },
+  {
+    "id": "851a0937-3d8b-4040-8947-f52331afd62c",
+    "name": "Ranger",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 10,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_47.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-10T13:05:41.221Z"
+  },
+  {
+    "id": "3994407e-6a7f-426f-bd22-3fb7ee72cdfc",
+    "name": "Olive",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 95,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_48.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "independent",
+        "playful",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-17T13:05:41.221Z"
+  },
+  {
+    "id": "762d6291-d160-44b7-ba0b-1967e83808b5",
+    "name": "Buster",
+    "gender": "male",
+    "breed": "Shih Tzu",
+    "ageInMonths": 43,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_49.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "curious",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-21T13:05:41.222Z"
+  },
+  {
+    "id": "fab9db6e-fda2-48e3-ae16-e2424c1001aa",
+    "name": "Hazel",
+    "gender": "female",
+    "breed": "Pomeranian",
+    "ageInMonths": 13,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_50.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "playful",
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-02-13T13:05:41.222Z"
+  },
+  {
+    "id": "464f1ba9-b753-4e43-849c-80ab5ceed17c",
+    "name": "Simba",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 74,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_51.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-01-21T13:05:41.222Z"
+  },
+  {
+    "id": "9fbe44ae-b5ea-4e43-8f0a-1f24481eb427",
+    "name": "Ginger",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 92,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_52.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "affectionate",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-18T13:05:41.222Z"
+  },
+  {
+    "id": "63ebd6c9-9168-4d89-86d1-99b44dda322e",
+    "name": "Kobe",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 96,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_53.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-05T13:05:41.222Z"
+  },
+  {
+    "id": "d9d62b36-0534-4c79-a5c1-47997b5e543a",
+    "name": "Annie",
+    "gender": "female",
+    "breed": "Shih Tzu",
+    "ageInMonths": 13,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_54.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-04T13:05:41.222Z"
+  },
+  {
+    "id": "55171bee-000e-4a48-9803-61542c7563c8",
+    "name": "Blue",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 76,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_55.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-15T13:05:41.222Z"
+  },
+  {
+    "id": "c813e48b-11e9-48ee-b0b8-c02d065726e3",
+    "name": "Pepper",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 64,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_56.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "independent",
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-23T13:05:41.222Z"
+  },
+  {
+    "id": "62446156-7a40-4699-877b-8f86c33d84b1",
+    "name": "Sam",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 40,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_57.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-19T13:05:41.222Z"
+  },
+  {
+    "id": "5fd137b1-795f-4ae3-abb0-619ed0b30904",
+    "name": "Harley",
+    "gender": "female",
+    "breed": "Shih Tzu",
+    "ageInMonths": 81,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_58.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "independent",
+        "playful",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-12-14T13:05:41.222Z"
+  },
+  {
+    "id": "61efbe7d-3583-43bf-855d-279644148350",
+    "name": "Tank",
+    "gender": "female",
+    "breed": "Beagle",
+    "ageInMonths": 28,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_59.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "independent",
+        "protective"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-20T13:05:41.222Z"
+  },
+  {
+    "id": "4caaa591-91d8-41b3-964e-0d01d0f0f77e",
+    "name": "Honey",
+    "gender": "male",
+    "breed": "Chihuahua",
+    "ageInMonths": 7,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_60.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious",
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-08-31T13:05:41.222Z"
+  },
+  {
+    "id": "908d54d5-8ed8-4524-84ea-f36d3e5224c8",
+    "name": "Archie",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 45,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_1.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "curious",
+        "affectionate",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-14T15:03:57.920Z"
+  },
+  {
+    "id": "9588a047-c9bf-4486-8fd6-7ac62e324023",
+    "name": "Millie",
+    "gender": "male",
+    "breed": "Chihuahua",
+    "ageInMonths": 37,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_2.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "calm",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-01-17T15:03:57.920Z"
+  },
+  {
+    "id": "931e54d4-5841-42c2-b753-dca188cabd66",
+    "name": "Ollie",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 14,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_3.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "playful",
+        "protective",
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-09-15T15:03:57.920Z"
+  },
+  {
+    "id": "1d895294-1bba-4163-af22-60cacc09cc9b",
+    "name": "Loki",
+    "gender": "male",
+    "breed": "Chihuahua",
+    "ageInMonths": 8,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_4.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-05-20T15:03:57.921Z"
+  },
+  {
+    "id": "b6dd4248-c903-4ceb-a521-6eb1de06c907",
+    "name": "Bonnie",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 13,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_5.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-09-24T15:03:57.921Z"
+  },
+  {
+    "id": "adb33520-3806-4bbb-b89a-f57cd6e1a2cb",
+    "name": "Remy",
+    "gender": "male",
+    "breed": "Bulldog",
+    "ageInMonths": 27,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_6.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective",
+        "calm",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-01T15:03:57.921Z"
+  },
+  {
+    "id": "d3f02c33-abd9-43ea-a6a1-e8998b4f7756",
+    "name": "Winnie",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 70,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_7.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "playful",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-24T15:03:57.921Z"
+  },
+  {
+    "id": "1262b1fa-7679-4980-9a1b-1ab2cc1e4291",
+    "name": "Bruce",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 46,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_8.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-05-29T15:03:57.921Z"
+  },
+  {
+    "id": "25d3369f-f40e-4db7-8cc7-e0ea6bbf15b1",
+    "name": "Phoebe",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 76,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_9.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "calm",
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-12-31T15:03:57.921Z"
+  },
+  {
+    "id": "c84fc547-39f4-43e7-b7c3-2e4677d92bf8",
+    "name": "Ace",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 82,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_10.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-23T15:03:57.922Z"
+  },
+  {
+    "id": "ab6ae314-d00d-49db-91df-8f73c4052fa6",
+    "name": "Scout",
+    "gender": "male",
+    "breed": "Pomeranian",
+    "ageInMonths": 8,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_11.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm",
+        "independent",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-14T15:03:57.922Z"
+  },
+  {
+    "id": "247a2365-346e-4cd9-9d61-2a9eb1d49f2f",
+    "name": "Moose",
+    "gender": "male",
+    "breed": "Bulldog",
+    "ageInMonths": 57,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_12.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "playful",
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-12-26T15:03:57.922Z"
+  },
+  {
+    "id": "ff945f6c-8276-43e3-b117-e642642028f5",
+    "name": "Frankie",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 87,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_13.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-07T15:03:57.922Z"
+  },
+  {
+    "id": "e998fc75-4f95-4b72-b920-74927e0c4fc1",
+    "name": "Marshmallow",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 32,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_14.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-04-03T15:03:57.922Z"
+  },
+  {
+    "id": "26940b2c-6be4-4a90-b879-25a494620ec8",
+    "name": "Diesel",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 9,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_15.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-04-21T15:03:57.922Z"
+  },
+  {
+    "id": "79982b36-329c-4220-b76d-34699bb4ea40",
+    "name": "Cookie",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 54,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_16.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "calm",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-10T15:03:57.922Z"
+  },
+  {
+    "id": "4e96d174-958c-4d86-9471-b8eb9981a063",
+    "name": "Shadow",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 77,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_17.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-02-18T15:03:57.922Z"
+  },
+  {
+    "id": "ce7c9e1c-3836-4f86-99e8-c2dd9b784c67",
+    "name": "Nova",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 37,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_18.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective",
+        "curious",
+        "affectionate"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-10-04T15:03:57.922Z"
+  },
+  {
+    "id": "be31f9f9-4e69-48f9-86ca-35f367d9962e",
+    "name": "Bruno",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 14,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_19.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "affectionate",
+        "independent",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-28T15:03:57.922Z"
+  },
+  {
+    "id": "42ecbed5-4c15-434c-adbd-2070dd0013ba",
+    "name": "Gizmo",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 40,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_20.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "affectionate",
+        "calm"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2025-03-16T15:03:57.922Z"
+  },
+  {
+    "id": "d02f1fa2-e54d-48fd-b759-2ee303e9a5f7",
+    "name": "Otis",
+    "gender": "female",
+    "breed": "Pomeranian",
+    "ageInMonths": 26,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_21.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-09-20T15:03:57.922Z"
+  },
+  {
+    "id": "a24be848-7a01-4e7f-942b-f5fdd15ac339",
+    "name": "Peanut",
+    "gender": "male",
+    "breed": "Dachshund",
+    "ageInMonths": 50,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_22.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "affectionate",
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-03T15:03:57.922Z"
+  },
+  {
+    "id": "387f3c14-f20a-40a5-96fb-9a62f1a59c1e",
+    "name": "Hank",
+    "gender": "male",
+    "breed": "German Shepherd",
+    "ageInMonths": 83,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_23.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "high",
+      "personalityTags": [
+        "affectionate"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-04-23T15:03:57.922Z"
+  },
+  {
+    "id": "a2341a96-2821-4f4f-a95f-8640562ac6ec",
+    "name": "Maple",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 56,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_24.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "playful",
+        "independent",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-03T15:03:57.922Z"
+  },
+  {
+    "id": "43a55e08-dd8e-4286-9f9e-1a5c50799a38",
+    "name": "Goose",
+    "gender": "male",
+    "breed": "Golden Retriever",
+    "ageInMonths": 76,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_25.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-04T15:03:57.922Z"
+  },
+  {
+    "id": "ee04d091-36f7-4a8a-99b0-c93aa7affc44",
+    "name": "Maverick",
+    "gender": "female",
+    "breed": "Shih Tzu",
+    "ageInMonths": 46,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_26.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "high",
+      "personalityTags": [
+        "playful",
+        "protective",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-10-19T15:03:57.922Z"
+  },
+  {
+    "id": "d1b408c5-9fe8-4247-bc09-519f2a84f76e",
+    "name": "Benny",
+    "gender": "female",
+    "breed": "Pomeranian",
+    "ageInMonths": 18,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_27.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "calm",
+        "protective",
+        "playful"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-05T15:03:57.923Z"
+  },
+  {
+    "id": "6d82b596-5247-4e63-a675-4571510a8702",
+    "name": "Sunny",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 26,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_28.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "curious",
+        "calm",
+        "protective"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-15T15:03:57.923Z"
+  },
+  {
+    "id": "be7a39b9-8ba1-4d90-8a78-2938eca73542",
+    "name": "Dolly",
+    "gender": "female",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 16,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_29.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious",
+        "playful",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-06-17T15:03:57.923Z"
+  },
+  {
+    "id": "6babd757-f1af-4c2b-8001-421a046ef3a0",
+    "name": "Jet",
+    "gender": "male",
+    "breed": "Golden Retriever",
+    "ageInMonths": 36,
+    "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
+    "pictureURL": "https://example.com/images/dog_additional_30.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "high",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2025-01-15T15:03:57.923Z"
+  },
+  {
+    "id": "5e834c55-6625-4b46-a2a2-7b8340abdf40",
+    "name": "Pickles",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 75,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_31.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "playful",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-18T15:03:57.923Z"
+  },
+  {
+    "id": "807e1062-0b44-46c0-b9d2-8c21d90f13ab",
+    "name": "Indie",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 35,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_32.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-06-15T15:03:57.923Z"
+  },
+  {
+    "id": "ea7111c5-e89c-4400-b2fc-3686e2ab747e",
+    "name": "Nacho",
+    "gender": "female",
+    "breed": "Dachshund",
+    "ageInMonths": 92,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_33.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "independent"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-29T15:03:57.923Z"
+  },
+  {
+    "id": "31ecc07b-07a4-488a-b429-85ee5daaf649",
+    "name": "Rusty",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 33,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_34.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious",
+        "playful",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-08-31T15:03:57.923Z"
+  },
+  {
+    "id": "fb6fbe31-8536-4f43-8dfa-cd105e4fd1ee",
+    "name": "Skye",
+    "gender": "female",
+    "breed": "Golden Retriever",
+    "ageInMonths": 81,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_35.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "playful",
+        "calm"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-07-21T15:03:57.923Z"
+  },
+  {
+    "id": "350a26dd-f386-41b3-9f9e-b938d5a7a8aa",
+    "name": "Yuki",
+    "gender": "male",
+    "breed": "Siberian Husky",
+    "ageInMonths": 52,
+    "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
+    "pictureURL": "https://example.com/images/dog_additional_36.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "curious",
+        "independent"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-07-19T15:03:57.923Z"
+  },
+  {
+    "id": "de39bbfa-c8c8-435c-943c-00cdd9aebd7e",
+    "name": "Cash",
+    "gender": "female",
+    "breed": "Siberian Husky",
+    "ageInMonths": 47,
+    "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
+    "pictureURL": "https://example.com/images/dog_additional_37.jpg",
+    "traits": {
+      "size": "large",
+      "energyLevel": "low",
+      "personalityTags": [
+        "affectionate",
+        "protective",
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": false,
+      "goodWithOtherDogs": false
+    },
+    "createdAt": "2024-11-06T15:03:57.923Z"
+  },
+  {
+    "id": "61eb6b38-8f37-456a-a92c-62f15890e133",
+    "name": "June",
+    "gender": "male",
+    "breed": "Labrador Retriever",
+    "ageInMonths": 85,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_38.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "protective",
+        "affectionate",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": true,
+      "isTrained": true,
+      "goodWithKids": false,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-08-04T15:03:57.923Z"
+  },
+  {
+    "id": "0b5de3b7-401b-40ac-b107-8bd22b412520",
+    "name": "Zeke",
+    "gender": "male",
+    "breed": "Shih Tzu",
+    "ageInMonths": 42,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_39.jpg",
+    "traits": {
+      "size": "medium",
+      "energyLevel": "low",
+      "personalityTags": [
+        "curious"
+      ],
+      "isVaccinated": true,
+      "isNeutered": true,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-12-20T15:03:57.923Z"
+  },
+  {
+    "id": "1f85457b-ea96-4dae-bed3-04f7f7ec54a9",
+    "name": "Fudge",
+    "gender": "female",
+    "breed": "Bulldog",
+    "ageInMonths": 73,
+    "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
+    "pictureURL": "https://example.com/images/dog_additional_40.jpg",
+    "traits": {
+      "size": "small",
+      "energyLevel": "moderate",
+      "personalityTags": [
+        "protective",
+        "independent",
+        "playful"
+      ],
+      "isVaccinated": false,
+      "isNeutered": false,
+      "isTrained": false,
+      "goodWithKids": true,
+      "goodWithOtherDogs": true
+    },
+    "createdAt": "2024-11-05T15:03:57.923Z"
+  }
+]

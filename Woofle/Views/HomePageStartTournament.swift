@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomePageStartTournament: View {
     var body: some View {
-        Text("Welcome to your dog's new adventure!")
+        Text("Placeholder for the real Page!")
             .font(.title)
             .padding()
     }

@@ -18,6 +18,9 @@ struct CharacterSelectionView: View {
     @State private var selectedSpecialNeeds: String? = nil
     @State private var showNext = false
     
+    @State private var navigateToHome = false
+
+    
     let activityLevels = ["Couch Potato", "Walks once a day", "Very active / outdoorsey"]
     let ageRanges = ["18-35", "36-55", "56-70", "> 70"]
     let homeEnvironments = ["House", "House with garden", "Flat", "Farm / rural"]
@@ -83,7 +86,12 @@ struct CharacterSelectionView: View {
                             .font(.system(size: 16))
                             .foregroundColor(.black)
                             .padding()
-                            .background(Color.white)
+                            .background(
+                                locationManager.authorizationStatus == .authorizedWhenInUse ||
+                                locationManager.authorizationStatus == .authorizedAlways
+                                ? Color(hex: "F8CE9C") // Braun nach Erfolg
+                                : Color.white // Standard
+                            )
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                             .cornerRadius(15)
                         }
@@ -110,8 +118,33 @@ struct CharacterSelectionView: View {
                     multiSelectSection("Temperament Preferences", options: temperamentOptions, selection: $selectedTemperament)
                     section("Open to Special Needs / Older Dogs", options: specialNeedsOptions, selection: $selectedSpecialNeeds)
                     
+                    Button(action: {
+                        navigateToHome = true
+                    }) {
+                        Text("Adopt your Dog")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.black)
+                            .frame(width: 316, height: 44)
+                            .background(canContinue ? Color(hex: "F8CE9C") : Color.gray.opacity(0.3))
+                            .cornerRadius(15)
+                    }
+                    .disabled(!canContinue)
+                    .opacity(canContinue ? 1 : 0.6)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 30)
+
+                    // Unsichtbarer NavigationLink (unter dem Button)
+                    NavigationLink(
+                        destination: HomePageStartTournament(),
+                        isActive: $navigateToHome
+                    ) {
+                        EmptyView()
+                    }
+
 
                 }
+                
+                
                 
                 .padding()
                 .background(Color.white)

@@ -64,18 +64,22 @@ struct StartView: View {
                     
                     
                     Button(action: {
-                        navigateToCharacterView = true //Navigation auslösen
+                        navigateToCharacterView = true
                     }) {
                         Text("Continue")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(Color(hex: "FFF8ED"))
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
                             .frame(width: 316, height: 44)
-                            .background(Color(hex: "F2785C"))
+                            .background(inputText.isEmpty ? Color.white : Color(hex: "F8CE9C"))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.black, lineWidth: 2)
+                            )
                             .cornerRadius(15)
                     }
-                    .disabled(inputText.isEmpty) // Button deaktiviert, wenn kein Text eingegeben
-                    .opacity(inputText.isEmpty ? 0.5 : 1) // optisch sichtbar machen, dass er disabled ist
+                    .disabled(inputText.isEmpty)
                     .padding(.top, 20)
+
                     
                     
                 }

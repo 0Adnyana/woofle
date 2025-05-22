@@ -1,0 +1,38 @@
+[
+  {
+    "name": "BARC 4 BALI DOGS - Bali Adoption Rehab Centre",
+    "location": {
+      "latitude": -8.505718187567762,
+      "longitude": 115.26676784029199
+    },
+    "phoneNumber": "0812-1111-1111",
+    "id": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601"
+  },
+  {
+    "name": "Bali Dog Association",
+    "location": {
+      "latitude": -8.43911029047057,
+      "longitude": 115.05698096380698
+    },
+    "phoneNumber": "0812-2222-2222",
+    "id": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd"
+  },
+  {
+    "name": "Mybalidogrescue",
+    "location": {
+      "latitude": -8.676322130639992,
+      "longitude": 115.1999317844914
+    },
+    "phoneNumber": "0812-3333-3333",
+    "id": "be425530-0cd0-452e-80e5-e902066fe69b"
+  },
+  {
+    "name": "BAWA",
+    "location": {
+      "latitude": -8.54656829639633,
+      "longitude": 115.262234286432
+    },
+    "phoneNumber": "0812-4444-4444",
+    "id": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3"
+  }
+]

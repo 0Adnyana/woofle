@@ -1,0 +1,33 @@
+{
+  "id": "5e424362-8b02-4800-b8b2-2afb83113a3f",
+  "name": "Steven",
+  "gender": "male",
+  "age": 32,
+  "location": {
+    "latitude": -8.620934651088332,
+    "longitude": 115.29151459343989
+  },
+  "preferences": {
+    "preferredBreeds": [
+      "Chihuahua",
+      "German Shepherd",
+      "Siberian Husky"
+    ],
+    "sizePreferences": [
+      "small",
+      "large"
+    ],
+    "activityLevels": [
+      "high",
+      "low"
+    ],
+    "goodWithKids": true,
+    "goodWithOtherDogs": false,
+    "personalityPreferences": [
+      "affectionate",
+      "curious",
+      "independent"
+    ],
+    "preferredRadius": 10.0
+  }
+}

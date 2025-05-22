@@ -10,9 +10,22 @@
 		273E128F2DDDCD880095CE66 /* Woofle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Woofle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BF10CB142DDEEAF200F319E3 /* Exceptions for "Woofle" folder in "Woofle" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 273E128E2DDDCD880095CE66 /* Woofle */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		273E12912DDDCD880095CE66 /* Woofle */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BF10CB142DDEEAF200F319E3 /* Exceptions for "Woofle" folder in "Woofle" target */,
+			);
 			path = Woofle;
 			sourceTree = "<group>";
 		};
@@ -252,8 +265,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Woofle/Preview Content\"";
+				DEVELOPMENT_TEAM = C7K47X89DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Woofle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,8 +295,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Woofle/Preview Content\"";
+				DEVELOPMENT_TEAM = C7K47X89DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Woofle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

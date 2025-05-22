@@ -28,7 +28,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 85,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_2.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -51,7 +51,7 @@
     "breed": "Bulldog",
     "ageInMonths": 15,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_3.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -75,7 +75,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 60,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_4.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -99,7 +99,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 7,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_5.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -122,7 +122,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 90,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_6.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -144,7 +144,7 @@
     "breed": "Beagle",
     "ageInMonths": 29,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_7.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -167,7 +167,7 @@
     "breed": "Dachshund",
     "ageInMonths": 31,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_8.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -191,7 +191,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 71,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_9.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -213,7 +213,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 36,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_10.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -236,7 +236,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 61,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_11.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -258,7 +258,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 20,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_12.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -281,7 +281,7 @@
     "breed": "Bulldog",
     "ageInMonths": 19,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_13.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -304,7 +304,7 @@
     "breed": "Beagle",
     "ageInMonths": 92,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_14.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -328,7 +328,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 16,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_15.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -351,7 +351,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 43,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_16.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -374,7 +374,7 @@
     "breed": "Beagle",
     "ageInMonths": 82,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_17.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -398,7 +398,7 @@
     "breed": "Bulldog",
     "ageInMonths": 79,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_18.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -421,7 +421,7 @@
     "breed": "Bulldog",
     "ageInMonths": 82,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_19.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -443,7 +443,7 @@
     "breed": "Dachshund",
     "ageInMonths": 45,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_20.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "high",
@@ -466,7 +466,7 @@
     "breed": "Dachshund",
     "ageInMonths": 26,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_21.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -490,7 +490,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 64,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_22.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -514,7 +514,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 62,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_23.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -538,7 +538,7 @@
     "breed": "Bulldog",
     "ageInMonths": 18,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_24.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -561,7 +561,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 6,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_25.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -584,7 +584,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 55,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_26.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -608,7 +608,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 79,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_27.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -630,7 +630,7 @@
     "breed": "Bulldog",
     "ageInMonths": 43,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_28.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -652,7 +652,7 @@
     "breed": "Beagle",
     "ageInMonths": 7,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_29.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -675,7 +675,7 @@
     "breed": "Beagle",
     "ageInMonths": 55,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_30.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -698,7 +698,7 @@
     "breed": "Dachshund",
     "ageInMonths": 34,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_31.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -721,7 +721,7 @@
     "breed": "Beagle",
     "ageInMonths": 72,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_32.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -743,7 +743,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 9,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_33.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "high",
@@ -765,7 +765,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 16,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_34.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -787,7 +787,7 @@
     "breed": "Beagle",
     "ageInMonths": 38,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_35.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -811,7 +811,7 @@
     "breed": "Bulldog",
     "ageInMonths": 83,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_36.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -833,7 +833,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 69,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_37.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -857,7 +857,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 50,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_38.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -879,7 +879,7 @@
     "breed": "Dachshund",
     "ageInMonths": 92,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_39.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -901,7 +901,7 @@
     "breed": "Bulldog",
     "ageInMonths": 81,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_40.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -923,7 +923,7 @@
     "breed": "Dachshund",
     "ageInMonths": 19,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_41.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -946,7 +946,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 80,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_42.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -968,7 +968,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 31,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_43.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -991,7 +991,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 17,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_44.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1014,7 +1014,7 @@
     "breed": "Dachshund",
     "ageInMonths": 19,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_45.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1036,7 +1036,7 @@
     "breed": "Dachshund",
     "ageInMonths": 38,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_46.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1059,7 +1059,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 10,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_47.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1082,7 +1082,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 95,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_48.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -1106,7 +1106,7 @@
     "breed": "Shih Tzu",
     "ageInMonths": 43,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_49.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1130,7 +1130,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 13,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_50.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1154,7 +1154,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 74,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_51.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -1176,7 +1176,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 92,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_52.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -1200,7 +1200,7 @@
     "breed": "Bulldog",
     "ageInMonths": 96,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_53.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1223,7 +1223,7 @@
     "breed": "Shih Tzu",
     "ageInMonths": 13,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_54.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -1246,7 +1246,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 76,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_55.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1268,7 +1268,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 64,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_56.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -1292,7 +1292,7 @@
     "breed": "Dachshund",
     "ageInMonths": 40,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_57.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1315,7 +1315,7 @@
     "breed": "Shih Tzu",
     "ageInMonths": 81,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_58.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1339,7 +1339,7 @@
     "breed": "Beagle",
     "ageInMonths": 28,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_59.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -1362,7 +1362,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 7,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_60.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -1385,7 +1385,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 45,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_1.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1409,7 +1409,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 37,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_2.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1433,7 +1433,7 @@
     "breed": "Dachshund",
     "ageInMonths": 14,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_3.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -1457,7 +1457,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 8,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_4.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -1480,7 +1480,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 13,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_5.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1503,7 +1503,7 @@
     "breed": "Bulldog",
     "ageInMonths": 27,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_6.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1527,7 +1527,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 70,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_7.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1550,7 +1550,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 46,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_8.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1573,7 +1573,7 @@
     "breed": "Bulldog",
     "ageInMonths": 76,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_9.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1596,7 +1596,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 82,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_10.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1618,7 +1618,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 8,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_11.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -1642,7 +1642,7 @@
     "breed": "Bulldog",
     "ageInMonths": 57,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_12.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -1665,7 +1665,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 87,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_13.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -1687,7 +1687,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 32,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_14.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -1710,7 +1710,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 9,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_15.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -1732,7 +1732,7 @@
     "breed": "Bulldog",
     "ageInMonths": 54,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_16.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "moderate",
@@ -1756,7 +1756,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 77,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_17.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1778,7 +1778,7 @@
     "breed": "Bulldog",
     "ageInMonths": 37,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_18.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1802,7 +1802,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 14,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_19.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "moderate",
@@ -1826,7 +1826,7 @@
     "breed": "Dachshund",
     "ageInMonths": 40,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_20.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -1849,7 +1849,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 26,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_21.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -1871,7 +1871,7 @@
     "breed": "Dachshund",
     "ageInMonths": 50,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_22.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1894,7 +1894,7 @@
     "breed": "German Shepherd",
     "ageInMonths": 83,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_23.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "high",
@@ -1916,7 +1916,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 56,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_24.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -1940,7 +1940,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 76,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_25.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1962,7 +1962,7 @@
     "breed": "Shih Tzu",
     "ageInMonths": 46,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_26.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "high",
@@ -1986,7 +1986,7 @@
     "breed": "Pomeranian",
     "ageInMonths": 18,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_27.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -2010,7 +2010,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 26,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_28.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -2034,7 +2034,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 16,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_29.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -2058,7 +2058,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 36,
     "shelterId": "1f6e2bac-e736-4dc5-9b2f-41bef6600bcd",
-    "pictureURL": "https://example.com/images/dog_additional_30.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",
@@ -2080,7 +2080,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 75,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_31.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -2103,7 +2103,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 35,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_32.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -2125,7 +2125,7 @@
     "breed": "Dachshund",
     "ageInMonths": 92,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_33.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",
@@ -2147,7 +2147,7 @@
     "breed": "Bulldog",
     "ageInMonths": 33,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_34.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "low",
@@ -2171,7 +2171,7 @@
     "breed": "Golden Retriever",
     "ageInMonths": 81,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_35.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -2194,7 +2194,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 52,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_additional_36.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -2218,7 +2218,7 @@
     "breed": "Siberian Husky",
     "ageInMonths": 47,
     "shelterId": "be425530-0cd0-452e-80e5-e902066fe69b",
-    "pictureURL": "https://example.com/images/dog_additional_37.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "low",
@@ -2242,7 +2242,7 @@
     "breed": "Labrador Retriever",
     "ageInMonths": 85,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_38.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -2266,7 +2266,7 @@
     "breed": "Shih Tzu",
     "ageInMonths": 42,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_39.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "medium",
       "energyLevel": "low",
@@ -2288,7 +2288,7 @@
     "breed": "Bulldog",
     "ageInMonths": 73,
     "shelterId": "d0f6dc1b-8dd9-47ba-b70a-fb73ea0d3601",
-    "pictureURL": "https://example.com/images/dog_additional_40.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "small",
       "energyLevel": "moderate",

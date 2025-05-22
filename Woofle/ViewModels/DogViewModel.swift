@@ -18,7 +18,7 @@ final class DogViewModel: Identifiable, ObservableObject {
 
     var displayName: String { dog.name }
     var breed: String { dog.breed }
-    var imageURL: URL { dog.pictureURL }
+    var imageURL: String { dog.pictureURL }
     var shelterId: UUID { dog.shelterId }
     var ageText: String {
         let years = dog.ageInMonths / 12

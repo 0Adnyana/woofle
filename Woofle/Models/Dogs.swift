@@ -14,7 +14,7 @@ struct Dog: Identifiable, Codable {
     let breed: String
     let ageInMonths: Int
     let shelterId: UUID
-    let pictureURL: URL
+    let pictureURL: String
     let traits: DogTraits
     let createdAt: Date
 }

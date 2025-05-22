@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BF10CB142DDEEAF200F319E3 /* Exceptions for "Woofle" folder in "Woofle" target */ = {
+		273E13312DDEEED70095CE66 /* Exceptions for "Woofle" folder in "Woofle" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		273E12912DDDCD880095CE66 /* Woofle */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				BF10CB142DDEEAF200F319E3 /* Exceptions for "Woofle" folder in "Woofle" target */,
+				273E13312DDEEED70095CE66 /* Exceptions for "Woofle" folder in "Woofle" target */,
 			);
 			path = Woofle;
 			sourceTree = "<group>";
@@ -265,7 +265,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Woofle/Preview Content\"";
-				DEVELOPMENT_TEAM = C7K47X89DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Woofle/Info.plist;
@@ -295,7 +294,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Woofle/Preview Content\"";
-				DEVELOPMENT_TEAM = C7K47X89DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Woofle/Info.plist;

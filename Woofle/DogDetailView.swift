@@ -26,7 +26,7 @@ struct DogDetailView: View {
                     Text(dog.displayName)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    Text("\(dog.ageText) Years 􀾟 \(dog.)")
+                    Text("\(dog.ageText) Years 􀾟 \(dog.gender)")
                         .font(.title2)
                         .foregroundColor(.secondary)
                     
@@ -34,24 +34,24 @@ struct DogDetailView: View {
                         .font(.title2)
                         .foregroundColor(.secondary)
                     
-                    Text("􀠸 \(dog.traits.isVaccinated ? "Vaccinated" : "Not Vaccinated" )")
+                    Text("􀠸 \(dog.isVaccinated ? "Vaccinated" : "Not Vaccinated" )")
                         .font(.title2)
                         .foregroundColor(.secondary)
                     
-                    Text("􀯚 \(dog.traits.isNeutered ? "Neutered" : "Not Yet Neutered")")
+                    Text("􀯚 \(dog.isNeutered ? "Neutered" : "Not Yet Neutered")")
                         .font(.title2)
                         .foregroundColor(.secondary)
                     
                     Divider()
                     
-                    // Temperament tags
-                    if !dog.traits.personalityTags.isEmpty {
+                    // Personality tags
+                    if !dog.personalityTags.isEmpty {
                         Text("Personality:")
                             .font(.headline)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(dog.traits.personalityTags, id: \.self) { trait in
+                                ForEach(dog.personalityTags, id: \.self) { trait in
                                     Text(trait)
                                         .padding(.horizontal, 10)
                                         .padding(.vertical, 5)

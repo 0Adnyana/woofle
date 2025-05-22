@@ -18,7 +18,7 @@ struct DogMapAnnotationView: View {
         VStack(spacing: 0) {
             // Custom dog icon
             ZStack {
-                Image("dogIcon")
+                Image("DogPinPoint")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 43, height: 33)

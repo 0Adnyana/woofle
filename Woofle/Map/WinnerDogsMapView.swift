@@ -11,6 +11,9 @@ import MapKit
 
 // Main Map View with iOS 17+ compatible API
 struct WinnerDogsMapView: View {
+    var shelterList: [Shelter]
+    var winnerDogList: [Dog]
+    
     @State private var locationManager = CLLocationManager()
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
@@ -26,13 +29,12 @@ struct WinnerDogsMapView: View {
             UserAnnotation()
             
             // Dog annotations
-            ForEach(dogLocations) { location in
-                Annotation(location.dog.name, coordinate: location.coordinate) {
-                    DogMapAnnotationView(dog: location.dog)
+            ForEach(getDogWithOwner()) { dogWithOwner in
+                Annotation(dogWithOwner.dog.name, coordinate: dogWithOwner.shelter.location.coordinate) {
+                    DogMapAnnotationView(dog: dogWithOwner.dog, shelter: dogWithOwner.shelter)
                 }
             }
         }
-        //.mapStyle(.hybrid(elevation: .flat))
         .mapControls {
             // Add map controls
             MapUserLocationButton()
@@ -40,13 +42,59 @@ struct WinnerDogsMapView: View {
             MapScaleView()
         }
     }
+    
+    func getDogWithOwner() -> [DogWithShelter] {
+        winnerDogList.map { dog in
+            if let shelter = shelterList.first(where: { $0.id == dog.shelterId }) {
+                return DogWithShelter(dog: dog, shelter: shelter)
+            } else {
+                return DogWithShelter(dog: dog, shelter: try! Shelter(from: "" as! Decoder))
+            }
+        }
+        
+        
+        //TODO: More research on map (map is used for filtering)
+        /*chosenShelter = shelterListViewModel.shelters.map { shelter in
+            if shelter.id == dog.shelterId {
+                return shelter.shelter
+            } else {
+                return nil
+            }
+        }
+        
+        for item in shelterListViewModel.shelters {
+            if item.shelter.id == dog.shelterId {
+                chosenShelter = item
+                
+                break
+            }
+        }
+        
+        Annotation(dog.displayName, coordinate: chosenShelter.shelter.location.coordinate) {
+            DogMapAnnotationView(dog: dog)
+        }*/
+    }
 
 }
 
 #Preview {
-    WinnerDogsMapView()
+    WinnerDogsMapView(shelterList: getShelterList(), winnerDogList: getFirstThreeDogList())
 }
 
+func getFirstThreeDogList() -> [Dog] {
+    let dogListViewModel = DogListViewModel()
+    var topThreeDogList = [Dog]()
+    
+    for i in 1 ... 3 {
+        topThreeDogList.append(dogListViewModel.dogs[i].dog)
+    }
+    
+    return topThreeDogList
+}
+
+func getShelterList() -> [Shelter] {
+    return ShelterListViewModel().shelters.map { $0.shelter }
+}
 
 /*import SwiftUI
 import MapKit

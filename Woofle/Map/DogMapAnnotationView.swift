@@ -12,6 +12,7 @@ import MapKit
 // Custom Map Annotation View
 struct DogMapAnnotationView: View {
     let dog: Dog
+    let shelter: Shelter
     @State private var showDetails = false
     
     var body: some View {
@@ -41,12 +42,7 @@ struct DogMapAnnotationView: View {
             showDetails.toggle()
         }
         .sheet(isPresented: $showDetails) {
-            DogDetailView(dog: dog)
+            DogDetailView(dog: dog, shelter: shelter)
         }
     }
-}
-
-
-#Preview {
-    DogMapAnnotationView()
 }

@@ -6,7 +6,7 @@
     "breed": "Chihuahua",
     "ageInMonths": 45,
     "shelterId": "d0b3c2e0-a4ef-46b5-8a75-f9870b2074c3",
-    "pictureURL": "https://example.com/images/dog_1.jpg",
+    "pictureURL": "dogImagePlaceholder",
     "traits": {
       "size": "large",
       "energyLevel": "high",

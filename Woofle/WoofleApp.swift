@@ -16,6 +16,7 @@ struct WoofleApp: App {
     }
 }
 
+
 //UNCOMMENT THIS to test Map with dummy data
 /*@main
 struct WoofleApp: App {

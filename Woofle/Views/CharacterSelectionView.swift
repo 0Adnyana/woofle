@@ -62,8 +62,8 @@ struct CharacterSelectionView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("Let your future dog get to know you…")
-                        .font(.system(size: 20))
+                    Text("Who are you?")
+                        .font(.system(size: 32))
                         .foregroundColor(.black)
                         .padding(.top, 10)
                     
@@ -106,8 +106,8 @@ struct CharacterSelectionView: View {
                     section("Work Schedule", options: workSchedules, selection: $selectedWorkSchedule)
                     section("Other Pets", options: otherPetOptions, selection: $selectedOtherPets)
                     
-                    Text("What you're looking for...")
-                        .font(.system(size: 20))
+                    Text("What are you looking for?")
+                        .font(.system(size: 32))
                         .foregroundColor(.black)
                         .padding(.top, 20)
                     
@@ -121,19 +121,24 @@ struct CharacterSelectionView: View {
                     Button(action: {
                         navigateToHome = true
                     }) {
-                        Text("Adopt your Dog")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.black)
+                        Text("Save")
+                            .font(.system(size: 18))
+                            .foregroundColor(canContinue ? .black : .black)
                             .frame(width: 316, height: 44)
-                            .background(canContinue ? Color(hex: "F8CE9C") : Color.gray.opacity(0.3))
+                            .background(canContinue ? Color(hex: "A3B18A") : Color.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
                             .cornerRadius(15)
                     }
                     .disabled(!canContinue)
-                    .opacity(canContinue ? 1 : 0.6)
+                    .opacity(1)  // Keep fully opaque regardless of enabled state
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 30)
 
-                    // Unsichtbarer NavigationLink (unter dem Button)
+
+                    // NavigationLink (under Button)
                     NavigationLink(
                         destination: HomePageStartTournament(),
                         isActive: $navigateToHome
@@ -280,4 +285,5 @@ struct FlowResult {
 #Preview {
     CharacterSelectionView()
 }
+
 

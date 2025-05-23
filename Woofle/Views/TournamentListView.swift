@@ -8,52 +8,40 @@
 import SwiftUI
 
 struct TournamentListView: View {
-    @ObservedObject var viewModel: TournamentViewModel
-    let allDogs: [Dog]
-    let user: UserProfile
-    let shelters: [Shelter]
+    @StateObject private var viewModel = TournamentViewModel()
+    @StateObject private var dogListVM = DogListViewModel()
+    @StateObject private var userVM = UserViewModel()
+    @StateObject private var shelterListVM = ShelterListViewModel()
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.selectedDogIds, id: \.self) { id in
-                    if let dog = allDogs.first(where: { $0.id == id }) {
-                        VStack(alignment: .leading) {
-                            Text(dog.name).font(.headline)
-                            Text(dog.breed).font(.subheadline)
-                        }
+                ForEach(viewModel.selectedDogs, id: \.id) { dog in
+                    VStack(alignment: .leading) {
+                        Text(dog.name).font(.headline)
+                        Text(dog.breed).font(.subheadline)
                     }
                 }
             }
             .navigationTitle("Top 16 Dogs")
             .toolbar {
                 Button("Generate") {
-                    viewModel.generateTournament(user: user, dogs: allDogs, shelters: shelters)
+                    viewModel.generateTournament(
+                        user: userVM.user,
+                        dogs: dogListVM.dogs.map { $0.dog },
+                        shelters: shelterListVM.shelters.map { $0.shelter }
+                    )
+                    viewModel.generateTournamentBracket(selectedDogs: viewModel.selectedDogs)
                 }
+                
+            }
+            .onAppear {
+                viewModel.loadPreviousTournament(dogs: dogListVM.dogs.map { $0.dog })
             }
         }
     }
 }
 
 #Preview {
-    TournamentListView_Preview.make()
+    TournamentListView()
 }
-
-private enum TournamentListView_Preview {
-    static func make() -> some View {
-        let dogListVM = DogListViewModel()
-        let shelterListVM = ShelterListViewModel()
-        let userVM = UserViewModel()
-
-        let vm = TournamentViewModel()
-        vm.generateTournament(user: userVM.user, dogs: dogListVM.dogs.map { $0.dog }, shelters: shelterListVM.shelters.map { $0.shelter })
-
-        return TournamentListView(
-            viewModel: vm,
-            allDogs: dogListVM.dogs.map { $0.dog },
-            user: userVM.user,
-            shelters: shelterListVM.shelters.map { $0.shelter }
-        )
-    }
-}
-

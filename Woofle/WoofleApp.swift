@@ -11,6 +11,16 @@ import SwiftUI
 struct WoofleApp: App {
     var body: some Scene {
         WindowGroup {
+            StartView()
+        }
+    }
+}
+
+//UNCOMMENT THIS to test Map with dummy data
+/*@main
+struct WoofleApp: App {
+    var body: some Scene {
+        WindowGroup {
             WinnerDogsMapView(shelterList: getShelterList(), winnerDogList: getFirstThreeDogList())
         }
     }
@@ -29,6 +39,6 @@ struct WoofleApp: App {
     func getShelterList() -> [Shelter] {
         return ShelterListViewModel().shelters.map { $0.shelter }
     }
-}
+}*/
 
 

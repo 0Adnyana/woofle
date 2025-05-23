@@ -37,6 +37,7 @@ struct DogMapAnnotationView: View {
                 .background(Color.white.opacity(0.8))
                 .cornerRadius(4)
                 .shadow(radius: 2)
+                .foregroundColor(.black)
         }
         .onTapGesture {
             showDetails.toggle()

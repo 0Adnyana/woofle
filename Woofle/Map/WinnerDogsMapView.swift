@@ -14,6 +14,7 @@ struct WinnerDogsMapView: View {
     var shelterList: [Shelter]
     var winnerDogList: [Dog]
     
+    @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var locationManager = CLLocationManager()
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
@@ -22,7 +23,7 @@ struct WinnerDogsMapView: View {
     
     var body: some View {
         Map(
-            initialPosition: .region(region),
+            initialPosition: cameraPosition, //.region(region),
             interactionModes: .all
         ) {
             // User location if available
@@ -30,7 +31,7 @@ struct WinnerDogsMapView: View {
             
             // Dog annotations
             ForEach(getDogWithOwner()) { dogWithOwner in
-                Annotation(dogWithOwner.dog.name, coordinate: dogWithOwner.shelter.location.coordinate) {
+                Annotation("", coordinate: dogWithOwner.shelter.location.coordinate) {
                     DogMapAnnotationView(dog: dogWithOwner.dog, shelter: dogWithOwner.shelter)
                 }
             }
@@ -51,28 +52,6 @@ struct WinnerDogsMapView: View {
                 return DogWithShelter(dog: dog, shelter: try! Shelter(from: "" as! Decoder))
             }
         }
-        
-        
-        //TODO: More research on map (map is used for filtering)
-        /*chosenShelter = shelterListViewModel.shelters.map { shelter in
-            if shelter.id == dog.shelterId {
-                return shelter.shelter
-            } else {
-                return nil
-            }
-        }
-        
-        for item in shelterListViewModel.shelters {
-            if item.shelter.id == dog.shelterId {
-                chosenShelter = item
-                
-                break
-            }
-        }
-        
-        Annotation(dog.displayName, coordinate: chosenShelter.shelter.location.coordinate) {
-            DogMapAnnotationView(dog: dog)
-        }*/
     }
 
 }

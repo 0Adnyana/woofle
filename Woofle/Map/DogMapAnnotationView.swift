@@ -14,6 +14,7 @@ struct DogMapAnnotationView: View {
     let dog: Dog
     let shelter: Shelter
     @State private var showDetails = false
+    @State private var showDirectionsOptions = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -43,7 +44,30 @@ struct DogMapAnnotationView: View {
             showDetails.toggle()
         }
         .sheet(isPresented: $showDetails) {
-            DogDetailView(dog: dog, shelter: shelter)
+            DogDetailView(dog: dog, shelter: shelter) {
+                showDirectionsOptions = true
+            }
+            .presentationDetents([.medium, .large])
+            .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+            .presentationCornerRadius(25)
+        }
+        .alert("Get Directions", isPresented: $showDirectionsOptions, presenting: shelter) { shelter in
+            // Apple Maps button
+            Button("Apple Maps") {
+                openMapsWithAppleMaps(shelter: shelter)
+            }
+            
+            // Google Maps button (only shown if installed)
+            if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                Button("Google Maps") {
+                    openMapsWithGoogleMaps(shelter: shelter)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) { }
+        } message: { location in
+            Text("How would you like to get directions to \(location.name)?")
         }
     }
+    
 }

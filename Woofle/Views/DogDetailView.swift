@@ -13,6 +13,8 @@ struct DogDetailView: View {
     let dog: Dog
     let shelter: Shelter
     
+    var onGetDirections: () -> Void
+    
     func callNumber(_ number: String) {
         if let url = URL(string: "tel://\(number)"),
            UIApplication.shared.canOpenURL(url) {
@@ -37,25 +39,21 @@ struct DogDetailView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
-                    Text("\(dog.ageInMonths / 12 > 0 ? "\(abs(dog.ageInMonths / 12)) Years \(dog.ageInMonths % 12) Month" : "\(dog.ageInMonths % 12) Month") • \(dog.gender.rawValue.capitalized)")
-                        .font(.title2)
-                        .foregroundColor(.secondary)
-                    
+                    HStack {
+                        Text("\(getYearsfromMonth(for: dog.ageInMonths))")
+                            .font(.title2)
+                            .foregroundColor(.secondary)
+                        Image(systemName: "pawprint.fill")
+                            .foregroundColor(Color(hex: "A3B18A"))
+                            .frame(width: 25)
+                        Text("\(dog.gender.rawValue.capitalized)")
+                            .font(.title2)
+                            .foregroundColor(.secondary)
+                    }
+                        
                     DogDetailRowView(icon: "dog.fill", text: dog.breed)
                     DogDetailRowView(icon: "syringe.fill", text: dog.traits.isVaccinated ? "Vaccinated" : "Not Vaccinated")
-                    DogDetailRowView(icon: "cross.case.fill", text: dog.traits.isNeutered ? "Neutered" : "Not Yet Neutered")
-                    
-                    /*Text("􂀇 \(dog.breed)")
-                        .font(.title2)
-                        .foregroundColor(.secondary)*/
-                    
-                    /*Text("􀠸 \(dog.traits.isVaccinated ? "Vaccinated" : "Not Vaccinated" )")
-                        .font(.title2)
-                        .foregroundColor(.secondary)*/
-                    
-                    /*Text("􀯚 \(dog.traits.isNeutered ? "Neutered" : "Not Yet Neutered")")
-                        .font(.title2)
-                        .foregroundColor(.secondary)*/
+                    DogDetailRowView(icon: "cross.case.fill", text: dog.traits.isNeutered ? "Neutered" : "Not Neutered")
                     
                     Divider()
                     
@@ -70,7 +68,8 @@ struct DogDetailView: View {
                                     Text(trait.rawValue.capitalized)
                                         .padding(.horizontal, 10)
                                         .padding(.vertical, 5)
-                                        .background(Color.init(hex: "A3B18A").opacity(0.8))
+                                        .foregroundColor(.black)
+                                        .background(Color.init(hex: "D8E6BF"))
                                         .cornerRadius(15)
                                 }
                             }
@@ -80,23 +79,11 @@ struct DogDetailView: View {
                     Divider()
                     
                     // Additional details
-                    VStack(alignment: .leading, spacing: 8) {
-                        switch dog.traits.energyLevel {
-                        case .low:
-                            DogDetailRowView(icon: "bolt.fill",
-                                          text: "Energy level: \(String(repeating: "⚡️", count: 1))")
-                        case .moderate:
-                            DogDetailRowView(icon: "bolt.fill",
-                                          text: "Energy level: \(String(repeating: "⚡️", count: 3))")
-                        case .high:
-                            DogDetailRowView(icon: "bolt.fill",
-                                          text: "Energy level: \(String(repeating: "⚡️", count: 5))")
-                        }
-                        
+                    VStack(alignment: .leading, spacing: 10) {
+                        DogDetailRowView(icon: "bolt.fill",
+                                         text: "Energy level: \(dog.traits.energyLevel.rawValue.capitalized)")
                         DogDetailRowView(icon: "ruler.fill",
-                                         text: "Size: \(dog.traits.size)")
-                        
-                        //TODO: Need to add Shelter Name
+                                         text: "Size: \(dog.traits.size.rawValue.capitalized)")
                         DogDetailRowView(icon: "house.fill",
                                          text: "Location: \(shelter.name)")
                     }
@@ -105,9 +92,7 @@ struct DogDetailView: View {
                     
                     // Action buttons
                     HStack {
-                        // TODO: Change Button color
                         Button(action: {
-                            // TODO: Action for contact
                             callNumber(shelter.phoneNumber)
                         }) {
                             HStack {
@@ -117,21 +102,22 @@ struct DogDetailView: View {
                             .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
-                        .foregroundColor(Color.black)
-                        .tint(Color.init(hex: "F8CE9C").opacity(1))
+                        .foregroundColor(Color.white)
+                        .tint(Color.init(hex: "A3B18A").opacity(1))
                         .cornerRadius(15)
                         
-                        //TODO: Feature later for adding as favourites
-                        /*Button(action: {
-                            // Action for favorites
-                        }) {
+                        //Feature to get direction
+                        Button(action: onGetDirections) {
                             HStack {
-                                Image(systemName: "heart.fill")
-                                Text("Favorite")
+                                Image(systemName: "arrow.turn.left.up")
+                                Text("Get Direction")
                             }
                             .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(.bordered)*/
+                        .buttonStyle(.borderedProminent)
+                        .foregroundColor(Color.white)
+                        .tint(Color.init(hex: "A3B18A").opacity(1))
+                        .cornerRadius(15)
                     }
                 }
                 .padding()
@@ -139,5 +125,6 @@ struct DogDetailView: View {
         }
         .ignoresSafeArea(edges: .top)
     }
+    
 }
 

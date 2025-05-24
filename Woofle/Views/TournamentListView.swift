@@ -31,7 +31,7 @@ struct TournamentListView: View {
                         dogs: dogListVM.dogs.map { $0.dog },
                         shelters: shelterListVM.shelters.map { $0.shelter }
                     )
-                    viewModel.generateTournamentBracket(selectedDogs: viewModel.selectedDogs)
+                    //viewModel.generateTournamentBracket(selectedDogs: viewModel.selectedDogs)
                 }
                 
             }

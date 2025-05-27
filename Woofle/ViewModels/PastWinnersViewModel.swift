@@ -34,10 +34,19 @@ final class PastWinnersViewModel: ObservableObject {
     }
 
     private func save() {
-        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName),
-              let data = try? JSONEncoder().encode(winnerIds)
-        else { return }
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName)
+        else {
+            print("❌ Could not get file URL")
+            return
+        }
 
-        try? data.write(to: url)
+        do {
+            let data = try JSONEncoder().encode(winnerIds)
+            try data.write(to: url)
+            print("✅ Saved \(winnerIds.count) winners to \(url)")
+        } catch {
+            print("❌ Failed to save winners: \(error)")
+        }
     }
+
 }

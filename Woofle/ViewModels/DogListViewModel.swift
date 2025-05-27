@@ -8,10 +8,9 @@
 import Foundation
 
 final class DogListViewModel: ObservableObject {
-    @Published var dogs: [DogViewModel] = []
+    @Published var dogs: [Dog]
 
-    init() {
-        let rawDogs: [Dog] = JSONFileHelper.load(fileName: "dogs", fallback: [])
-        self.dogs = rawDogs.map(DogViewModel.init)
+    init(dogs: [Dog] = []) {
+        self.dogs = dogs
     }
 }

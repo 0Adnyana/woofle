@@ -8,14 +8,17 @@
 import Foundation
 
 final class ShelterListViewModel: ObservableObject {
-    @Published var shelters: [ShelterViewModel] = []
+    @Published var shelters: [Shelter]
 
-    init() {
-        let rawShelters: [Shelter] = JSONFileHelper.load(fileName: "shelters", fallback: [])
-        self.shelters = rawShelters.map(ShelterViewModel.init)
+    init(shelters: [Shelter] = []) {
+        self.shelters = shelters
     }
 
     func shelter(for id: UUID) -> ShelterViewModel? {
-        shelters.first { $0.id == id }
+        guard let shelter = shelters.first(where: { $0.id == id }) else {
+            return nil
+        }
+        return ShelterViewModel(shelter)
     }
 }
+

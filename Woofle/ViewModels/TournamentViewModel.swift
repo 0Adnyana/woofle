@@ -6,39 +6,92 @@ final class TournamentViewModel: ObservableObject {
     @Published var currentRound: Int = 0
     @Published var rounds: [[[Dog]]] = []
     @Published var winners: [Dog] = []
+    @Published var currentMatchIndex: Int = 0
+    @Published var isTournamentFinished: Bool = false
 
-    private let pastWinnersFileName = "past_winners.json"
-
-    func startNewTournament(user: UserProfile, dogs: [Dog], shelters: [Shelter], pastWinners: [UUID]) {
-        let eligibleDogs = dogs.filter { !pastWinners.contains($0.id) }
-        let result = TournamentSelector.run(user: user, dogs: eligibleDogs, shelters: shelters)
-        self.selectedDogs = eligibleDogs.filter { result.dogIds.contains($0.id) }
-        self.bracket = generateSeedingBracket(from: selectedDogs)
-        self.rounds = [bracket]
-        self.currentRound = 0
-        saveToUserDefaults(result.dogIds)
+    var currentMatch: [Dog]? {
+        guard currentMatchIndex < bracket.count else { return [] }
+        return bracket[currentMatchIndex]
     }
 
-    private func generateSeedingBracket(from dogs: [Dog]) -> [[Dog]] {
+    var isFinalRound: Bool {
+        return bracket.count == 1 && currentRound == rounds.count - 1
+    }
+    
+    var hasMoreRounds: Bool {
+        return currentRound < rounds.count
+    }
+
+    var numberOfRounds: Int {
+        return rounds.count
+    }
+
+    var isBracketEmpty: Bool {
+        return bracket.isEmpty
+    }
+    
+    var matchProgressText: String {
+        return "Match \(currentMatchIndex + 1) of \(bracket.count)"
+    }
+
+    var finalWinner: Dog? {
+        isFinalRound ? winners.first : nil
+    }
+    
+    var currentMatchIsResolved: Bool {
+        winners.count > currentMatchIndex
+    }
+
+    private let pastWinnersVM: PastWinnersViewModel
+
+    init(pastWinnersVM: PastWinnersViewModel) {
+        self.pastWinnersVM = pastWinnersVM
+    }
+
+    func startNewTournament(user: UserProfile, dogs: [Dog], shelters: [Shelter]) {
+        let eligibleDogs = dogs.filter { !pastWinnersVM.winnerIds.contains($0.id) }
+        print(eligibleDogs.count)
+        let result = TournamentSelector.run(user: user, dogs: eligibleDogs, shelters: shelters)
+        self.selectedDogs = result.dogs
+        self.bracket = TournamentEngine.generateSeedingBracket(from: selectedDogs)
+        self.rounds = [bracket]
+        self.currentRound = 0
+        saveDogsToUserDefaults(result.dogs)
+    }
+
+    func generateSeedingBracket(from dogs: [Dog]) -> [[Dog]] {
         let count = dogs.count
         return (0..<count / 2).map { i in
             [dogs[i], dogs[count - 1 - i]]
         }
     }
 
-    func advanceRound(withWinners winners: [Dog]) {
+    private func advanceRound(withWinners winners: [Dog]) {
         self.winners = winners
 
         if winners.count == 1 {
-            saveFinalWinner(winner: winners.first!)
-        }
-
-        if winners.count > 1 {
-            let nextBracket = generateNextBracket(from: winners)
+            pastWinnersVM.addWinners([winners.first!])
+            isTournamentFinished = true
+        } else {
+            let nextBracket = TournamentEngine.generateNextBracket(from: winners)
             rounds.append(nextBracket)
             currentRound += 1
+            self.bracket = nextBracket
         }
     }
+
+    
+    func selectWinner(_ dog: Dog) {
+        winners.append(dog)
+        currentMatchIndex += 1
+
+        if currentMatchIndex >= bracket.count {
+            advanceRound(withWinners: winners)
+            currentMatchIndex = 0
+            winners = []
+        }
+    }
+
 
     private func generateNextBracket(from dogs: [Dog]) -> [[Dog]] {
         let count = dogs.count
@@ -49,40 +102,24 @@ final class TournamentViewModel: ObservableObject {
 
     func generateTournament(user: UserProfile, dogs: [Dog], shelters: [Shelter]) {
         let result = TournamentSelector.run(user: user, dogs: dogs, shelters: shelters)
-        self.selectedDogs = dogs.filter { result.dogIds.contains($0.id) }
-        saveToUserDefaults(result.dogIds)
+        self.selectedDogs = result.dogs
+        saveDogsToUserDefaults(result.dogs)
     }
 
-    func loadPreviousTournament(dogs: [Dog]) {
-        guard let data = UserDefaults.standard.data(forKey: "tournament_dog_ids"),
-              let ids = try? JSONDecoder().decode([UUID].self, from: data) else {
+    func loadPreviousTournamentDogs() {
+        guard let data = UserDefaults.standard.data(forKey: "tournament_dogs"),
+              let decoded = try? JSONDecoder().decode([Dog].self, from: data) else {
             return
         }
-        self.selectedDogs = dogs.filter { ids.contains($0.id) }
+
+        self.selectedDogs = decoded
     }
 
-    private func saveToUserDefaults(_ ids: [UUID]) {
-        if let encoded = try? JSONEncoder().encode(ids) {
-            UserDefaults.standard.set(encoded, forKey: "tournament_dog_ids")
+
+    private func saveDogsToUserDefaults(_ dogs: [Dog]) {
+        if let encoded = try? JSONEncoder().encode(dogs) {
+            UserDefaults.standard.set(encoded, forKey: "tournament_dogs")
         }
     }
 
-    private func saveFinalWinner(winner: Dog) {
-        let fileManager = FileManager.default
-        guard let docURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileURL = docURL.appendingPathComponent(pastWinnersFileName)
-
-        var savedIDs: [UUID] = []
-
-        if let data = try? Data(contentsOf: fileURL),
-           let decoded = try? JSONDecoder().decode([UUID].self, from: data) {
-            savedIDs = decoded
-        }
-
-        savedIDs.append(winner.id)
-
-        if let encoded = try? JSONEncoder().encode(savedIDs) {
-            try? encoded.write(to: fileURL)
-        }
-    }
 }

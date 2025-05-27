@@ -1,8 +1,19 @@
+//
+//  VSAnimationView.swift
+//  Woofle
+//
+//  Created by IP Marry Kusuma on 26/05/25.
+//
+
+
 import SwiftUI
 
 struct VSAnimationView: View {
     @State private var scale: CGFloat = 0.1
     @State private var opacity: Double = 0
+    
+    let dog1: Dog
+    let dog2: Dog
     
     var body: some View {
         ZStack {
@@ -10,9 +21,9 @@ struct VSAnimationView: View {
             VStack {
                 Circle()
                     .foregroundColor(.clear)
-                    .frame(width: 150, height: 150)
+                    .frame(width: 200, height: 200)
                     .background(
-                        Image("dog1")
+                        Image(dog1.pictureURL)
                             .resizable()
                             .clipShape(.circle)
                             .aspectRatio(contentMode: .fill)
@@ -32,9 +43,9 @@ struct VSAnimationView: View {
                 
                 Circle()
                     .foregroundColor(.clear)
-                    .frame(width: 150, height: 150)
+                    .frame(width: 200, height: 200)
                     .background(
-                        Image("dog2")
+                        Image(dog2.pictureURL)
                             .resizable()
                             .clipShape(.circle)
                             .aspectRatio(contentMode: .fill)

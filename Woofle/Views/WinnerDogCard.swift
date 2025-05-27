@@ -48,6 +48,7 @@ struct WinnerDogCard: View {
                                     .font(.callout)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 5)
+                                    .foregroundColor(.black)
                                     .background(Color.init(hex: "D8E6BF").opacity(0.8))
                                     .cornerRadius(15)
                                     .overlay(

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/*
+
 @main
 struct WoofleApp: App {
     var body: some Scene {
@@ -16,7 +16,6 @@ struct WoofleApp: App {
         }
     }
 }
- */
 
 //UNCOMMENT THIS to test WinnerDogCard
 
@@ -48,7 +47,7 @@ struct WoofleApp: App {
 
 
 //UNCOMMENT THIS to test Map with dummy data
-
+/*
 @main
 struct WoofleApp: App {
     var body: some Scene {
@@ -72,6 +71,6 @@ struct WoofleApp: App {
         return ShelterListViewModel().shelters.map { $0.shelter }
     }
 }
-
+*/
 
 

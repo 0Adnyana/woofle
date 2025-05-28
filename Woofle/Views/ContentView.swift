@@ -1,5 +1,5 @@
 //
-//  PastWinnersView.swift
+//  ContentView.swift
 //  Woofle
 //
 //  Created by I Made Bayu Putra Adnyana on 27/05/25.
@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-struct PastWinnersView: View {
+struct ContentView: View {
     var body: some View {
-        List {
-            
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    PastWinnersView()
+    ContentView()
 }

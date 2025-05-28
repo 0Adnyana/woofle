@@ -7,25 +7,65 @@
 import SwiftUI
 
 struct WinnerDogListView: View {
-    @ObservedObject var pastWinnersVM: PastWinnersViewModel
-    @ObservedObject var dogListVM: DogListViewModel
-    @ObservedObject var shelterListVM: ShelterListViewModel
-
+    private var winnerDogList: [Dog] = [Dog]()
+    private var winnerDogWithShelter: [DogWithShelter] = [DogWithShelter]()
+    private var shelterList: [Shelter] = [Shelter]()
+    
+    init() {
+        self.winnerDogWithShelter = getWinnerDogList()
+        self.winnerDogList = self.winnerDogWithShelter.map { $0.dog }
+        self.shelterList = self.winnerDogWithShelter.map { $0.shelter }
+    }
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(getWinnerDogList(), id: \.dog.id) { winnerDog in
-                    Text(winnerDog.id.uuidString)
-                    WinnerDogCard(dog: winnerDog.dog, shelter: winnerDog.shelter)
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    ForEach(winnerDogWithShelter, id: \.dog.id) { winnerDog in
+                        WinnerDogCard(dog: winnerDog.dog, shelter: winnerDog.shelter)
+                    }
                 }
+                .padding()
             }
+            //.navigationTitle("History")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack {
+                        Text("History")
+                            .font(.title) // Customize size
+                            .fontWeight(.bold) // Customize weight
+                            .foregroundColor(.primary) // Customize color
+                        Spacer() // Push title to the left
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(
+                        destination: WinnerDogsMapView(
+                            shelterList: shelterList,
+                            winnerDogList: winnerDogList
+                        )
+                    ) {
+                    Image("PinLocation")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                    }
+                }
+
+            }
+            
         }
     }
 
     func getWinnerDogList() -> [DogWithShelter] {
-        pastWinnersVM.winnerIds.compactMap { id in
-            guard let dog = dogListVM.dogs.first(where: { $0.id == id }),
-                  let shelter = shelterListVM.shelters.first(where: { $0.id == dog.shelterId }) else {
+        let pastWinnersList: [UUID] = DummyData.pastWinnerIds
+        let dogList: [Dog] = DummyData.dogs
+        let shelterList: [Shelter] = DummyData.shelters
+        
+        return pastWinnersList.compactMap { id in
+            guard let dog = dogList.first(where: { $0.id == id }),
+                  let shelter = shelterList.first(where: { $0.id == dog.shelterId }) else {
                 return nil
             }
             return DogWithShelter(dog: dog, shelter: shelter)
@@ -35,14 +75,6 @@ struct WinnerDogListView: View {
 
 
 #Preview {
-    WinnerDogListView(
-        pastWinnersVM: {
-            let vm = PastWinnersViewModel()
-            vm.winnerIds = [DummyData.dogs.first!.id]
-            return vm
-        }(),
-        dogListVM: DogListViewModel(dogs: DummyData.dogs),
-        shelterListVM: ShelterListViewModel(shelters: DummyData.shelters)
-    )
+    WinnerDogListView()
 }
 

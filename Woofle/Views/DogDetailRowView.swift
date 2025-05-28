@@ -16,7 +16,7 @@ struct DogDetailRowView: View {
     var body: some View {
         HStack {
             Image(systemName: icon)
-                .foregroundColor(.blue)
+                .foregroundColor(Color(hex: "A3B18A"))
                 .frame(width: 25)
             Text(text)
             Spacer()

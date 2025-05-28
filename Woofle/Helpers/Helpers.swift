@@ -11,6 +11,8 @@
 import SwiftUI
 import Foundation
 
+
+//Extension of Color Initialization from HEX
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -21,5 +23,24 @@ extension Color {
         g = Double((int >> 8) & 0xFF) / 255
         b = Double(int & 0xFF) / 255
         self.init(red: r, green: g, blue: b)
+    }
+}
+
+
+// Function to get Years from Month eg. 7 Years 5 Month
+func getYearsfromMonth(for month: Int) -> String {
+    var strYearMonth: String
+    
+    if (month / 12) > 0 {
+        strYearMonth = "\(abs(month / 12)) Years"
+        
+        if month % 12 > 0 {
+            strYearMonth += " \(month % 12) Month"
+        }
+        
+        return strYearMonth
+    }
+    else {
+        return "\(month) Month"
     }
 }

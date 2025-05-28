@@ -1,9 +1,11 @@
+// DEPRECATED
+
 import Foundation
 import CoreLocation
 
 struct TournamentSelector {
     struct Result {
-        let dogIds: [UUID]
+        let dogs: [Dog]
     }
 
     static func run(user: UserProfile, dogs: [Dog], shelters: [Shelter]) -> Result {
@@ -68,8 +70,8 @@ struct TournamentSelector {
             }
         }
         .prefix(16)
-        .map { $0.dog.id }
+        .map { $0.dog }
 
-        return Result(dogIds: topDogs)
+        return Result(dogs: topDogs)
     }
 }

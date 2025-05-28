@@ -14,11 +14,11 @@ final class ShelterListViewModel: ObservableObject {
         self.shelters = shelters
     }
 
-    func shelter(for id: UUID) -> ShelterViewModel? {
-        guard let shelter = shelters.first(where: { $0.id == id }) else {
-            return nil
-        }
-        return ShelterViewModel(shelter)
-    }
+//    func shelter(for id: UUID) -> ShelterViewModel? {
+//        guard let shelter = shelters.first(where: { $0.id == id }) else {
+//            return nil
+//        }
+//        return ShelterViewModel(shelter)
+//    }
 }
 

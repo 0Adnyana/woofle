@@ -9,56 +9,52 @@ import SwiftUI
 
 struct TournamentViewDemo: View {
     @ObservedObject var tournamentVM: TournamentViewModel
-    @State private var path: [Route] = []
+    @Binding var path: [Route]
 
     var body: some View {
-        NavigationStack(path: $path) {
-            ScrollView {
-                Text("Round \(tournamentVM.currentRound + 1)")
-                    .font(.title)
+        ScrollView {
+            Text("Round \(tournamentVM.currentRound + 1)")
+                .font(.title)
 
-                if !tournamentVM.isTournamentFinished && tournamentVM.currentMatch != nil {
-                    VStack(spacing: 20) {
-                        Text(tournamentVM.matchProgressText)
+            if tournamentVM.phase == .inProgress, let match = tournamentVM.currentMatch {
+                VStack(spacing: 20) {
+                    Text(tournamentVM.matchProgressText)
 
-                        ForEach(tournamentVM.currentMatch!, id: \.id) { dog in
-                            Button(action: {
-                                tournamentVM.selectWinner(dog)
-                            }) {
-                                VStack {
-                                    Text(dog.name).font(.title)
-                                    Text(dog.breed).font(.subheadline)
-                                }
-                                .padding()
-                                .background(Color.blue.opacity(0.2))
-                                .cornerRadius(8)
+                    ForEach(match, id: \.id) { dog in
+                        Button(action: {
+                            tournamentVM.selectWinner(dog)
+                        }) {
+                            VStack {
+                                Text(dog.name).font(.title)
+                                Text(dog.breed).font(.subheadline)
                             }
+                            .padding()
+                            .background(Color.blue.opacity(0.2))
+                            .cornerRadius(8)
                         }
-                    }
-                } else {
-                    Button(action: {
-                        path.append(.home)
-                    }) {
-                        HStack {
-                            Text("Back to Home")
-                        }
-                        .padding(10)
-                        .background(Color.blue)
-                        .cornerRadius(15)
-                        .font(.headline)
-                        .foregroundColor(.white)
                     }
                 }
-            }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .tournament:
-                    TournamentViewDemo(tournamentVM: tournamentVM)
-                case .home:
-                    HomeViewDemo()
+            } else {
+                Button(action: {
+                    path = []
+                }) {
+                    HStack {
+                        Text("Back to Home")
+                    }
+                    .padding(10)
+                    .background(Color.blue)
+                    .cornerRadius(15)
+                    .font(.headline)
+                    .foregroundColor(.white)
                 }
             }
         }
+        .onAppear {
+            print("🎯 Phase: \(tournamentVM.phase)")
+            print("🎯 currentMatch: \(String(describing: tournamentVM.currentMatch))")
+            print("🎯 bracket count: \(tournamentVM.bracket.count)")
+        }
+
     }
 }
 
@@ -100,6 +96,6 @@ struct TournamentViewDemo: View {
         shelters: DummyData.shelters
     )
 
-    return TournamentViewDemo(tournamentVM: vm)
+    return TournamentViewDemo(tournamentVM: vm, path: Binding.constant([.tournament]))
 }
 

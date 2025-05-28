@@ -10,20 +10,23 @@ import SwiftUI
 struct HomeViewDemo: View {
     @StateObject private var pastWinnersVM = PastWinnersViewModel()
     @StateObject private var tournamentVM: TournamentViewModel
-    @StateObject private var userVM = UserViewModel()
     @StateObject private var dogListVM = DogListViewModel(dogs: (DummyData.dogs))
     @StateObject private var shelterListVM = ShelterListViewModel(shelters: DummyData.shelters)
     
     @State private var path: [Route] = []
     
+
     init() {
-        let pastWinnersVM = PastWinnersViewModel()
-        _pastWinnersVM = StateObject(wrappedValue: pastWinnersVM)
-        _tournamentVM = StateObject(wrappedValue: TournamentViewModel(pastWinnersVM: pastWinnersVM))
+        let tournamentVM = TournamentViewModel(
+            userService: UserStorageService(),
+            matchingService: TournamentMatchingService(),
+            engine: TournamentEngine(),
+            winnersStorage: PastWinnersStorageService()
+        )
+        _tournamentVM = StateObject(wrappedValue: tournamentVM)
     }
 
     var body: some View {
-        let user = userVM.user
         let dogs = dogListVM.dogs
         let shelters = shelterListVM.shelters
 
@@ -31,7 +34,6 @@ struct HomeViewDemo: View {
             VStack {
                 Button (action: {
                     tournamentVM.startNewTournament(
-                        user: user,
                         dogs: dogs,
                         shelters: shelters
                     )

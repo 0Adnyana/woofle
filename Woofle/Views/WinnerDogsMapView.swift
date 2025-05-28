@@ -36,7 +36,6 @@ struct WinnerDogsMapView: View {
             ForEach(getDogWithShelter()) { dogWithShelter in
                 Annotation("", coordinate: dogWithShelter.shelter.location.coordinate) {
                     DogMapAnnotationView(dog: dogWithShelter.dog, shelter: dogWithShelter.shelter)
-                    
                 }
             }
         }
@@ -69,14 +68,14 @@ func getFirstThreeDogList() -> [Dog] {
     var topThreeDogList = [Dog]()
     
     for i in 1 ... 3 {
-        topThreeDogList.append(dogListViewModel.dogs[i].dog)
+        topThreeDogList.append(dogListViewModel.dogs[i])
     }
     
     return topThreeDogList
 }
 
 func getShelterList() -> [Shelter] {
-    return ShelterListViewModel().shelters.map { $0.shelter }
+    return ShelterListViewModel().shelters
 }
 
 

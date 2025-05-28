@@ -105,7 +105,7 @@ struct WinnerDogCard: View {
 
 func getFirstShelter() -> Shelter {
     let shelterListViewModel = ShelterListViewModel()
-    let shelterList = shelterListViewModel.shelters.map { $0.shelter }
+    let shelterList = shelterListViewModel.shelters
     
     return shelterList[0]
 }

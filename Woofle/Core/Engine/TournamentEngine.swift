@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct TournamentEngine {
-    static func generateSeedingBracket(from dogs: [Dog]) -> [[Dog]] {
+struct TournamentEngine: TournamentEngineProtocol {
+    func generateSeedingBracket(from dogs: [Dog]) -> [[Dog]] {
         let count = dogs.count
         return (0..<count / 2).map { i in
             [dogs[i], dogs[count - 1 - i]]
         }
     }
 
-    static func generateNextBracket(from dogs: [Dog]) -> [[Dog]] {
+    func generateNextBracket(from dogs: [Dog]) -> [[Dog]] {
         let count = dogs.count
         return (0..<count / 2).map { i in
             [dogs[i * 2], dogs[i * 2 + 1]]

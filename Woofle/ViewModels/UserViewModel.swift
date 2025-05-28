@@ -8,13 +8,13 @@
 import Foundation
 
 final class UserViewModel: ObservableObject {
-    @Published var user: UserProfile {
-        didSet {
-            JSONFileHelper.save(user, to: "user.json")
-        }
-    }
+    @Published private(set) var user: UserProfile
 
-    init() {
+    private let storage: UserStorageService
+
+    init(storage: UserStorageService = UserStorageService()) {
+        self.storage = storage
+
         let fallback = UserProfile(
             id: UUID(),
             name: "Fallback User",
@@ -31,10 +31,17 @@ final class UserViewModel: ObservableObject {
                 preferredRadius: 30
             )
         )
-        self.user = JSONFileHelper.load(fileName: "user", fallback: fallback)
+
+        self.user = storage.load(fallback: fallback)
     }
 
     func update(_ updated: UserProfile) {
         self.user = updated
+        save()
+    }
+
+    func save() {
+        storage.save(user)
     }
 }
+

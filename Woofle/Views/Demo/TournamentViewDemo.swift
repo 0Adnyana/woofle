@@ -9,14 +9,15 @@ import SwiftUI
 
 struct TournamentViewDemo: View {
     @ObservedObject var tournamentVM: TournamentViewModel
-    
     @State private var path: [Route] = []
-    
+
     var body: some View {
-        NavigationStack (path: $path) {
+        NavigationStack(path: $path) {
             ScrollView {
-                Text("Round \(tournamentVM.currentRound + 1)").font(.title)
-                if !tournamentVM.isTournamentFinished && tournamentVM.hasMoreRounds {
+                Text("Round \(tournamentVM.currentRound + 1)")
+                    .font(.title)
+
+                if !tournamentVM.isTournamentFinished && tournamentVM.currentMatch != nil {
                     VStack(spacing: 20) {
                         Text(tournamentVM.matchProgressText)
 
@@ -35,7 +36,7 @@ struct TournamentViewDemo: View {
                         }
                     }
                 } else {
-                    Button (action: {
+                    Button(action: {
                         path.append(.home)
                     }) {
                         HStack {
@@ -51,34 +52,54 @@ struct TournamentViewDemo: View {
             }
             .navigationDestination(for: Route.self) { route in
                 switch route {
-                case .tournament: TournamentViewDemo(tournamentVM: tournamentVM)
-                case .home: HomeViewDemo()
+                case .tournament:
+                    TournamentViewDemo(tournamentVM: tournamentVM)
+                case .home:
+                    HomeViewDemo()
                 }
             }
         }
     }
 }
 
-
 #Preview {
-    let userVM = UserViewModel()
-    let shelterVM = ShelterListViewModel(shelters: DummyData.shelters)
-    let pastWinnersVM = PastWinnersViewModel()
-    let dogVM = DogListViewModel(dogs: DummyData.dogs)
-    
-    TournamentViewDemo(
-        tournamentVM: {
-            let vm = TournamentViewModel(pastWinnersVM: pastWinnersVM)
-            vm.startNewTournament(
-                user: userVM.user,
-                dogs: dogVM.dogs,
-                shelters: shelterVM.shelters
-            )
-            return vm
-        }()
+    let fallbackUser = UserProfile(
+        id: UUID(),
+        name: "Preview User",
+        gender: .other,
+        age: 25,
+        location: GeoLocation(latitude: -8.67, longitude: 115.21),
+        preferences: .init(
+            preferredBreeds: nil,
+            sizePreferences: [.medium],
+            activityLevels: [.moderate],
+            goodWithKids: false,
+            goodWithOtherDogs: nil,
+            personalityPreferences: [.playful],
+            preferredRadius: 30
+        )
     )
-    
-    
 
+    let userService = UserStorageService()
+    let matchingService = TournamentMatchingService()
+    let engine = TournamentEngine()
+    let winnersStorage = PastWinnersStorageService()
+
+    let vm = TournamentViewModel(
+        userService: userService,
+        matchingService: matchingService,
+        engine: engine,
+        winnersStorage: winnersStorage
+    )
+
+    // Injecting dummy user into storage (preview-safe write)
+    userService.save(fallbackUser)
+
+    vm.startNewTournament(
+        dogs: DummyData.dogs,
+        shelters: DummyData.shelters
+    )
+
+    return TournamentViewDemo(tournamentVM: vm)
 }
 

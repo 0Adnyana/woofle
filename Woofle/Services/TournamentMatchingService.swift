@@ -17,26 +17,48 @@ struct TournamentMatchingService {
         }
 
         let filtered = dogs.filter { dog in
-            guard let shelter = shelters.first(where: { $0.id == dog.shelterId }) else { return false }
+            guard let shelter = shelters.first(where: { $0.id == dog.shelterId }) else {
+                print("❌ No shelter found for dog \(dog.name)")
+                return false
+            }
             let dist = distance(from: user.location, to: shelter.location)
-            guard dist <= user.preferences.preferredRadius else { return false }
-            if let requiresKids = user.preferences.goodWithKids, requiresKids != dog.traits.goodWithKids { return false }
+            guard dist <= user.preferences.preferredRadius else {
+                print("❌ Dog \(dog.name) too far: \(dist)km > \(user.preferences.preferredRadius)km")
+                return false
+            }
+            if let requiresKids = user.preferences.goodWithKids,
+               requiresKids != dog.traits.goodWithKids {
+                print("❌ Dog \(dog.name) rejected due to goodWithKids mismatch")
+                return false
+            }
             return true
+        }
+
+        if filtered.isEmpty {
+            print("⚠️ TournamentMatchingService: No dogs passed the filter.")
+            return []
         }
 
         let scored = filtered.map { dog -> (Dog, Int) in
             var score = 0
-            if let preferredBreeds = user.preferences.preferredBreeds, preferredBreeds.contains(dog.breed) { score += 3 }
+            if let preferredBreeds = user.preferences.preferredBreeds,
+               preferredBreeds.contains(dog.breed) { score += 3 }
             if user.preferences.sizePreferences.contains(dog.traits.size) { score += 2 }
             if user.preferences.activityLevels.contains(dog.traits.energyLevel) { score += 2 }
             score += dog.traits.personalityTags.filter { user.preferences.personalityPreferences.contains($0) }.count
-            if let goodWithOther = user.preferences.goodWithOtherDogs, goodWithOther == dog.traits.goodWithOtherDogs { score += 1 }
+            if let goodWithOther = user.preferences.goodWithOtherDogs,
+               goodWithOther == dog.traits.goodWithOtherDogs { score += 1 }
             if dog.traits.isTrained { score += 1 }
             return (dog, score)
         }
 
-        return scored.sorted { $0.1 == $1.1 ? $0.0.createdAt < $1.0.createdAt : $0.1 > $1.1 }
-            .prefix(16)
-            .map { $0.0 }
+        print("✅ TournamentMatchingService: \(filtered.count) dogs filtered, \(scored.count) scored.")
+
+        return scored.sorted {
+            $0.1 == $1.1 ? $0.0.createdAt < $1.0.createdAt : $0.1 > $1.1
+        }
+        .prefix(16)
+        .map { $0.0 }
     }
+
 }

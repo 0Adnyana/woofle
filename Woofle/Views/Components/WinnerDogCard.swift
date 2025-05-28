@@ -98,14 +98,3 @@ struct WinnerDogCard: View {
         }
     }
 }
-
-#Preview {
-    WinnerDogCard(dog: getFirstThreeDogList()[0], shelter: getFirstShelter())
-}
-
-func getFirstShelter() -> Shelter {
-    let shelterListViewModel = ShelterListViewModel()
-    let shelterList = shelterListViewModel.shelters
-    
-    return shelterList[0]
-}

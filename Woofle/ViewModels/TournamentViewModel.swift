@@ -8,6 +8,15 @@ final class TournamentViewModel: ObservableObject {
     @Published var winners: [Dog] = []
     @Published var currentMatchIndex: Int = 0
     @Published var isTournamentFinished: Bool = false
+    @Published var phase: TournamentPhase = .idle
+
+    
+    enum TournamentPhase {
+        case idle
+        case loading
+        case inProgress
+        case finished
+    }
 
     var currentMatch: [Dog]? {
         guard currentMatchIndex < bracket.count else { return [] }
@@ -36,18 +45,33 @@ final class TournamentViewModel: ObservableObject {
     }
 
     func startNewTournament(dogs: [Dog], shelters: [Shelter]) {
+        phase = .loading
+
         let user = userService.load()
         let eligibleDogs = dogs.filter { !winnersStorage.load().contains($0.id) }
-        let topDogs = matchingService.match(user: user, dogs: eligibleDogs, shelters: shelters)
+        let matchedDogs = matchingService.match(user: user, dogs: eligibleDogs, shelters: shelters)
 
-        self.selectedDogs = topDogs
-        self.bracket = engine.generateSeedingBracket(from: topDogs)
+        print("✅ Matched dogs: \(matchedDogs.count)")
+
+        let bracket = engine.generateSeedingBracket(from: matchedDogs)
+        print("✅ Bracket created with \(bracket.count) matches")
+
+        guard bracket.count > 0 else {
+            print("❌ Bracket was empty — aborting tournament")
+            phase = .finished
+            return
+        }
+
+        self.selectedDogs = matchedDogs
+        self.bracket = bracket
         self.rounds = [bracket]
         self.currentRound = 0
         self.currentMatchIndex = 0
         self.winners = []
         self.isTournamentFinished = false
+        self.phase = .inProgress
     }
+
 
     func selectWinner(_ dog: Dog) {
         winners.append(dog)
@@ -62,6 +86,7 @@ final class TournamentViewModel: ObservableObject {
         if winners.count == 1 {
             winnersStorage.save(newWinners: [winners.first!])
             isTournamentFinished = true
+            phase = .finished
             return
         }
 

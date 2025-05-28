@@ -28,23 +28,19 @@ struct HomePageStartTournament: View {
                     
                     // Center content
                     Text("Find your perfect dog")
-                        .font(.headline)
+                        .font(.title)
                         .padding(.bottom, 20)
                     NavigationLink{
                         TournamentView()
                     } label: {
                         ZStack {
                             Circle()
-                                .fill(Color.green.opacity(0.2))
-                                .frame(width: 200, height: 200)
-                            Circle()
-                                .fill(Color.green.opacity(0.3))
-                                .frame(width: 170, height: 170)
-                            Image(systemName: "pawprint.fill")
+                                .fill(Color(hex: "DFE4D6"))
+                                .frame(width: 210, height: 210)
+                            Image("PawPrint")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 80, height: 80)
-                                .foregroundColor(Color.green.opacity(0.6))
+                                .frame(width: 255, height: 255)
                         }
                     }
                     

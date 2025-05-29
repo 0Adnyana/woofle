@@ -10,7 +10,6 @@ import SwiftUI
 
 @main
 struct WoofleApp: App {
-    
     var body: some Scene {
         WindowGroup {
 //            WinnerDogListView(
@@ -23,7 +22,7 @@ struct WoofleApp: App {
 //                shelterListVM: ShelterListViewModel(shelters: DummyData.shelters)
 //            )
             //StartView()
-            HomeViewDemo()
+            TabBarView()
         }
     }
 }

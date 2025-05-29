@@ -60,22 +60,7 @@ struct WinnerDogsMapView: View {
 }
 
 #Preview {
-    WinnerDogsMapView(shelterList: getShelterList(), winnerDogList: getFirstThreeDogList())
-}
-
-func getFirstThreeDogList() -> [Dog] {
-    let dogListViewModel = DogListViewModel()
-    var topThreeDogList = [Dog]()
-    
-    for i in 1 ... 3 {
-        topThreeDogList.append(dogListViewModel.dogs[i])
-    }
-    
-    return topThreeDogList
-}
-
-func getShelterList() -> [Shelter] {
-    return ShelterListViewModel().shelters
+    WinnerDogsMapView(shelterList: DummyData.shelters, winnerDogList: DummyData.dogs)
 }
 
 

@@ -42,7 +42,14 @@ struct StartTournamentView: View {
                     }
                 }
                 
-                Spacer()
+                HStack {
+                    Spacer()
+                    if let frames = extractFramesFromGIF(named: "Shiba Inu") {
+                        FrameAnimator(frames: frames)
+                            .frame(width: 150)
+                            .padding()
+                    }
+                }
                 
             }
             .navigationBarTitleDisplayMode(.inline)

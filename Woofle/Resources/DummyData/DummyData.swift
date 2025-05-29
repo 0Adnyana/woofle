@@ -24,6 +24,8 @@ let userFallback = UserProfile(
     )
 )
 
+
+// UPDATE: user and pastWinnerIds are NO LONGER static as they can be updated by the user. load the using their respective services (see Services folder).
 struct DummyData {
     static let dogs: [Dog] = JSONFileHelper.load(fileName: "dogs", fallback: [])
     static let user: UserProfile = JSONFileHelper.load(fileName: "user", fallback: userFallback)

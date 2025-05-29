@@ -49,6 +49,7 @@ final class TournamentViewModel: ObservableObject {
 
         let user = userService.load()
         let eligibleDogs = dogs.filter { !winnersStorage.load().contains($0.id) }
+        print("Eligible dog count: \(eligibleDogs.count)")
         let matchedDogs = matchingService.match(user: user, dogs: eligibleDogs, shelters: shelters)
 
         print("✅ Matched dogs: \(matchedDogs.count)")

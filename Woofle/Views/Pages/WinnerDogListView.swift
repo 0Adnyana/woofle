@@ -27,7 +27,6 @@ struct WinnerDogListView: View {
                 }
                 .padding()
             }
-            //.navigationTitle("History")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -47,7 +46,7 @@ struct WinnerDogListView: View {
                             winnerDogList: winnerDogList
                         )
                     ) {
-                    Image("PinLocation")
+                    Image("MapIcon")
                             .resizable()
                             .frame(width: 50, height: 50)
                     }

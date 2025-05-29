@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct StartTournamentView: View {
+    @EnvironmentObject var tournamentVM: TournamentViewModel
+    @State private var path: [Route] = []
+
+    private let dogs = DummyData.dogs
+    private let shelters = DummyData.shelters
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
                 
                 Spacer()
@@ -18,9 +24,13 @@ struct StartTournamentView: View {
                 Text("Find your perfect dog")
                     .font(.title)
                     .padding(.bottom, 20)
-                NavigationLink{
-                    HomeViewDemo()
-                } label: {
+                Button(action: {
+                    tournamentVM.startNewTournament(
+                        dogs: dogs,
+                        shelters: shelters
+                    )
+                    path.append(.tournament)
+                }){
                     ZStack {
                         Circle()
                             .fill(Color(hex: "DFE4D6"))
@@ -57,7 +67,14 @@ struct StartTournamentView: View {
                             .foregroundColor(Color(hex: "A3B18A"))
                     }
                 }
-
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .tournament:
+                    TournamentViewDemo(tournamentVM: tournamentVM, path: $path)
+                case .home:
+                    HomeViewDemo()
+                }
             }
         }
     }
@@ -65,4 +82,12 @@ struct StartTournamentView: View {
 
 #Preview {
     StartTournamentView()
+        .environmentObject(
+            TournamentViewModel(
+                userService: UserStorageService(),
+                matchingService: TournamentMatchingService(),
+                engine: TournamentEngine(),
+                winnersStorage: PastWinnersStorageService()
+            )
+        )
 }

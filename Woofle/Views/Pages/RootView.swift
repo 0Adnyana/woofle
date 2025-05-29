@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject private var appState = AppStateViewModel()
-
+    @StateObject private var appState = OnboardingViewModel()
+    @StateObject private var tournamentVM = TournamentViewModel(
+        userService: UserStorageService(),
+        matchingService: TournamentMatchingService(),
+        engine: TournamentEngine(),
+        winnersStorage: PastWinnersStorageService()
+    )
+    
     var body: some View {
         if appState.isUserOnboarded {
-            HomeViewDemo()
+            TabBarView()
                 .environmentObject(appState)
+                .environmentObject(tournamentVM)
         } else {
-            HomePageStartTournament()
+            StartView()
                 .environmentObject(appState)
+                .environmentObject(tournamentVM)
         }
     }
 }

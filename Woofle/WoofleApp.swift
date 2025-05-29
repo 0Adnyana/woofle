@@ -12,17 +12,7 @@ import SwiftUI
 struct WoofleApp: App {
     var body: some Scene {
         WindowGroup {
-//            WinnerDogListView(
-//                pastWinnersVM: {
-//                    let vm = PastWinnersViewModel()
-//                    vm.winnerIds = [DummyData.dogs.first!.id]
-//                    return vm
-//                }(),
-//                dogListVM: DogListViewModel(dogs: DummyData.dogs),
-//                shelterListVM: ShelterListViewModel(shelters: DummyData.shelters)
-//            )
-            //StartView()
-            TabBarView()
+            RootView()
         }
     }
 }

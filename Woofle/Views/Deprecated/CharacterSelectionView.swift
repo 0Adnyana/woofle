@@ -1,50 +1,50 @@
-
-
 import SwiftUI
 
 struct CharacterSelectionView: View {
     
     @StateObject private var locationManager = LocationManager()
-    @State private var selectedAgeRange: String? = nil
-    @State private var selectedActivity: String? = nil
-    @State private var selectedHome: String? = nil
-    @State private var selectedWorkSchedule: String? = nil
-    @State private var selectedOtherPets: String? = nil
-    @State private var selectedDogSize: String? = nil
-    @State private var selectedGender: String? = nil
-    @State private var selectedEnergyLevel: String? = nil
-    @State private var selectedGoodWith: Set<String> = []
-    @State private var selectedTemperament: Set<String> = []
-    @State private var selectedSpecialNeeds: String? = nil
+    @State private var selectedAge: Double = 25
+    @State private var selectedGender: HumanGender? = nil
+//    @State private var selectedActivity: EnergyLevel? = nil
+//    @State private var selectedHome: String? = nil
+//    @State private var selectedWorkSchedule: String? = nil
+//    @State private var selectedOtherPets: String? = nil
+    @State private var selectedDogSize: Set<Size> = []
+    @State private var selectedDogGender: Gender? = nil
+    @State private var selectedEnergyLevel: Set<EnergyLevel> = []
+    @State private var selectedGoodWithKids: Bool? = nil
+    @State private var selectedGoodWithOtherDogs: Bool? = nil
+    @State private var selectedPersonalityTraits: Set<PersonalityTrait> = []
+//    @State private var selectedSpecialNeeds: String? = nil
+    @State private var selectedPreferredRadius: Double = 25
     @State private var showNext = false
     
     @State private var navigateToHome = false
 
-    
-    let activityLevels = ["Couch Potato", "Walks once a day", "Very active / outdoorsey"]
-    let ageRanges = ["18-35", "36-55", "56-70", "> 70"]
-    let homeEnvironments = ["House", "House with garden", "Flat", "Farm / rural"]
-    let workSchedules = ["Home most of the time", "Regular 9 - 5", "Night shift / irregular"]
+    // Static options that don't have enums
+//    let homeEnvironments = ["House", "House with garden", "Flat", "Farm / rural"]
+//    let workSchedules = ["Home most of the time", "Regular 9 - 5", "Night shift / irregular"]
     let otherPetOptions = ["Yes", "No"]
-    let dogSizes = ["Small", "Middle", "Large"]
-    let genders = ["Female", "Male"]
-    let energyLevels = ["Low", "Moderate", "High"]
-    let goodWithOptions = ["Other dogs", "Kids", "Cats"]
-    let temperamentOptions = ["Calm", "Playful", "Protective", "Goofy", "Affectionate"]
     let specialNeedsOptions = ["Yes", "No", "Maybe"]
+    let breeds = [
+        "Golden Retriever", "Labrador Retriever", "Beagle", "Pomeranian",
+        "Shih Tzu", "German Shepherd", "Bulldog", "Siberian Husky",
+        "Chihuahua", "Dachshund"
+    ]
     
     var canContinue: Bool {
-        selectedAgeRange != nil &&
-        selectedActivity != nil &&
-        selectedHome != nil &&
-        selectedWorkSchedule != nil &&
-        selectedOtherPets != nil &&
-        selectedDogSize != nil &&
         selectedGender != nil &&
-        selectedEnergyLevel != nil &&
-        !selectedGoodWith.isEmpty &&
-        !selectedTemperament.isEmpty &&
-        selectedSpecialNeeds != nil
+//        selectedActivity != nil &&
+//        selectedHome != nil &&
+//        selectedWorkSchedule != nil &&
+//        selectedOtherPets != nil &&
+        !selectedDogSize.isEmpty &&
+        selectedDogGender != nil &&
+        !selectedEnergyLevel.isEmpty &&
+        selectedGoodWithKids != nil &&
+        selectedGoodWithOtherDogs != nil &&
+        !selectedPersonalityTraits.isEmpty
+//        selectedSpecialNeeds != nil
     }
     
     private var authorizationStatusText: String {
@@ -67,7 +67,22 @@ struct CharacterSelectionView: View {
                         .foregroundColor(.black)
                         .padding(.top, 10)
                     
-                    section("Age Range", options: ageRanges, selection: $selectedAgeRange)
+                    // Age Slider Section
+                    VStack(alignment: .leading, spacing: 10) {
+                        Divider().background(Color.black)
+                        
+                        Text("Your Age: \(Int(selectedAge))")
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                        
+                        Slider(value: $selectedAge, in: 18...80, step: 1)
+                            .accentColor(Color(hex: "F8CE9C"))
+                    }
+                    
+                    // Gender Section
+                    enumSection("Your Gender", options: HumanGender.self, selection: $selectedGender) { gender in
+                        gender.rawValue.capitalized
+                    }
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Divider().background(Color.black)
@@ -101,24 +116,67 @@ struct CharacterSelectionView: View {
                             .font(.system(size: 16))
                     }
                     
-                    section("Activity Level", options: activityLevels, selection: $selectedActivity)
-                    section("Home Environment", options: homeEnvironments, selection: $selectedHome)
-                    section("Work Schedule", options: workSchedules, selection: $selectedWorkSchedule)
-                    section("Other Pets", options: otherPetOptions, selection: $selectedOtherPets)
+//                    // Activity Level using EnergyLevel enum
+//                    enumSection("Your Activity Level", options: EnergyLevel.self, selection: $selectedActivity) { level in
+//                        switch level {
+//                        case .low: return "Couch Potato"
+//                        case .moderate: return "Walks once a day"
+//                        case .high: return "Very active / outdoorsey"
+//                        }
+//                    }
+//                    
+//                    section("Home Environment", options: homeEnvironments, selection: $selectedHome)
+//                    section("Work Schedule", options: workSchedules, selection: $selectedWorkSchedule)
+//                    section("Other Pets", options: otherPetOptions, selection: $selectedOtherPets)
+                    
+                    // Preferred Search Radius Slider
+                    VStack(alignment: .leading, spacing: 10) {
+                        Divider().background(Color.black)
+                        
+                        Text("Search Radius: \(Int(selectedPreferredRadius)) km")
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                        
+                        Slider(value: $selectedPreferredRadius, in: 5...100, step: 5)
+                            .accentColor(Color(hex: "F8CE9C"))
+                    }
                     
                     Text("What are you looking for?")
                         .font(.system(size: 32))
                         .foregroundColor(.black)
                         .padding(.top, 20)
                     
-                    section("Dog Size", options: dogSizes, selection: $selectedDogSize)
-                    section("Gender", options: genders, selection: $selectedGender)
-                    section("Energy Level", options: energyLevels, selection: $selectedEnergyLevel)
-                    multiSelectSection("Good with", options: goodWithOptions, selection: $selectedGoodWith)
-                    multiSelectSection("Temperament Preferences", options: temperamentOptions, selection: $selectedTemperament)
-                    section("Open to Special Needs / Older Dogs", options: specialNeedsOptions, selection: $selectedSpecialNeeds)
+                    // Dog Size - Multi-select using Size enum
+                    enumMultiSelectSection("Dog Size", options: Size.self, selection: $selectedDogSize) { size in
+                        size.rawValue.capitalized
+                    }
+                    
+                    // Dog Gender using Gender enum
+                    enumSection("Dog Gender", options: Gender.self, selection: $selectedDogGender) { gender in
+                        gender.rawValue.capitalized
+                    }
+                    
+                    // Energy Level - Multi-select
+                    enumMultiSelectSection("Energy Level", options: EnergyLevel.self, selection: $selectedEnergyLevel) { level in
+                        level.rawValue.capitalized
+                    }
+                    
+                    // Good with Kids
+                    boolSection("Good with Kids", selection: $selectedGoodWithKids)
+                    
+                    // Good with Other Dogs
+                    boolSection("Good with Other Dogs", selection: $selectedGoodWithOtherDogs)
+                    
+                    // Personality Traits - Multi-select
+                    enumMultiSelectSection("Personality Preferences", options: PersonalityTrait.self, selection: $selectedPersonalityTraits) { trait in
+                        trait.rawValue.capitalized
+                    }
+                    
+//                    section("Open to Special Needs / Older Dogs", options: specialNeedsOptions, selection: $selectedSpecialNeeds)
                     
                     Button(action: {
+                        // Here you would save the user preferences
+                        saveUserPreferences()
                         navigateToHome = true
                     }) {
                         Text("Save")
@@ -133,32 +191,41 @@ struct CharacterSelectionView: View {
                             .cornerRadius(15)
                     }
                     .disabled(!canContinue)
-                    .opacity(1)  // Keep fully opaque regardless of enabled state
+                    .opacity(1)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 30)
 
-
-                    // NavigationLink (under Button)
                     NavigationLink(
                         destination: StartTournamentView(),
                         isActive: $navigateToHome
                     ) {
                         EmptyView()
                     }
-
-
                 }
-                
-                
-                
                 .padding()
                 .background(Color.white)
             }
-//            .ignoresSafeArea(edges: .bottom)
         }
     }
     
-    // MARK: - Section with Dividers
+    // MARK: - Save User Preferences
+    func saveUserPreferences() {
+        // Create UserPreferences object with collected data
+        let preferences = UserPreferences(
+            preferredBreeds: nil, // You can add breed selection if needed
+            sizePreferences: Array(selectedDogSize),
+            activityLevels: Array(selectedEnergyLevel),
+            goodWithKids: selectedGoodWithKids,
+            goodWithOtherDogs: selectedGoodWithOtherDogs,
+            personalityPreferences: Array(selectedPersonalityTraits),
+            preferredRadius: selectedPreferredRadius
+        )
+        
+        // Save to UserDefaults or Core Data
+        print("Saving user preferences: \(preferences)")
+    }
+    
+    // MARK: - Section with Dividers (String options)
     func section(_ title: String, options: [String], selection: Binding<String?>) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Divider().background(Color.black)
@@ -186,8 +253,8 @@ struct CharacterSelectionView: View {
         }
     }
     
-    // MARK: - Multi-select Section for Good With and Temperament
-    func multiSelectSection(_ title: String, options: [String], selection: Binding<Set<String>>) -> some View {
+    // MARK: - Enum Single Selection Section
+    func enumSection<T: CaseIterable & Hashable>(_ title: String, options: T.Type, selection: Binding<T?>, displayName: @escaping (T) -> String) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Divider().background(Color.black)
             
@@ -196,7 +263,35 @@ struct CharacterSelectionView: View {
                 .foregroundColor(.black)
             
             FlowLayout(spacing: 10) {
-                ForEach(options, id: \.self) { option in
+                ForEach(Array(options.allCases), id: \.self) { option in
+                    Button(action: {
+                        selection.wrappedValue = option
+                    }) {
+                        Text(displayName(option))
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 10)
+                            .background(selection.wrappedValue == option ? Color(hex: "F8CE9C") : Color.white)
+                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                            .cornerRadius(15)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Enum Multi-select Section
+    func enumMultiSelectSection<T: CaseIterable & Hashable>(_ title: String, options: T.Type, selection: Binding<Set<T>>, displayName: @escaping (T) -> String) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Divider().background(Color.black)
+            
+            Text(title)
+                .font(.system(size: 16))
+                .foregroundColor(.black)
+            
+            FlowLayout(spacing: 10) {
+                ForEach(Array(options.allCases), id: \.self) { option in
                     Button(action: {
                         if selection.wrappedValue.contains(option) {
                             selection.wrappedValue.remove(option)
@@ -204,12 +299,44 @@ struct CharacterSelectionView: View {
                             selection.wrappedValue.insert(option)
                         }
                     }) {
-                        Text(option)
+                        Text(displayName(option))
                             .font(.system(size: 16))
                             .foregroundColor(.black)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 10)
                             .background(selection.wrappedValue.contains(option) ? Color(hex: "F8CE9C") : Color.white)
+                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                            .cornerRadius(15)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Boolean Section (Yes/No)
+    func boolSection(_ title: String, selection: Binding<Bool?>) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Divider().background(Color.black)
+            
+            Text(title)
+                .font(.system(size: 16))
+                .foregroundColor(.black)
+            
+            FlowLayout(spacing: 10) {
+                ForEach(["Yes", "No"], id: \.self) { option in
+                    Button(action: {
+                        selection.wrappedValue = option == "Yes"
+                    }) {
+                        Text(option)
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 10)
+                            .background(
+                                (selection.wrappedValue == true && option == "Yes") ||
+                                (selection.wrappedValue == false && option == "No")
+                                ? Color(hex: "F8CE9C") : Color.white
+                            )
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                             .cornerRadius(15)
                     }
@@ -285,5 +412,4 @@ struct FlowResult {
 #Preview {
     CharacterSelectionView()
 }
-
 

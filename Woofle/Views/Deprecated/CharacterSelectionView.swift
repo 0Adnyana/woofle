@@ -196,7 +196,7 @@ struct CharacterSelectionView: View {
                     .padding(.top, 30)
 
                     NavigationLink(
-                        destination: HomePageStartTournament(),
+                        destination: StartTournamentView(),
                         isActive: $navigateToHome
                     ) {
                         EmptyView()

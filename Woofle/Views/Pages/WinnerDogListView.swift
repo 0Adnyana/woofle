@@ -12,9 +12,17 @@ struct WinnerDogListView: View {
     private var shelterList: [Shelter] = [Shelter]()
     
     init() {
+        var addedShelterId = Set<UUID>()
+        
         self.winnerDogWithShelter = getWinnerDogList()
-        self.winnerDogList = self.winnerDogWithShelter.map { $0.dog }
-        self.shelterList = self.winnerDogWithShelter.map { $0.shelter }
+        
+        if !self.winnerDogWithShelter.isEmpty {
+            self.winnerDogList = self.winnerDogWithShelter.map { $0.dog }
+            
+            let uniqueShelterList = self.winnerDogWithShelter.filter { addedShelterId.insert($0.id).inserted }
+            
+            self.shelterList = uniqueShelterList.map { $0.shelter }
+        }
     }
     
     var body: some View {

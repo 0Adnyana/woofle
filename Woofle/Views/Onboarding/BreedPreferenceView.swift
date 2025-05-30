@@ -45,7 +45,7 @@ struct BreedPreferenceView: View {
 
                 Spacer()
 
-                NavigationLink(destination: HomePageStartTournament()) {
+                NavigationLink(destination: StartTournamentView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
@@ -88,7 +88,7 @@ struct BreedPreferenceView: View {
             Spacer().frame(height: 5)
 
             // Always-enabled Next button
-            NavigationLink(destination: HomePageStartTournament()) {
+            NavigationLink(destination: StartTournamentView()) {
                 Text("Next")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)

@@ -46,7 +46,7 @@
 
                     Spacer()
 
-                    NavigationLink(destination: HomePageStartTournament()) {
+                    NavigationLink(destination: StartTournamentView()) {
                         Text("Skip")
                             .foregroundColor(Color(hex: "B67A4B"))
                             .fontWeight(.medium)
@@ -101,7 +101,7 @@
                 Spacer()
 
                 // Next button
-                NavigationLink(destination: HomePageStartTournament()) {
+                NavigationLink(destination: StartTournamentView()) {
                     Text("Next")
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)

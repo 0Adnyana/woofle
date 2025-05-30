@@ -32,12 +32,12 @@ struct WinnerDogsMapView: View {
             // User location if available
             UserAnnotation()
             
-            // Dog annotations
-            ForEach(getDogWithShelter()) { dogWithShelter in
-                Annotation("", coordinate: dogWithShelter.shelter.location.coordinate) {
-                    DogMapAnnotationView(dog: dogWithShelter.dog, shelter: dogWithShelter.shelter)
+            ForEach(shelterList) { shelter in
+                Annotation("", coordinate: shelter.location.coordinate) {
+                    DogMapAnnotationView(dogList: getDogList(shelterId: shelter.id), shelter: shelter)
                 }
             }
+            
         }
         .mapControls {
             // Add map controls
@@ -47,13 +47,12 @@ struct WinnerDogsMapView: View {
         }
     }
     
-    func getDogWithShelter() -> [DogWithShelter] {
-        winnerDogList.map { dog in
-            if let shelter = shelterList.first(where: { $0.id == dog.shelterId }) {
-                return DogWithShelter(dog: dog, shelter: shelter)
-            } else {
-                return DogWithShelter(dog: dog, shelter: try! Shelter(from: "" as! Decoder))
+    func getDogList(shelterId: UUID) -> [Dog] {
+        return winnerDogList.compactMap { winnerDog in
+            guard winnerDog.shelterId == shelterId else {
+                return nil
             }
+            return winnerDog
         }
     }
 

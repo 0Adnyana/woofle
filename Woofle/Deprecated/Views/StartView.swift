@@ -49,7 +49,7 @@ struct StartView: View {
                         .background(Color(hex: "FFFFFF"))
                         .overlay(
                             RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color(hex: "A3B18A"), lineWidth: 2)
+                                .stroke(Color(hex: "0000"), lineWidth: 1)
                         )
                         .padding(.top, 20)
                     

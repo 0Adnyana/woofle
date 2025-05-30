@@ -8,9 +8,8 @@
 //import SwiftUI
 //
 //struct TournamentListView: View {
-//    @StateObject private var pastWinnerVM = PastWinnersViewModel()
-//    @StateObject private var viewModel = TournamentViewModel(pastWinnersVM: pastWinnerVM)
-//    @StateObject private var dogListVM = DogListViewModel(dogs: DummyData.dogs)
+//    @StateObject private var viewModel = TournamentViewModel()
+//    @StateObject private var dogListVM = DogListViewModel()
 //    @StateObject private var userVM = UserViewModel()
 //    @StateObject private var shelterListVM = ShelterListViewModel()
 //
@@ -23,21 +22,22 @@
 //                        Text(dog.breed).font(.subheadline)
 //                    }
 //                }
-//    
 //            }
 //            .navigationTitle("Top 16 Dogs")
 //            .toolbar {
 //                Button("Generate") {
 //                    viewModel.generateTournament(
 //                        user: userVM.user,
-//                        dogs: dogListVM.dogs,
-//                        shelters: shelterListVM.shelters
+//                        dogs: dogListVM.dogs.map { $0.dog },
+//                        shelters: shelterListVM.shelters.map { $0.shelter }
 //                    )
+//                    $viewModel.generateTournamentBracket(selectedDogs: viewModel.selectedDogs)
 //                }
+//                
 //            }
-////            .onAppear {
-////                viewModel.loadPreviousTournament(dogs: dogListVM.dogs.map { $0.dog })
-////            }
+//            .onAppear {
+//                viewModel.loadPreviousTournament(dogs: dogListVM.dogs.map { $0.dog })
+//            }
 //        }
 //    }
 //}

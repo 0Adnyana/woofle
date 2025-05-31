@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class OnboardingViewModel: ObservableObject {
+final class ProfileViewModel: ObservableObject {
     @Published var isUserOnboarded: Bool = false
     
     private let userService = UserStorageService()

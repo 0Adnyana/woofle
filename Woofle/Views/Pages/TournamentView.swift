@@ -8,106 +8,57 @@
 import SwiftUI
 
 struct TournamentView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            // Header
-            Text("Round 1")
-                .font(.title)
-                .fontWeight(.semibold)
-                .padding(.top)
+    @ObservedObject var tournamentVM: TournamentViewModel
+    @Binding var path: [Route]
 
-            // First Dog Card
-            DogCardView(
-                image: Image("Dog-eg.1"),
-                name: "Bella",
-                age: "3 Years",
-                gender: "Female",
-                isSelected: true
-            )
-
-            // VS
-            HStack {
-                Image("VS")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 293, height: 70)
-            }
-            .padding(.horizontal)
-
-            // Second Dog Card
-            DogCardView(
-                image: Image("Dog-eg.2"),
-                name: "Bello",
-                age: "5 Years",
-                gender: "Male",
-                isSelected: true
-            )
-
-            Spacer()
-        }
-        .padding()
-    }
-}
-
-struct DogCardView: View {
-    var image: Image
-    var name: String
-    var age: String
-    var gender: String
-    var isSelected: Bool
+    @State private var selectedDog: Dog?
+    @State private var selectedShelter: Shelter?
+    @State private var showDetails = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 225)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .cornerRadius(20, corners: [.topLeft, .topRight])
+        ScrollView {
+            VStack(spacing: 16) {
+                Text("Round \(tournamentVM.currentRound + 1) of \(tournamentVM.rounds.count)")
+                    .font(.title)
+                    .bold()
+                    .padding(.top)
 
-            HStack {
-                Text("\(name) • \(age) • \(gender)")
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-                Spacer()
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
+                if tournamentVM.phase == .inProgress, let match = tournamentVM.currentMatch {
+                    ForEach(match, id: \.id) { dog in
+                        DogCard(dog: dog) {
+                            tournamentVM.selectWinner(dog)
+                        } onInfoTap: {
+                            selectedDog = dog
+                            selectedShelter = tournamentVM.shelters.first(where: { $0.id == dog.shelterID })
+                            showDetails = true
+                        }
+                    }
+
+                    if match.count == 2 {
+                        Text("—————— VS ——————")
+                            .font(.headline)
+                            .padding(.vertical, 8)
+                    }
+                } else {
+                    Button("Back to Home") {
+                        path = []
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(12)
+                    .foregroundColor(.white)
                 }
             }
-            .padding()
-            .background(Color.white)
+            .padding(.horizontal)
         }
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-        )
+        .sheet(isPresented: $showDetails) {
+            if let dog = selectedDog, let shelter = selectedShelter {
+                DogDetailView(dog: dog, shelter: shelter) {}
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(25)
+            }
+        }
     }
 }
 
-// Helper to apply corner radius only to top corners
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-}
 
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(
-            roundedRect: rect,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius)
-        )
-        return Path(path.cgPath)
-    }
-}
-
-#Preview {
-    TournamentView()
-}

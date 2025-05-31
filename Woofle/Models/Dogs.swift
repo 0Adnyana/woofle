@@ -30,3 +30,8 @@ struct DogTraits: Codable {
     let goodWithOtherDogs: Bool
 }
 
+extension Dog {
+    static func == (lhs: Dog, rhs: Dog) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

@@ -8,106 +8,125 @@
 import SwiftUI
 
 struct TournamentView: View {
+    @ObservedObject var tournamentVM: TournamentViewModel
+    @Binding var path: [Route]
+    
+    @State private var selectedDog: Dog?
+    @State private var selectedShelter: Shelter?
+    @State private var showDetails = false
+    
     var body: some View {
-        VStack(spacing: 16) {
-            // Header
-            Text("Round 1")
-                .font(.title)
-                .fontWeight(.semibold)
-                .padding(.top)
+        ScrollView {
+            VStack(spacing: 16) {
 
-            // First Dog Card
-            DogCardView(
-                image: Image("Dog-eg.1"),
-                name: "Bella",
-                age: "3 Years",
-                gender: "Female",
-                isSelected: true
-            )
+                if tournamentVM.phase == .inProgress,
+                   
+                   let match = tournamentVM.currentMatch {
+                    headerView
+                    matchView(match)
+                }
 
-            // VS
-            HStack {
-                Image("VS")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 293, height: 70)
-            }
-            .padding(.horizontal)
-
-            // Second Dog Card
-            DogCardView(
-                image: Image("Dog-eg.2"),
-                name: "Bello",
-                age: "5 Years",
-                gender: "Male",
-                isSelected: true
-            )
-
-            Spacer()
-        }
-        .padding()
-    }
-}
-
-struct DogCardView: View {
-    var image: Image
-    var name: String
-    var age: String
-    var gender: String
-    var isSelected: Bool
-
-    var body: some View {
-        VStack(spacing: 0) {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 225)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .cornerRadius(20, corners: [.topLeft, .topRight])
-
-            HStack {
-                Text("\(name) • \(age) • \(gender)")
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-                Spacer()
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
+                if tournamentVM.phase == .finished,
+                   let winner = tournamentVM.winners.first,
+                   let shelter = tournamentVM.shelter(for: winner) {
+                    CongratulationsView(dog: winner, shelter: shelter)
                 }
             }
-            .padding()
-            .background(Color.white)
+            .padding(.horizontal)
         }
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-        )
+        .sheet(isPresented: $showDetails) {
+            detailSheet
+        }
     }
-}
 
-// Helper to apply corner radius only to top corners
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
+
+    private var headerView: some View {
+        Text(tournamentVM.matchProgressText)
+            .font(.title)
+            .bold()
+            .padding(.top)
     }
-}
 
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(
-            roundedRect: rect,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius)
-        )
-        return Path(path.cgPath)
+    @ViewBuilder
+    private func matchView(_ match: [Dog]) -> some View {
+        if match.count == 2 {
+            VStack(alignment: .center, spacing: 16) {
+                if let shelter1 = tournamentVM.shelter(for: match[0]),
+                   let shelter2 = tournamentVM.shelter(for: match[1]) {
+
+                    DogCard(dog: match[0], shelter: shelter1, onSelect: {
+                        tournamentVM.selectWinner(match[0])
+                    })
+
+                    Text("—————— VS ——————")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(minWidth: 40)
+
+                    DogCard(dog: match[1], shelter: shelter2, onSelect: {
+                        tournamentVM.selectWinner(match[1])
+                    })
+                } else {
+                    Text("Missing shelter data")
+                        .foregroundColor(.red)
+                }
+            }
+            .padding(.vertical, 8)
+        } else {
+            Text("Invalid match configuration.")
+                .foregroundColor(.red)
+        }
+    }
+
+    private var detailSheet: some View {
+        Group {
+            if let dog = selectedDog, let shelter = selectedShelter {
+                DogDetailView(dog: dog, shelter: shelter) {}
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(25)
+            }
+        }
     }
 }
 
 #Preview {
-    TournamentView()
+    let fallbackUser = UserProfile(
+        id: UUID(),
+        name: "Preview User",
+        gender: .other,
+        age: 25,
+        location: GeoLocation(latitude: -8.67, longitude: 115.21),
+        preferences: .init(
+            preferredBreeds: nil,
+            sizePreferences: [.medium],
+            activityLevels: [.moderate],
+            goodWithKids: false,
+            goodWithOtherDogs: nil,
+            personalityPreferences: [.playful],
+            preferredRadius: 30
+        )
+    )
+
+    let userService = UserStorageService()
+    let matchingService = TournamentMatchingService()
+    let engine = TournamentEngine()
+    let winnersStorage = PastWinnersStorageService()
+
+    let vm = TournamentViewModel(
+        userService: userService,
+        matchingService: matchingService,
+        engine: engine,
+        winnersStorage: winnersStorage
+    )
+
+    // Injecting dummy user into storage (preview-safe write)
+    userService.save(fallbackUser)
+
+    vm.startNewTournament(
+        dogs: DummyData.dogs,
+        shelters: DummyData.shelters
+    )
+
+    return TournamentView(tournamentVM: vm, path: Binding.constant([.tournament]))
 }
+

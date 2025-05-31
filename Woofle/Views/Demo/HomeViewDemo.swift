@@ -79,7 +79,7 @@ struct HomeViewDemo: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .tournament:
-                    TournamentViewDemo(tournamentVM: tournamentVM, path: $path)
+                    TournamentView(tournamentVM: tournamentVM, path: $path)
                 case .home:
                     HomeViewDemo()
                 }

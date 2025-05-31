@@ -26,7 +26,26 @@ struct WinnerDogListView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 20) {
+            HStack {
+                Text("History")
+                    .font(.title) // Customize size
+                    .fontWeight(.bold) // Customize weight
+                    .foregroundColor(.primary) // Customize color
+                Spacer() // Push title to the left
+                NavigationLink(
+                    destination: WinnerDogsMapView(
+                        shelterList: shelterList,
+                        winnerDogList: winnerDogList
+                    )
+                ) {
+                    Image("MapIcon")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+            }
+            .padding(.horizontal)
+            
             ScrollView {
                 VStack {
                     ForEach(winnerDogWithShelter, id: \.dog.id) { winnerDog in
@@ -35,7 +54,7 @@ struct WinnerDogListView: View {
                 }
                 .padding()
             }
-            .navigationBarTitleDisplayMode(.inline)
+            /*.navigationBarTitleDisplayMode(.inline)
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
@@ -54,14 +73,13 @@ struct WinnerDogListView: View {
                             winnerDogList: winnerDogList
                         )
                     ) {
-                    Image("MapIcon")
+                        Image("MapIcon")
                             .resizable()
                             .frame(width: 50, height: 50)
                     }
                 }
-
-            }
-            
+                
+            }*/
         }
     }
 

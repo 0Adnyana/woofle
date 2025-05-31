@@ -48,7 +48,7 @@ struct BirthYearView: View {
                             .stroke(Color(hex: "B67A4B"), lineWidth: 2)
                             .frame(height: 10)
 
-                        if index <= 1 {
+                        if index < 1 {
                             Capsule()
                                 .fill(Color(hex: "F8CE9B"))
                                 .frame(height: 10)
@@ -94,11 +94,11 @@ struct BirthYearView: View {
             // Disclaimer
             HStack(alignment: .top, spacing: 6) {
                 Image(systemName: "questionmark.circle.fill")
-                    .foregroundColor(Color(hex: "D6D6D6"))
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 18))
 
                 Text("This helps us suggest dogs that better match your lifestyle.")
-                    .foregroundColor(Color(hex: "D6D6D6"))
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 15))
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -140,6 +140,7 @@ struct BirthYearView: View {
                 EmptyView()
             }
             .hidden()
+            .navigationBarBackButtonHidden()
         }
     }
 }

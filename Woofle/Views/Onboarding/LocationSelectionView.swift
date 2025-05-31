@@ -29,7 +29,7 @@ struct LocationView: View {
     @State private var showMapPicker = false
     @State private var radiusSelected = false
     
-    @State private var navigateNext = false // <-- Add this
+    @State private var navigateNext = false 
 
     var isFormComplete: Bool {
         selectedLocation != nil && selectedRadius > 0
@@ -99,10 +99,11 @@ struct LocationView: View {
 
             // Distance Picker
             VStack(alignment: .leading, spacing: 8) {
-                Text("Distance between you and the dog shelter:")
+                Text("Max distance to shelter")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.black)
                     .padding(.top, 57)
+                    .multilineTextAlignment(.leading)
 
                 Button(action: {
                     showRadiusPicker.toggle()
@@ -140,22 +141,17 @@ struct LocationView: View {
             // Disclaimer
             HStack(alignment: .top, spacing: 6) {
                 Image(systemName: "questionmark.circle.fill")
-                    .foregroundColor(Color.gray.opacity(0.5))
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 18))
 
-                Text("We use your area to show dogs near you.")
-                    .foregroundColor(Color.gray.opacity(0.5))
+                Text("We use your area to show dogs near you")
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 15))
+                
+                Spacer()
             }
             .padding(.horizontal)
             .padding(.bottom, 8)
-            
-            // Hidden NavigationLink to DogGenderSizeView
-                        NavigationLink(
-                            destination: DogGenderSizeView().environmentObject(userViewModel),
-                            isActive: $navigateNext,
-                            label: { EmptyView() }
-                        )
 
             // Next Button
             Button(action: {
@@ -195,6 +191,15 @@ struct LocationView: View {
             .disabled(!isFormComplete)
             .padding(.horizontal)
             .padding(.bottom, 40)
+            
+            // Hidden NavigationLink to DogGenderSizeView
+            NavigationLink(
+                destination: DogGenderSizeView().environmentObject(userViewModel),
+                isActive: $navigateNext,
+                label: { EmptyView() }
+            )
+            .hidden()
+            .navigationBarBackButtonHidden()
 
         }
         .padding(.top, 30)
@@ -202,126 +207,7 @@ struct LocationView: View {
     }
 }
 
-// MARK: - MapPickerView
-
-struct MapPickerView: View {
-    @Environment(\.dismiss) var dismiss
-
-    @Binding var selectedCoordinate: CLLocationCoordinate2D?
-    @Binding var selectedLocation: String?
-
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 52.52, longitude: 13.405),
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-    )
-    
-    @State private var searchQuery = ""
-    @State private var searchResults: [MKMapItem] = []
-    @State private var isSearching = false
-
-    var body: some View {
-        VStack(spacing: 0) {
-            // Search Bar
-            HStack {
-                TextField("Search for a place", text: $searchQuery, onCommit: performSearch)
-                    .padding(.horizontal)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .padding(.horizontal)
-
-                if isSearching {
-                    ProgressView()
-                        .padding(.trailing)
-                }
-            }
-            .padding(.top)
-
-            // Search results
-            if !searchResults.isEmpty {
-                List(searchResults, id: \.self) { item in
-                    VStack(alignment: .leading) {
-                        Text(item.name ?? "Unknown")
-                            .font(.headline)
-                        Text(item.placemark.title ?? "")
-                            .font(.subheadline)
-                    }
-                    .onTapGesture {
-                        selectLocation(item)
-                    }
-                }
-                .listStyle(PlainListStyle())
-                .frame(maxHeight: 200)
-            }
-
-            // Map View
-            ZStack {
-                Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true)
-                    .edgesIgnoringSafeArea(.all)
-
-                Image(systemName: "mappin.circle.fill")
-                    .font(.system(size: 40))
-                    .foregroundColor(.red)
-                    .shadow(radius: 3)
-                    .offset(y: -20)
-            }
-
-            // Choose button
-            Button("Choose this location") {
-                selectedCoordinate = region.center
-                reverseGeocode(coordinate: region.center) { address in
-                    selectedLocation = address ?? "Selected location"
-                    dismiss()
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color(hex: "A3B18A"))
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .padding()
-        }
-    }
-
-    func performSearch() {
-        guard !searchQuery.isEmpty else { return }
-        isSearching = true
-
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchQuery
-
-        let search = MKLocalSearch(request: request)
-        search.start { response, error in
-            isSearching = false
-            searchResults = response?.mapItems ?? []
-        }
-    }
-
-    func selectLocation(_ item: MKMapItem) {
-        region.center = item.placemark.coordinate
-        region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        searchQuery = item.name ?? ""
-        searchResults = []
-    }
-
-    private func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping (String?) -> Void) {
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-            if let place = placemarks?.first {
-                let address = [place.locality, place.country].compactMap { $0 }.joined(separator: ", ")
-                completion(address)
-            } else {
-                completion(nil)
-            }
-        }
-    }
-}
-
-// MARK: - Preview
-
+//PREVIEW
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

@@ -87,11 +87,11 @@ struct GenderSelectionView: View {
             // Disclaimer
             HStack(alignment: .top, spacing: 6) {
                 Image(systemName: "questionmark.circle.fill")
-                    .foregroundColor(Color(hex: "D6D6D6"))
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 18))
 
                 Text("Some dogs feel safer with certain genders. This helps us make the best match for both of you.")
-                    .foregroundColor(Color(hex: "D6D6D6"))
+                    .foregroundColor(Color(hex: "B8B8B8"))
                     .font(.system(size: 15))
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -145,6 +145,7 @@ struct GenderSelectionView: View {
                 EmptyView()
             }
             .hidden()
+            .navigationBarBackButtonHidden()
         }
         .padding(.top, 30)
         .background(Color.white)

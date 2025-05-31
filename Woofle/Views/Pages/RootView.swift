@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject private var profileVM = ProfileViewModel()
+    @StateObject private var profileVM = OnboardingViewModel()
     @StateObject private var tournamentVM = TournamentViewModel(
         userService: UserStorageService(),
         matchingService: TournamentMatchingService(),
@@ -22,7 +22,7 @@ struct RootView: View {
                 .environmentObject(profileVM)
                 .environmentObject(tournamentVM)
         } else {
-            StartView()
+            WelcomeView()
                 .environmentObject(profileVM)
                 .environmentObject(tournamentVM)
         }

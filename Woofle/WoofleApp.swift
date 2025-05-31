@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct WoofleApp: App {
+    @StateObject private var userViewModel = UserViewModel()
     var body: some Scene {
         WindowGroup {
 //            WinnerDogListView(
@@ -23,6 +24,7 @@ struct WoofleApp: App {
 //            )
             //StartView()
             TabBarView()
+            .environmentObject(userViewModel)
         }
     }
 }

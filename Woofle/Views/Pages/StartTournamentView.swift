@@ -72,4 +72,5 @@ struct StartTournamentView: View {
 
 #Preview {
     StartTournamentView()
+        .environmentObject(UserViewModel()) // Inject the required environment object
 }

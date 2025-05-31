@@ -8,7 +8,7 @@
 //import Foundation
 //import SwiftUI
 //
-//struct ProfileView: View {
+//struct ProfileViewRahel: View {
 //    @State private var name: String = "James"
 //    @State private var selectedAgeRange: String? = "36 – 55"
 //    @State private var selectedActivity: String? = "Walks once a day"
@@ -143,5 +143,5 @@
 ////}
 //
 //#Preview {
-//    ProfileView()
+//    ProfileViewRahel()
 //}

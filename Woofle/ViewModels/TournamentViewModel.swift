@@ -9,6 +9,7 @@ final class TournamentViewModel: ObservableObject {
     @Published var currentMatchIndex: Int = 0
     @Published var isTournamentFinished: Bool = false
     @Published var phase: TournamentPhase = .idle
+    @Published var shelters: [Shelter] = []
 
     
     enum TournamentPhase {
@@ -19,12 +20,14 @@ final class TournamentViewModel: ObservableObject {
     }
 
     var currentMatch: [Dog]? {
-        guard currentMatchIndex < bracket.count else { return [] }
-        return bracket[currentMatchIndex]
+        guard currentMatchIndex < bracket.count else { return nil }
+        let match = bracket[currentMatchIndex]
+        return match.isEmpty ? nil : match
     }
 
+
     var matchProgressText: String {
-        return "Match \(currentMatchIndex + 1) of \(bracket.count)"
+        return "Round \(currentMatchIndex + 1) of \(bracket.count)"
     }
 
     private let userService: UserStorageService
@@ -70,6 +73,7 @@ final class TournamentViewModel: ObservableObject {
         self.winners = []
         self.isTournamentFinished = false
         self.phase = .inProgress
+        self.shelters = shelters
     }
 
 
@@ -81,6 +85,11 @@ final class TournamentViewModel: ObservableObject {
             advanceRound()
         }
     }
+    
+    func shelter(for dog: Dog) -> Shelter? {
+        shelters.first(where: { $0.id == dog.shelterId })
+    }
+
 
     private func advanceRound() {
         if winners.count == 1 {

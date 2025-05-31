@@ -10,48 +10,76 @@ import SwiftUI
 struct TournamentView: View {
     @ObservedObject var tournamentVM: TournamentViewModel
     @Binding var path: [Route]
-
+    
     @State private var selectedDog: Dog?
     @State private var selectedShelter: Shelter?
     @State private var showDetails = false
-
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                Text("Round \(tournamentVM.currentRound + 1) of \(tournamentVM.rounds.count)")
-                    .font(.title)
-                    .bold()
-                    .padding(.top)
 
-                if tournamentVM.phase == .inProgress, let match = tournamentVM.currentMatch {
-                    ForEach(match, id: \.id) { dog in
-                        DogCard(dog: dog) {
-                            tournamentVM.selectWinner(dog)
-                        } onInfoTap: {
-                            selectedDog = dog
-                            selectedShelter = tournamentVM.shelters.first(where: { $0.id == dog.shelterID })
-                            showDetails = true
-                        }
-                    }
+                if tournamentVM.phase == .inProgress,
+                   
+                   let match = tournamentVM.currentMatch {
+                    headerView
+                    matchView(match)
+                }
 
-                    if match.count == 2 {
-                        Text("—————— VS ——————")
-                            .font(.headline)
-                            .padding(.vertical, 8)
-                    }
-                } else {
-                    Button("Back to Home") {
-                        path = []
-                    }
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(12)
-                    .foregroundColor(.white)
+                if tournamentVM.phase == .finished,
+                   let winner = tournamentVM.winners.first,
+                   let shelter = tournamentVM.shelter(for: winner) {
+                    CongratulationsView(dog: winner, shelter: shelter)
                 }
             }
             .padding(.horizontal)
         }
         .sheet(isPresented: $showDetails) {
+            detailSheet
+        }
+    }
+
+
+    private var headerView: some View {
+        Text(tournamentVM.matchProgressText)
+            .font(.title)
+            .bold()
+            .padding(.top)
+    }
+
+    @ViewBuilder
+    private func matchView(_ match: [Dog]) -> some View {
+        if match.count == 2 {
+            VStack(alignment: .center, spacing: 16) {
+                if let shelter1 = tournamentVM.shelter(for: match[0]),
+                   let shelter2 = tournamentVM.shelter(for: match[1]) {
+
+                    DogCard(dog: match[0], shelter: shelter1, onSelect: {
+                        tournamentVM.selectWinner(match[0])
+                    })
+
+                    Text("—————— VS ——————")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(minWidth: 40)
+
+                    DogCard(dog: match[1], shelter: shelter2, onSelect: {
+                        tournamentVM.selectWinner(match[1])
+                    })
+                } else {
+                    Text("Missing shelter data")
+                        .foregroundColor(.red)
+                }
+            }
+            .padding(.vertical, 8)
+        } else {
+            Text("Invalid match configuration.")
+                .foregroundColor(.red)
+        }
+    }
+
+    private var detailSheet: some View {
+        Group {
             if let dog = selectedDog, let shelter = selectedShelter {
                 DogDetailView(dog: dog, shelter: shelter) {}
                     .presentationDetents([.medium, .large])
@@ -61,4 +89,44 @@ struct TournamentView: View {
     }
 }
 
+#Preview {
+    let fallbackUser = UserProfile(
+        id: UUID(),
+        name: "Preview User",
+        gender: .other,
+        age: 25,
+        location: GeoLocation(latitude: -8.67, longitude: 115.21),
+        preferences: .init(
+            preferredBreeds: nil,
+            sizePreferences: [.medium],
+            activityLevels: [.moderate],
+            goodWithKids: false,
+            goodWithOtherDogs: nil,
+            personalityPreferences: [.playful],
+            preferredRadius: 30
+        )
+    )
+
+    let userService = UserStorageService()
+    let matchingService = TournamentMatchingService()
+    let engine = TournamentEngine()
+    let winnersStorage = PastWinnersStorageService()
+
+    let vm = TournamentViewModel(
+        userService: userService,
+        matchingService: matchingService,
+        engine: engine,
+        winnersStorage: winnersStorage
+    )
+
+    // Injecting dummy user into storage (preview-safe write)
+    userService.save(fallbackUser)
+
+    vm.startNewTournament(
+        dogs: DummyData.dogs,
+        shelters: DummyData.shelters
+    )
+
+    return TournamentView(tournamentVM: vm, path: Binding.constant([.tournament]))
+}
 

@@ -14,14 +14,12 @@ struct PersonalSettingsDetailView: View {
     // MARK: - User inputs
     @State private var nameInput: String = ""
     @State private var selectedGender: String? = nil
+    @State private var selectedYear: String = "2025"
+    @State private var showPicker = false
 
-    // For birth year picker
     let years: [String] = Array(1900...Calendar.current.component(.year, from: Date()))
         .reversed()
         .map { String($0) }
-
-    @State private var selectedYear: String = "2025" // will be set properly on appear
-    @State private var showPicker = false
 
     var genders = ["Male", "Female", "Non Binary"]
 
@@ -61,7 +59,7 @@ struct PersonalSettingsDetailView: View {
                         saveChanges()
                     }) {
                         Image(systemName: "arrow.turn.down.left")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(hex: "D6D6D6"))
                             .padding()
                     }
                     .padding(.trailing, 8)
@@ -136,7 +134,6 @@ struct PersonalSettingsDetailView: View {
             }
             .padding(.top, 20)
             .onAppear {
-                // Calculate birth year from user age on appear
                 let currentYear = Calendar.current.component(.year, from: Date())
                 let birthYearFromAge = currentYear - userViewModel.user.age
                 selectedYear = String(birthYearFromAge)
@@ -144,35 +141,39 @@ struct PersonalSettingsDetailView: View {
 
             Spacer()
 
-            // Save Button (always active, greenish)
+            // Save Button (conditionally enabled)
+            // Save Button
             Button(action: {
                 saveChanges()
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Save")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(hex: "A3B18A"))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .background(isFormComplete ? Color(hex: "A3B18A") : Color.gray.opacity(0.3))
+                    .foregroundColor(isFormComplete ? .white : .gray)
+                    .cornerRadius(12)
             }
+            .disabled(!isFormComplete)
             .padding(.horizontal)
             .padding(.bottom, 40)
         }
     }
 
-    // Save user changes to userViewModel
+    private var isFormComplete: Bool {
+        !nameInput.trimmingCharacters(in: .whitespaces).isEmpty &&
+        selectedGender != nil &&
+        selectedYear != "2025"
+    }
+
     private func saveChanges() {
         let genderEnum: HumanGender
         switch selectedGender {
-        case "Male":
-            genderEnum = .male
-        case "Female":
-            genderEnum = .female
-        case "Non Binary":
-            genderEnum = .other
-        default:
-            genderEnum = .other
+        case "Male": genderEnum = .male
+        case "Female": genderEnum = .female
+        case "Non Binary": genderEnum = .other
+        default: genderEnum = .other
         }
 
         let currentYear = Calendar.current.component(.year, from: Date())
@@ -192,4 +193,3 @@ struct PersonalSettingsDetailView: View {
         userViewModel.update(updatedUser)
     }
 }
-

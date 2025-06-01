@@ -39,7 +39,7 @@ struct PersonalityPreferenceView: View {
 
                 Spacer()
 
-                NavigationLink(destination: StartTournamentView()) {
+                NavigationLink(destination: TabBarView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
@@ -143,29 +143,33 @@ struct PersonalityPreferenceView: View {
     // MARK: - Update EnvironmentObject
     func updateUserPersonalityPreferences() {
         let existingUser = userViewModel.user
+        
+        let personalityPreferences = selectedTraits.compactMap {
+            PersonalityTrait(rawValue: $0.lowercased())
+        }
 
-        let updatedPreferences = UserPreferences(
-            preferredBreeds: existingUser.preferences.preferredBreeds,
-            sizePreferences: existingUser.preferences.sizePreferences,
-            activityLevels: existingUser.preferences.activityLevels,
-            goodWithKids: existingUser.preferences.goodWithKids,
-            goodWithOtherDogs: existingUser.preferences.goodWithOtherDogs,
-            personalityPreferences: selectedTraits.compactMap {
-                PersonalityTrait(rawValue: $0.lowercased())
-            },
-            preferredRadius: existingUser.preferences.preferredRadius
-        )
+//        let updatedPreferences = UserPreferences(
+//            preferredBreeds: existingUser.preferences.preferredBreeds,
+//            sizePreferences: existingUser.preferences.sizePreferences,
+//            activityLevels: existingUser.preferences.activityLevels,
+//            goodWithKids: existingUser.preferences.goodWithKids,
+//            goodWithOtherDogs: existingUser.preferences.goodWithOtherDogs,
+//            personalityPreferences: selectedTraits.compactMap {
+//                PersonalityTrait(rawValue: $0.lowercased())
+//            },
+//            preferredRadius: existingUser.preferences.preferredRadius
+//        )
+//
+//        let updatedUser = UserProfile(
+//            id: existingUser.id,
+//            name: existingUser.name,
+//            gender: existingUser.gender,
+//            age: existingUser.age,
+//            location: existingUser.location,
+//            preferences: updatedPreferences
+//        )
 
-        let updatedUser = UserProfile(
-            id: existingUser.id,
-            name: existingUser.name,
-            gender: existingUser.gender,
-            age: existingUser.age,
-            location: existingUser.location,
-            preferences: updatedPreferences
-        )
-
-        userViewModel.update(updatedUser)
+        userViewModel.updatePersonalityPreferences(personalityPreferences)
     }
 }
 

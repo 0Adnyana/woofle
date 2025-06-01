@@ -20,6 +20,7 @@ final class UserViewModel: ObservableObject {
         } else {
             user = .empty
         }
+        print(isUserOnboarded)
     }
 
     func completeOnboarding() {
@@ -44,14 +45,59 @@ final class UserViewModel: ObservableObject {
         user.age = age
         save()
     }
-
-    func updatePreferences(_ prefs: UserPreferences) {
-        user.preferences = prefs
+    
+    func updateGender(_ gender: HumanGender) {
+        user.gender = gender
+        save()
+    }
+    
+    func updateLocation(_ location: GeoLocation) {
+        user.location = location
         save()
     }
 
-    func updateLocation(_ location: GeoLocation) {
-        user.location = location
+    func updateSizePreferences(_ sizePreferences: [Size]) {
+        user.preferences.sizePreferences = sizePreferences
+        save()
+    }
+    
+    func updateGenderPreferences(_ genderPreferences: [DogGender]) {
+        user.preferences.genderPreferences = genderPreferences
+        save()
+    }
+    
+    func updateActivityLevels(_ activityLevels: [EnergyLevel]) {
+        user.preferences.activityLevels = activityLevels
+        save()
+    }
+    
+    func updatePersonalityPreferences(_ personalityPreferences: [PersonalityTrait]) {
+        user.preferences.personalityPreferences = personalityPreferences
+        save()
+    }
+    
+    func updateBreedPreferences(_ breedPreferences: [String]) {
+        user.preferences.preferredBreeds = breedPreferences
+        save()
+    }
+    
+    func updateGoodWithKids(_ goodWithKids: Bool) {
+        user.preferences.goodWithKids = goodWithKids
+        save()
+    }
+    
+    func updateGoodWithOtherDogs(_ goodWithOtherDogs: Bool) {
+        user.preferences.goodWithOtherDogs = goodWithOtherDogs
+        save()
+    }
+    
+    func updateUserPreferences(_ userPreferences: UserPreferences) {
+        user.preferences = userPreferences
+        save()
+    }
+    
+    func updateUserProfile(_ updatedUserProfile: UserProfile) {
+        user = updatedUserProfile
         save()
     }
 

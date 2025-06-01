@@ -46,7 +46,7 @@ struct BreedPreferenceView: View {
 
                 Spacer()
 
-                NavigationLink(destination: StartTournamentView()) {
+                NavigationLink(destination: TabBarView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
@@ -99,24 +99,24 @@ struct BreedPreferenceView: View {
                     .cornerRadius(12)
             }
             .simultaneousGesture(TapGesture().onEnded {
-                let existing = userViewModel.user
-                let updated = UserProfile(
-                    id: existing.id,
-                    name: existing.name,
-                    gender: existing.gender,
-                    age: existing.age,
-                    location: existing.location,
-                    preferences: UserPreferences(
-                        preferredBreeds: Array(selectedBreeds),
-                        sizePreferences: existing.preferences.sizePreferences,
-                        activityLevels: existing.preferences.activityLevels,
-                        goodWithKids: existing.preferences.goodWithKids,
-                        goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
-                        personalityPreferences: existing.preferences.personalityPreferences,
-                        preferredRadius: existing.preferences.preferredRadius
-                    )
-                )
-                userViewModel.update(updated)
+//                let existing = userViewModel.user
+//                let updated = UserProfile(
+//                    id: existing.id,
+//                    name: existing.name,
+//                    gender: existing.gender,
+//                    age: existing.age,
+//                    location: existing.location,
+//                    preferences: UserPreferences(
+//                        preferredBreeds: Array(selectedBreeds),
+//                        sizePreferences: existing.preferences.sizePreferences,
+//                        activityLevels: existing.preferences.activityLevels,
+//                        goodWithKids: existing.preferences.goodWithKids,
+//                        goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
+//                        personalityPreferences: existing.preferences.personalityPreferences,
+//                        preferredRadius: existing.preferences.preferredRadius
+//                    )
+//                )
+                userViewModel.updateBreedPreferences(Array(selectedBreeds))
             })
 
             .padding(.horizontal)

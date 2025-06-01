@@ -37,7 +37,7 @@ struct CongratulationsView: View {
 
             // Home Button
             NavigationLink {
-                StartTournamentView()
+                TabBarView()
             } label: {
                 VStack(spacing: 4) {
                     Image(systemName: "house.fill")

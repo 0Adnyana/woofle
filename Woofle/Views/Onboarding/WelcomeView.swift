@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var nameInput: String = ""
     @State private var navigateToNext = false
 
@@ -46,14 +46,14 @@ struct WelcomeView: View {
                         .submitLabel(.done)
                         .onSubmit {
                             if !nameInput.isEmpty {
-                                userVM.updateName(nameInput)
+                                userViewModel.updateName(nameInput)
                                 navigateToNext = true
                             }
                         }
 
                     if !nameInput.isEmpty {
                         Button(action: {
-                            userVM.updateName(nameInput)
+                            userViewModel.updateName(nameInput)
                             navigateToNext = true
                         }) {
                             Image(systemName: "arrow.turn.down.left")

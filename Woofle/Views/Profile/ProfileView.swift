@@ -72,8 +72,7 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             sectionTitle("Personal Information")
 
-            NavigationLink(destination: PersonalSettingsDetailView()
-                .environmentObject(userViewModel)) {
+            NavigationLink(destination: PersonalSettingsDetailView()) {
                 rowView(
                     iconName: "person.fill",
                     title: userViewModel.user.name.isEmpty ? "Set Name" : userViewModel.user.name,
@@ -83,8 +82,7 @@ struct ProfileView: View {
 
             Divider().padding(.leading, 72)
 
-            NavigationLink(destination: LocationSettingsDetailView()
-                .environmentObject(userViewModel)) {
+            NavigationLink(destination: LocationSettingsDetailView()) {
                 rowView(
                     iconName: "location.fill",
                     title: "Home Address",
@@ -99,8 +97,7 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             sectionTitle("Dog Preferences")
 
-            NavigationLink(destination: DogBasicsView()
-                .environmentObject(userViewModel)) {
+            NavigationLink(destination: DogBasicsView()) {
                 rowView(
                     iconName: "pawprint.fill",
                     title: "Dog Basics",

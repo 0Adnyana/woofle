@@ -40,6 +40,7 @@ struct UserProfile: Identifiable, Codable {
 struct UserPreferences: Codable {
     var preferredBreeds: [String]?
     var sizePreferences: [Size]
+    var genderPreferences: [DogGender]
     var activityLevels: [EnergyLevel]
     var goodWithKids: Bool?
     var goodWithOtherDogs: Bool?
@@ -75,6 +76,7 @@ extension UserPreferences {
         UserPreferences(
             preferredBreeds: nil,
             sizePreferences: [.medium],
+            genderPreferences: [.female, .male],
             activityLevels: [.moderate],
             goodWithKids: false,
             goodWithOtherDogs: nil,

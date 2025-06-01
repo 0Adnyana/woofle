@@ -36,7 +36,7 @@ struct DogGoodWithKidsDogs: View {
 
                 Spacer()
 
-                NavigationLink(destination: StartTournamentView()) {
+                NavigationLink(destination: TabBarView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
@@ -77,7 +77,7 @@ struct DogGoodWithKidsDogs: View {
             Spacer()
 
             // Always-active Next button
-            NavigationLink(destination: StartTournamentView()) {
+            NavigationLink(destination: TabBarView()) {
                 Text("Next")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
@@ -90,25 +90,26 @@ struct DogGoodWithKidsDogs: View {
                 let goodWithKids = selectedOptions.contains("Good with kids")
                 let goodWithOtherDogs = selectedOptions.contains("Good with other dogs")
 
-                let existing = userViewModel.user
-                let updated = UserProfile(
-                    id: existing.id,
-                    name: existing.name,
-                    gender: existing.gender,
-                    age: existing.age,
-                    location: existing.location,
-                    preferences: UserPreferences(
-                        preferredBreeds: existing.preferences.preferredBreeds,
-                        sizePreferences: existing.preferences.sizePreferences,
-                        activityLevels: existing.preferences.activityLevels,
-                        goodWithKids: goodWithKids,
-                        goodWithOtherDogs: goodWithOtherDogs,
-                        personalityPreferences: existing.preferences.personalityPreferences,
-                        preferredRadius: existing.preferences.preferredRadius
-                    )
-                )
+//                let existing = userViewModel.user
+//                let updated = UserProfile(
+//                    id: existing.id,
+//                    name: existing.name,
+//                    gender: existing.gender,
+//                    age: existing.age,
+//                    location: existing.location,
+//                    preferences: UserPreferences(
+//                        preferredBreeds: existing.preferences.preferredBreeds,
+//                        sizePreferences: existing.preferences.sizePreferences,
+//                        activityLevels: existing.preferences.activityLevels,
+//                        goodWithKids: goodWithKids,
+//                        goodWithOtherDogs: goodWithOtherDogs,
+//                        personalityPreferences: existing.preferences.personalityPreferences,
+//                        preferredRadius: existing.preferences.preferredRadius
+//                    )
+//                )
 
-                userViewModel.update(updated)
+                userViewModel.updateGoodWithKids(goodWithKids)
+                userViewModel.updateGoodWithOtherDogs(goodWithOtherDogs)
             })
             .padding(.horizontal)
             .padding(.bottom, 40)

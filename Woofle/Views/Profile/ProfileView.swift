@@ -99,14 +99,14 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             sectionTitle("Dog Preferences")
 
-            NavigationLink(destination: Text("Dog Basics Settings")) {
+            NavigationLink(destination: DogBasicsView()
+                .environmentObject(userViewModel)) {
                 rowView(
                     iconName: "pawprint.fill",
                     title: "Dog Basics",
                     subtitle: "Update dog traits"
                 )
             }
-
             Divider().padding(.leading, 72)
 
             NavigationLink(destination: Text("Behaviour Settings")) {

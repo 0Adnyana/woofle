@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DogGoodWithKidsDogs: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var userViewModel: UserViewModel
 
     @State private var selectedOptions: Set<String> = []
 
@@ -17,7 +18,6 @@ struct DogGoodWithKidsDogs: View {
 
     var body: some View {
         VStack(spacing: 20) {
-
             // Top Navigation
             HStack {
                 Button(action: {
@@ -86,6 +86,30 @@ struct DogGoodWithKidsDogs: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                let goodWithKids = selectedOptions.contains("Good with kids")
+                let goodWithOtherDogs = selectedOptions.contains("Good with other dogs")
+
+                let existing = userViewModel.user
+                let updated = UserProfile(
+                    id: existing.id,
+                    name: existing.name,
+                    gender: existing.gender,
+                    age: existing.age,
+                    location: existing.location,
+                    preferences: UserPreferences(
+                        preferredBreeds: existing.preferences.preferredBreeds,
+                        sizePreferences: existing.preferences.sizePreferences,
+                        activityLevels: existing.preferences.activityLevels,
+                        goodWithKids: goodWithKids,
+                        goodWithOtherDogs: goodWithOtherDogs,
+                        personalityPreferences: existing.preferences.personalityPreferences,
+                        preferredRadius: existing.preferences.preferredRadius
+                    )
+                )
+
+                userViewModel.update(updated)
+            })
             .padding(.horizontal)
             .padding(.bottom, 40)
         }
@@ -127,14 +151,6 @@ struct DogGoodWithKidsDogs: View {
                     .stroke(selectedOptions.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
             )
             .cornerRadius(12)
-        }
-    }
-}
-
-struct DogGoodWithKidsDogs_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DogGoodWithKidsDogs()
         }
     }
 }

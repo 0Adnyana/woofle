@@ -1,18 +1,18 @@
+////
+////  ShelterViewModel.swift
+////  WoofleTesting
+////
+////  Created by I Made Bayu Putra Adnyana on 20/05/25.
+////
 //
-//  ShelterViewModel.swift
-//  WoofleTesting
+//import Foundation
 //
-//  Created by I Made Bayu Putra Adnyana on 20/05/25.
+//final class ShelterViewModel: ObservableObject {
+//    let shelter: Shelter
+//    let id: UUID
 //
-
-import Foundation
-
-final class ShelterViewModel: ObservableObject {
-    let shelter: Shelter
-    let id: UUID
-
-    init(_ shelter: Shelter) {
-        self.id = shelter.id
-        self.shelter = shelter
-    }
-}
+//    init(_ shelter: Shelter) {
+//        self.id = shelter.id
+//        self.shelter = shelter
+//    }
+//}

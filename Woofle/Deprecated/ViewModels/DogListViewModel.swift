@@ -1,16 +1,16 @@
+////
+////  DogListViewModel.swift
+////  WoofleTesting
+////
+////  Created by I Made Bayu Putra Adnyana on 21/05/25.
+////
 //
-//  DogListViewModel.swift
-//  WoofleTesting
+//import Foundation
 //
-//  Created by I Made Bayu Putra Adnyana on 21/05/25.
+//final class DogListViewModel: ObservableObject {
+//    @Published var dogs: [Dog]
 //
-
-import Foundation
-
-final class DogListViewModel: ObservableObject {
-    @Published var dogs: [Dog]
-
-    init(dogs: [Dog] = []) {
-        self.dogs = dogs
-    }
-}
+//    init(dogs: [Dog] = []) {
+//        self.dogs = dogs
+//    }
+//}

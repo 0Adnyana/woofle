@@ -50,7 +50,7 @@ final class TournamentViewModel: ObservableObject {
     func startNewTournament(dogs: [Dog], shelters: [Shelter]) {
         phase = .loading
 
-        let user = userService.load()
+        let user = userService.load() ?? UserProfile.fallbackUser
         let eligibleDogs = dogs.filter { !winnersStorage.load().contains($0.id) }
         let matchedDogs = matchingService.match(user: user, dogs: eligibleDogs, shelters: shelters)
 

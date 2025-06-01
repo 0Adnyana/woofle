@@ -10,16 +10,25 @@ import Foundation
 final class UserStorageService {
     private let fileName = "user.json"
 
-    func load(fallback: UserProfile? = nil) -> UserProfile {
+//    func load(fallback: UserProfile? = nil) -> UserProfile {
+//        guard let url = getFileURL(),
+//              let data = try? Data(contentsOf: url),
+//              let user = try? JSONDecoder.iso8601WithFractionalSeconds.decode(UserProfile.self, from: data) else {
+//            if let fallback = fallback {
+//                print("⚠️ Loading fallback UserProfile")
+//                return fallback
+//            } else {
+//                fatalError("❌ No saved user profile and no fallback provided.")
+//            }
+//        }
+//        return user
+//    }
+    
+    func load() -> UserProfile? {
         guard let url = getFileURL(),
               let data = try? Data(contentsOf: url),
               let user = try? JSONDecoder.iso8601WithFractionalSeconds.decode(UserProfile.self, from: data) else {
-            if let fallback = fallback {
-                print("⚠️ Loading fallback UserProfile")
-                return fallback
-            } else {
-                fatalError("❌ No saved user profile and no fallback provided.")
-            }
+            return nil
         }
         return user
     }

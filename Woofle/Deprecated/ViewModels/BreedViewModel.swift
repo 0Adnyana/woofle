@@ -1,16 +1,16 @@
+////
+////  BreedViewModel.swift
+////  WoofleTesting
+////
+////  Created by I Made Bayu Putra Adnyana on 21/05/25.
+////
 //
-//  BreedViewModel.swift
-//  WoofleTesting
+//import Foundation
 //
-//  Created by I Made Bayu Putra Adnyana on 21/05/25.
+//final class BreedListViewModel: ObservableObject {
+//    @Published var breeds: [String] = []
 //
-
-import Foundation
-
-final class BreedListViewModel: ObservableObject {
-    @Published var breeds: [String] = []
-
-    init() {
-        self.breeds = JSONFileHelper.load(fileName: "breeds", fallback: [])
-    }
-}
+//    init() {
+//        self.breeds = JSONFileHelper.load(fileName: "breeds", fallback: [])
+//    }
+//}

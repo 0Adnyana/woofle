@@ -14,62 +14,35 @@
 //  Created by Rahel on 29/05/25.
 //
 
-
-
 import SwiftUI
 
 struct DogGenderSizeView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
+    @EnvironmentObject var userViewModel: UserViewModel
+
     @State private var selectedGender: String? = nil
     @State private var selectedSizes: Set<String> = []
-    @State private var goToTabBarView = false
-    
-    
-    let sizes = ["Small", "Middle", "High"]
-    
+    @State private var navigateToNext = false
+
+    let sizes = ["small", "middle", "high"]
+
     var body: some View {
         VStack(spacing: 20) {
-            
             // Top Nav
             HStack {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .font(.system(size: 20, weight: .medium))
-                }
-                
                 Spacer()
-                
                 Text("About your dog")
                     .font(.headline)
                     .foregroundColor(.black)
-                
                 Spacer()
-                
-                Button(action: {
-                    goToTabBarView = true
-                }) {
-                    Text("Skip")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .fontWeight(.medium)
+                Button("Skip") {
+                    navigateToNext = true
                 }
-                .fullScreenCover(isPresented: $goToTabBarView) {
-                    TabBarView()
-                }
-                
-                //Skip Button OLD VERSION
-                /*NavigationLink(destination: StartTournamentView()) {
-                    Text("Skip")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .fontWeight(.medium)
-                }*/
+                .foregroundColor(Color(hex: "B67A4B"))
+                .fontWeight(.medium)
             }
             .padding(.horizontal)
-            
-            // Progress bar (5 steps)
+
+            // Progress Bar (Step 1 of 5)
             HStack(spacing: 8) {
                 ForEach(0..<5) { index in
                     ZStack {
@@ -85,38 +58,39 @@ struct DogGenderSizeView: View {
                 }
             }
             .padding(.horizontal)
-            
+
             Spacer().frame(height: 5)
-            
+
             // Preferred Gender
             VStack(alignment: .leading, spacing: 12) {
                 Text("Preferred gender?")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.black)
-                
                 HStack {
-                    genderButton(title: "Female")
-                    genderButton(title: "Male")
+                    genderButton(title: "female")
+                    genderButton(title: "male")
                 }
             }
             .padding(.horizontal)
-            
+
             // Preferred Sizes
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose preferred sizes:")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.black)
-                
+
                 ForEach(sizes, id: \.self) { size in
                     sizeSelectableRow(title: size)
                 }
             }
             .padding(.horizontal)
-            
+
             Spacer()
-            
+
+            // Next Button
             Button(action: {
-                goToTabBarView = true
+                savePreferences()
+                navigateToNext = true
             }) {
                 Text("Next")
                     .fontWeight(.semibold)
@@ -126,34 +100,59 @@ struct DogGenderSizeView: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
-            .fullScreenCover(isPresented: $goToTabBarView) {
-                TabBarView()
-            }
             .padding(.horizontal)
             .padding(.bottom, 40)
-            
-            // Next button OLD VERSION
-            /*NavigationLink(destination: TabBarView()) {
-                Text("Next")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(hex: "A3B18A"))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            }*/
+
+            // Navigation
+            NavigationLink(destination: EnergyLevelView(), isActive: $navigateToNext) {
+                EmptyView()
+            }
+            .hidden()
         }
         .padding(.top, 30)
         .background(Color.white)
         .navigationBarBackButtonHidden()
     }
-    
-    // MARK: - Gender Button
+
+    // MARK: - Save to Environment
+    func savePreferences() {
+        let existing = userViewModel.user
+
+        // Convert selectedSizes (Set<String>) to [Size]
+        let sizesEnum = selectedSizes.compactMap { Size(rawValue: $0.lowercased()) }
+
+        // Keep other preferences the same but update sizes
+        let updatedPreferences = UserPreferences(
+            preferredBreeds: existing.preferences.preferredBreeds,
+            sizePreferences: sizesEnum,
+            activityLevels: existing.preferences.activityLevels,
+            goodWithKids: existing.preferences.goodWithKids,
+            goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
+            personalityPreferences: existing.preferences.personalityPreferences,
+            preferredRadius: existing.preferences.preferredRadius
+        )
+
+        // Gender is not saved here; if you want to save gender similarly, convert and assign it
+
+        let updatedUser = UserProfile(
+            id: existing.id,
+            name: existing.name,
+            gender: existing.gender,   // unchanged
+            age: existing.age,
+            location: existing.location,
+            preferences: updatedPreferences
+        )
+
+        userViewModel.update(updatedUser)
+    }
+
+
+    // MARK: - UI Components
     func genderButton(title: String) -> some View {
-        Button(action: {
+        Button {
             selectedGender = selectedGender == title ? nil : title
-        }) {
-            Text(title)
+        } label: {
+            Text(title.capitalized)
                 .foregroundColor(selectedGender == title ? .black : .gray)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
@@ -165,30 +164,25 @@ struct DogGenderSizeView: View {
                 .cornerRadius(12)
         }
     }
-    
-    // MARK: - Size Selectable Row
+
     func sizeSelectableRow(title: String) -> some View {
-        Button(action: {
+        Button {
             if selectedSizes.contains(title) {
                 selectedSizes.remove(title)
             } else {
                 selectedSizes.insert(title)
             }
-        }) {
+        } label: {
             HStack {
                 Spacer()
-                
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedSizes.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
-                
                 Spacer()
-                
                 ZStack {
                     Circle()
                         .stroke(selectedSizes.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 2)
                         .frame(width: 24, height: 24)
-                    
                     if selectedSizes.contains(title) {
                         Image(systemName: "checkmark")
                             .foregroundColor(Color(hex: "B67A4B"))
@@ -196,7 +190,6 @@ struct DogGenderSizeView: View {
                     }
                 }
             }
-            
             .padding()
             .frame(maxWidth: .infinity)
             .background(selectedSizes.contains(title) ? Color(hex: "F8EEDF") : Color.white)
@@ -210,6 +203,200 @@ struct DogGenderSizeView: View {
 }
 
 
-#Preview {
-    DogGenderSizeView()
-}
+//import SwiftUI
+//
+//struct DogGenderSizeView: View {
+//    @Environment(\.presentationMode) var presentationMode
+//    
+//    @State private var selectedGender: String? = nil
+//    @State private var selectedSizes: Set<String> = []
+//    @State private var goToTabBarView = false
+//    
+//    
+//    let sizes = ["Small", "Middle", "High"]
+//    
+//    var body: some View {
+//        VStack(spacing: 20) {
+//            
+//            // Top Nav
+//            HStack {
+//                Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                        .foregroundColor(Color(hex: "B67A4B"))
+//                        .font(.system(size: 20, weight: .medium))
+//                }
+//                
+//                Spacer()
+//                
+//                Text("About your dog")
+//                    .font(.headline)
+//                    .foregroundColor(.black)
+//                
+//                Spacer()
+//                
+//                Button(action: {
+//                    goToTabBarView = true
+//                }) {
+//                    Text("Skip")
+//                        .foregroundColor(Color(hex: "B67A4B"))
+//                        .fontWeight(.medium)
+//                }
+//                .fullScreenCover(isPresented: $goToTabBarView) {
+//                    TabBarView()
+//                }
+//                
+//                //Skip Button OLD VERSION
+//                /*NavigationLink(destination: StartTournamentView()) {
+//                    Text("Skip")
+//                        .foregroundColor(Color(hex: "B67A4B"))
+//                        .fontWeight(.medium)
+//                }*/
+//            }
+//            .padding(.horizontal)
+//            
+//            // Progress bar (5 steps)
+//            HStack(spacing: 8) {
+//                ForEach(0..<5) { index in
+//                    ZStack {
+//                        Capsule()
+//                            .stroke(Color(hex: "B67A4B"), lineWidth: 2)
+//                            .frame(height: 10)
+//                        if index == 0 {
+//                            Capsule()
+//                                .fill(Color(hex: "F8CE9B"))
+//                                .frame(height: 10)
+//                        }
+//                    }
+//                }
+//            }
+//            .padding(.horizontal)
+//            
+//            Spacer().frame(height: 5)
+//            
+//            // Preferred Gender
+//            VStack(alignment: .leading, spacing: 12) {
+//                Text("Preferred gender?")
+//                    .font(.system(size: 24, weight: .semibold))
+//                    .foregroundColor(.black)
+//                
+//                HStack {
+//                    genderButton(title: "Female")
+//                    genderButton(title: "Male")
+//                }
+//            }
+//            .padding(.horizontal)
+//            
+//            // Preferred Sizes
+//            VStack(alignment: .leading, spacing: 12) {
+//                Text("Choose preferred sizes:")
+//                    .font(.system(size: 24, weight: .semibold))
+//                    .foregroundColor(.black)
+//                
+//                ForEach(sizes, id: \.self) { size in
+//                    sizeSelectableRow(title: size)
+//                }
+//            }
+//            .padding(.horizontal)
+//            
+//            Spacer()
+//            
+//            Button(action: {
+//                goToTabBarView = true
+//            }) {
+//                Text("Next")
+//                    .fontWeight(.semibold)
+//                    .frame(maxWidth: .infinity)
+//                    .padding()
+//                    .background(Color(hex: "A3B18A"))
+//                    .foregroundColor(.white)
+//                    .cornerRadius(12)
+//            }
+//            .fullScreenCover(isPresented: $goToTabBarView) {
+//                TabBarView()
+//            }
+//            .padding(.horizontal)
+//            .padding(.bottom, 40)
+//            
+//            // Next button OLD VERSION
+//            /*NavigationLink(destination: TabBarView()) {
+//                Text("Next")
+//                    .fontWeight(.semibold)
+//                    .frame(maxWidth: .infinity)
+//                    .padding()
+//                    .background(Color(hex: "A3B18A"))
+//                    .foregroundColor(.white)
+//                    .cornerRadius(12)
+//            }*/
+//        }
+//        .padding(.top, 30)
+//        .background(Color.white)
+//        .navigationBarBackButtonHidden()
+//    }
+//    
+//    // MARK: - Gender Button
+//    func genderButton(title: String) -> some View {
+//        Button(action: {
+//            selectedGender = selectedGender == title ? nil : title
+//        }) {
+//            Text(title)
+//                .foregroundColor(selectedGender == title ? .black : .gray)
+//                .frame(height: 50)
+//                .frame(maxWidth: .infinity)
+//                .background(selectedGender == title ? Color(hex: "F8EEDF") : Color.white)
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 12)
+//                        .stroke(selectedGender == title ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+//                )
+//                .cornerRadius(12)
+//        }
+//    }
+//    
+//    // MARK: - Size Selectable Row
+//    func sizeSelectableRow(title: String) -> some View {
+//        Button(action: {
+//            if selectedSizes.contains(title) {
+//                selectedSizes.remove(title)
+//            } else {
+//                selectedSizes.insert(title)
+//            }
+//        }) {
+//            HStack {
+//                Spacer()
+//                
+//                Text(title)
+//                    .foregroundColor(selectedSizes.contains(title) ? .black : .gray)
+//                    .font(.system(size: 16))
+//                
+//                Spacer()
+//                
+//                ZStack {
+//                    Circle()
+//                        .stroke(selectedSizes.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 2)
+//                        .frame(width: 24, height: 24)
+//                    
+//                    if selectedSizes.contains(title) {
+//                        Image(systemName: "checkmark")
+//                            .foregroundColor(Color(hex: "B67A4B"))
+//                            .font(.system(size: 12, weight: .bold))
+//                    }
+//                }
+//            }
+//            
+//            .padding()
+//            .frame(maxWidth: .infinity)
+//            .background(selectedSizes.contains(title) ? Color(hex: "F8EEDF") : Color.white)
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .stroke(selectedSizes.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+//            )
+//            .cornerRadius(12)
+//        }
+//    }
+//}
+//
+//
+//#Preview {
+//    DogGenderSizeView()
+//}

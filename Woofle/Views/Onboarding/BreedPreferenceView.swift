@@ -5,11 +5,12 @@
 //  Created by Rahel on 29/05/25.
 //
 
-import SwiftUI
 
+import SwiftUI
 
 struct BreedPreferenceView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var selectedBreeds: Set<String> = []
 
     let breeds = [
@@ -88,7 +89,7 @@ struct BreedPreferenceView: View {
             Spacer().frame(height: 5)
 
             // Always-enabled Next button
-            NavigationLink(destination: StartTournamentView()) {
+            NavigationLink(destination: DogGoodWithKidsDogs()) {
                 Text("Next")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
@@ -97,6 +98,27 @@ struct BreedPreferenceView: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                let existing = userViewModel.user
+                let updated = UserProfile(
+                    id: existing.id,
+                    name: existing.name,
+                    gender: existing.gender,
+                    age: existing.age,
+                    location: existing.location,
+                    preferences: UserPreferences(
+                        preferredBreeds: Array(selectedBreeds),
+                        sizePreferences: existing.preferences.sizePreferences,
+                        activityLevels: existing.preferences.activityLevels,
+                        goodWithKids: existing.preferences.goodWithKids,
+                        goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
+                        personalityPreferences: existing.preferences.personalityPreferences,
+                        preferredRadius: existing.preferences.preferredRadius
+                    )
+                )
+                userViewModel.update(updated)
+            })
+
             .padding(.horizontal)
             .padding(.bottom, 40)
         }
@@ -145,5 +167,6 @@ struct BreedPreferenceView: View {
 #Preview {
     NavigationView {
         BreedPreferenceView()
+            .environmentObject(UserViewModel())
     }
 }

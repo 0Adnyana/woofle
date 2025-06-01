@@ -9,8 +9,25 @@ import SwiftUI
 
 struct StartTournamentView: View {
     var body: some View {
-        NavigationStack {
-            VStack {
+        VStack(spacing: 20) {
+                HStack {
+                    Text("Woofle")
+                        .font(.title) // Customize size
+                        .fontWeight(.bold) // Customize weight
+                        .foregroundColor(.primary) // Customize color
+                    
+                    Spacer() // Push title to the left
+                    
+                    NavigationLink(
+                        destination: ProfileView()
+                    ) {
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(Color(hex: "A3B18A"))
+                    }
+                }
+                .padding(.horizontal)
                 
                 Spacer()
                 
@@ -42,7 +59,7 @@ struct StartTournamentView: View {
                 }
                 
             }
-            .navigationBarTitleDisplayMode(.inline)
+            /*.navigationBarTitleDisplayMode(.inline)
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
@@ -65,8 +82,7 @@ struct StartTournamentView: View {
                     }
                 }
 
-            }
-        }
+            }*/
     }
 }
 

@@ -9,18 +9,22 @@ import SwiftUI
 
 struct TabBarView: View {
     var body: some View {
-        TabView {
-            StartTournamentView()
-                .tabItem {
-                    Label("Tournament", systemImage: "dog.circle")
-                }
-
-            WinnerDogListView()
-                .tabItem {
-                    Label("History", systemImage: "clock")
-                }
+        NavigationStack {
+            TabView {
+                StartTournamentView()
+                    .tabItem {
+                        Label("Tournament", systemImage: "dog.circle")
+                    }
+                
+                WinnerDogListView()
+                    .tabItem {
+                        Label("History", systemImage: "clock")
+                    }
+            }
+            .tint(Color(hex: "9E5922"))
+            
         }
-        .tint(Color(hex: "9E5922"))
+        .navigationBarBackButtonHidden()
     }
 }
 

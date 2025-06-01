@@ -46,17 +46,6 @@ struct WelcomeView: View {
                         .submitLabel(.done)
                         .onSubmit {
                             if !nameInput.isEmpty {
-//                                let existingUser = userVM.user
-//                                let updatedUser = UserProfile(
-//                                    id: existingUser.id,
-//                                    name: nameInput,
-//                                    gender: existingUser.gender,
-//                                    age: existingUser.age,
-//                                    location: existingUser.location,
-//                                    preferences: existingUser.preferences
-//                                )
-//                                userVM.update(updatedUser)
-//                                navigateToNext = true
                                 userVM.updateName(nameInput)
                                 navigateToNext = true
                             }
@@ -64,18 +53,6 @@ struct WelcomeView: View {
 
                     if !nameInput.isEmpty {
                         Button(action: {
-//                            let existingUser = userViewModel.user
-//                            let updatedUser = UserProfile(
-//                                id: existingUser.id,
-//                                name: nameInput,
-//                                gender: existingUser.gender,
-//                                age: existingUser.age,
-//                                location: existingUser.location,
-//                                preferences: existingUser.preferences
-//                            )
-//                            userViewModel.update(updatedUser)
-//                            navigateToNext = true
-                            
                             userVM.updateName(nameInput)
                             navigateToNext = true
                         }) {

@@ -31,6 +31,19 @@ final class UserViewModel: ObservableObject {
         user.name = name
         save()
     }
+    
+    func updateBirthYear(_ yearString: String) {
+        guard let year = Int(yearString) else {
+            return
+        }
+        
+        let currentYear = Calendar.current.component(.year, from: Date())
+        
+        let age = max(currentYear - year, 0)
+        
+        user.age = age
+        save()
+    }
 
     func updatePreferences(_ prefs: UserPreferences) {
         user.preferences = prefs

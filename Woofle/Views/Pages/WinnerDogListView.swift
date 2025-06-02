@@ -48,39 +48,27 @@ struct WinnerDogListView: View {
             }
             .padding(.horizontal)
             
-            ScrollView {
+            List {
+                ForEach(winnerDogWithShelter, id: \.dog.id) { winnerDog in
+                    WinnerDogCard(dog: winnerDog.dog, shelter: winnerDog.shelter)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                delete(winnerDog)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                }
+            }
+            .listStyle(.plain)
+            
+            /*ScrollView {
                 VStack {
                     ForEach(winnerDogWithShelter, id: \.dog.id) { winnerDog in
                         WinnerDogCard(dog: winnerDog.dog, shelter: winnerDog.shelter)
                     }
                 }
                 .padding()
-            }
-            /*.navigationBarTitleDisplayMode(.inline)
-            .toolbar() {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        Text("History")
-                            .font(.title) // Customize size
-                            .fontWeight(.bold) // Customize weight
-                            .foregroundColor(.primary) // Customize color
-                        Spacer() // Push title to the left
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(
-                        destination: WinnerDogsMapView(
-                            shelterList: shelterList,
-                            winnerDogList: winnerDogList
-                        )
-                    ) {
-                        Image("MapIcon")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                    }
-                }
-                
             }*/
         }
     }
@@ -98,20 +86,10 @@ struct WinnerDogListView: View {
             return DogWithShelter(dog: dog, shelter: shelter)
         }
     }
-
-//    func getWinnerDogList() -> [DogWithShelter] {
-//        let pastWinnersList: [UUID] = DummyData.pastWinnerIds
-//        let dogList: [Dog] = DummyData.dogs
-//        let shelterList: [Shelter] = DummyData.shelters
-//        
-//        return pastWinnersList.compactMap { id in
-//            guard let dog = dogList.first(where: { $0.id == id }),
-//                  let shelter = shelterList.first(where: { $0.id == dog.shelterId }) else {
-//                return nil
-//            }
-//            return DogWithShelter(dog: dog, shelter: shelter)
-//        }
-//    }
+    
+    private func delete(_ winnerDog: DogWithShelter) {
+        pastWinnerService.delete(deletedDog: winnerDog.dog)
+    }
 }
 
 

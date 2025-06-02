@@ -43,45 +43,49 @@ struct MapPickerView2: View {
                             completer.updateQuery(newValue)
                         }
 
-                    // Suggestions List
                     if !completer.suggestions.isEmpty {
-                        ScrollView {
-                            VStack(spacing: 0) {
-                                ForEach(completer.suggestions, id: \.self) { suggestion in
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(suggestion.title)
-                                            .fontWeight(.medium)
-                                        if !suggestion.subtitle.isEmpty {
-                                            Text(suggestion.subtitle)
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                        }
-                                    }
-                                    .padding()
-                                    .background(Color.white)
-                                    .onTapGesture {
-                                        let request = MKLocalSearch.Request(completion: suggestion)
-                                        let search = MKLocalSearch(request: request)
-                                        search.start { response, error in
-                                            guard let item = response?.mapItems.first else { return }
-                                            let coordinate = item.placemark.coordinate
-                                            selectedCoordinate = coordinate
-                                            selectedLocation = item.name
-                                            mapRegion.center = coordinate
-                                            dismiss()
-                                        }
-                                    }
+                        let maxSuggestions = 5
+                        let visibleSuggestions = Array(completer.suggestions.prefix(maxSuggestions))
 
+                        VStack(spacing: 0) {
+                            ForEach(visibleSuggestions, id: \.self) { suggestion in
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(suggestion.title)
+                                        .fontWeight(.medium)
+                                    if !suggestion.subtitle.isEmpty {
+                                        Text(suggestion.subtitle)
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.white)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    let request = MKLocalSearch.Request(completion: suggestion)
+                                    let search = MKLocalSearch(request: request)
+                                    search.start { response, error in
+                                        guard let item = response?.mapItems.first else { return }
+                                        let coordinate = item.placemark.coordinate
+                                        selectedCoordinate = coordinate
+                                        selectedLocation = item.name
+                                        mapRegion.center = coordinate
+                                        dismiss()
+                                    }
+                                }
+
+                                if suggestion != visibleSuggestions.last {
                                     Divider()
                                 }
                             }
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 4)
-                            .padding(.horizontal)
                         }
-                        .frame(maxHeight: 200) // Limit height
+                        .background(Color.white)
+                        .cornerRadius(12)
+                        .shadow(radius: 5)
+                        .padding(.horizontal)
                         .padding(.top, 4)
+                        .animation(.easeInOut(duration: 0.2), value: completer.suggestions.count)
                     }
 
                     Spacer()

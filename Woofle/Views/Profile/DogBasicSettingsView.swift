@@ -19,7 +19,7 @@ struct DogBasicsView: View {
     
     // MARK: - Data Arrays
     let dogGenders = ["female", "male"]
-    let sizes = ["small", "middle", "high"]
+    let sizes = ["small", "medium", "large"]
     let energyLevels = ["Low", "Middle", "High"]
     let breeds = [
         "Golden Retriever",
@@ -285,7 +285,14 @@ struct DogBasicsView: View {
         // You might need to add this field to your data model
         
         // Load size preferences
-        selectedSizes = Set(preferences.sizePreferences.map { $0.rawValue })
+        selectedSizes = Set(preferences.sizePreferences.compactMap() {
+            switch $0 {
+            case .small: return "small"
+            case .medium: return "medium"
+            case .large: return "large"
+            default: return nil
+            }
+        })
         
         selectedGenders = Set(preferences.genderPreferences.map { $0.rawValue })
         
@@ -307,10 +314,16 @@ struct DogBasicsView: View {
     }
     
     private func saveChanges() {
-        let current = userViewModel.user
         
         // Convert selectedSizes to Size enum array
-        let sizesEnum = selectedSizes.compactMap { Size(rawValue: $0.lowercased()) }
+        let sizesEnum: [Size] = selectedSizes.compactMap { sizeString in
+            switch sizeString.lowercased() {
+            case "small": return .small
+            case "medium": return .medium
+            case "large": return .large
+            default: return nil
+            }
+        }
         
         let genderEnum = selectedGenders.compactMap {
             DogGender(rawValue: $0.lowercased())
@@ -327,10 +340,13 @@ struct DogBasicsView: View {
         }
         
         // Update Preferences
-        userViewModel.updateSizePreferences(sizesEnum)
-        userViewModel.updateGenderPreferences(genderEnum)
-        userViewModel.updateActivityLevels(energyLevelsEnum)
-        userViewModel.updateBreedPreferences(Array(selectedBreeds))
+        var updatedPreferences = userViewModel.user.preferences
+        updatedPreferences.sizePreferences = sizesEnum
+        updatedPreferences.genderPreferences = genderEnum
+        updatedPreferences.activityLevels = energyLevelsEnum
+        updatedPreferences.preferredBreeds = Array(selectedBreeds)
+        
+        userViewModel.updateUserPreferences(updatedPreferences)
     }
 }
 

@@ -18,13 +18,15 @@ struct ProfileView: View {
                 dogPreferencesSection
             }
             .padding(.bottom)
-            .background(Color.gray.opacity(0.05))
+            .background(.secondary.opacity(0.05))
+            
+            Spacer()
         }
         .navigationBarHidden(true)
     }
 
     private var header: some View {
-        ZStack {
+        VStack {
             HStack {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -33,6 +35,10 @@ struct ProfileView: View {
                         .foregroundColor(Color(hex: "B67A4B"))
                         .font(.system(size: 20, weight: .medium))
                 }
+                Spacer()
+                Text("Profile Settings")
+                    .font(.headline)
+                    .foregroundColor(.primary)
                 Spacer()
             }
 
@@ -58,8 +64,7 @@ struct ProfileView: View {
                 Image("Woofle_01")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 130, height: 130)
-                    .clipShape(Circle())
+                    .frame(width: 100, height: 100)
             }
         }
         .padding(.top, 16)
@@ -113,47 +118,44 @@ struct ProfileView: View {
             }
 
         }
-        .background(Color.white)
+        .background(Color(.systemBackground))
     }
 
     private func rowView(iconName: String, title: String, subtitle: String) -> some View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(Color.black)
+                    .fill(Color(hex: "A3B18A"))
                     .frame(width: 40, height: 40)
 
                 Image(systemName: iconName)
                     .font(.system(size: 18))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(.systemBackground))
             }
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Text(subtitle)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }
 
             Spacer()
 
-//            Image(systemName: "chevron.right")
-//                .font(.system(size: 14, weight: .medium))
-//                .foregroundColor(.gray)
         }
         .padding(.horizontal)
         .padding(.vertical, 14)
-        .background(Color.white)
+        .background(Color(.systemBackground))
     }
 
     private func sectionTitle(_ title: String) -> some View {
         Text(title)
             .font(.title2)
             .fontWeight(.medium)
-            .foregroundColor(.gray)
+            .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
             .padding(.vertical, 12)

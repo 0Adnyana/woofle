@@ -30,8 +30,8 @@ struct WelcomeView: View {
                     Image("Woofle_01")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 290, height: 290)
-                        .clipShape(Circle())
+                        .frame(width: 240, height: 240)
+                        //.clipShape(Circle())
                 }
 
                 Text("Welcome to Woofle!")
@@ -76,7 +76,11 @@ struct WelcomeView: View {
                 .hidden()
             }
             .padding()
+            .navigationDestination(isPresented: $navigateToNext) {
+                BirthYearView()
+            }
         }
+        
     }
 }
 

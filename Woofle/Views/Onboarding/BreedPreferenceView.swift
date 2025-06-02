@@ -22,7 +22,8 @@ struct BreedPreferenceView: View {
         "Bulldog",
         "Siberian Husky",
         "Chihuahua",
-        "Dachshund"
+        "Dachshund",
+        "Beagles"
     ]
 
     var body: some View {
@@ -75,16 +76,18 @@ struct BreedPreferenceView: View {
             Spacer().frame(height: 10)
 
             // Question & Breed List
-            VStack(alignment: .leading, spacing: 12) {
-                Text("Choose breeds you like:")
-                    .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
-
-                ForEach(breeds, id: \.self) { breed in
-                    breedSelectableRow(title: breed)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Choose breeds you like:")
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(.black)
+                    
+                    ForEach(breeds, id: \.self) { breed in
+                        breedSelectableRow(title: breed)
+                    }
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
 
             Spacer().frame(height: 5)
 
@@ -161,6 +164,7 @@ struct BreedPreferenceView: View {
             )
             .cornerRadius(12)
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

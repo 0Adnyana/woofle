@@ -31,6 +31,11 @@ struct TournamentMatchingService {
                 print("❌ Dog \(dog.name) rejected due to goodWithKids mismatch")
                 return false
             }
+            if let requiresDogs = user.preferences.goodWithOtherDogs,
+               requiresDogs != dog.traits.goodWithOtherDogs {
+                print("❌ Dog \(dog.name) rejected due to goodWithOtherDogs mismatch")
+                return false
+            }
             return true
         }
 
@@ -44,6 +49,7 @@ struct TournamentMatchingService {
             if let preferredBreeds = user.preferences.preferredBreeds,
                preferredBreeds.contains(dog.breed) { score += 3 }
             if user.preferences.sizePreferences.contains(dog.traits.size) { score += 2 }
+            if user.preferences.genderPreferences.contains(dog.gender) { score += 2 }
             if user.preferences.activityLevels.contains(dog.traits.energyLevel) { score += 2 }
             score += dog.traits.personalityTags.filter { user.preferences.personalityPreferences.contains($0) }.count
             if let goodWithOther = user.preferences.goodWithOtherDogs,

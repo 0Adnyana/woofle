@@ -19,6 +19,7 @@ struct DogGenderSizeView: View {
     let dogGenders = ["female", "male"]
 
     var body: some View {
+        
         VStack(spacing: 20) {
             // Header
             HStack {

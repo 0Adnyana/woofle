@@ -89,6 +89,13 @@ struct MapPickerView: View {
             .cornerRadius(10)
             .padding()
         }
+        
+        .onAppear {
+                if let coord = selectedCoordinate {
+                    region.center = coord
+                    region.span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                }
+            }
     }
 
     func performSearch() {

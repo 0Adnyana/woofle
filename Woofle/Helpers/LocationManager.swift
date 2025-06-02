@@ -11,33 +11,34 @@ import CoreLocation
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentLocation: String = "Unknown"
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
-    
-    private let locationManager = CLLocationManager()
-    
+    @Published var lastKnownCoordinate: CLLocationCoordinate2D?
+
+    let locationManager = CLLocationManager()
+
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         authorizationStatus = locationManager.authorizationStatus
+        locationManager.startUpdatingLocation()
     }
-    
+
     func requestLocation() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        print("Requested")
     }
-    
-    // MARK: - CLLocationManagerDelegate
-    
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
         if authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways {
-            locationManager.requestLocation()
+            locationManager.startUpdatingLocation()
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
-        
+        lastKnownCoordinate = location.coordinate
+
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { placemarks, _ in
             if let place = placemarks?.first {
@@ -47,7 +48,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location error: \(error.localizedDescription)")
     }

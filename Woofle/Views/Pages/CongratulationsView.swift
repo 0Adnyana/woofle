@@ -38,7 +38,6 @@ struct CongratulationsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
-<<<<<<< HEAD
                 
                 // Dog card (info button works via DogCard)
                 DogCard(dog: dog, shelter: shelter, onSelect: {})
@@ -60,63 +59,50 @@ struct CongratulationsView: View {
                             .foregroundColor(Color(hex: "B67A4B"))
                             .fontWeight(.medium)
                     }
-=======
-
-            // Home Button
-            NavigationLink {
-                TabBarView()
-            } label: {
-                VStack(spacing: 4) {
-                    Image(systemName: "house.fill")
-                        .font(.system(size: 32))
-                        .foregroundColor(Color(hex: "000000"))
-                    Text("Home")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "000000"))
->>>>>>> main
+                    
+                    // Home Button
+                    /*NavigationLink {
+                        TabBarView()
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image(systemName: "house.fill")
+                                .font(.system(size: 32))
+                                .foregroundColor(Color(hex: "000000"))
+                            Text("Home")
+                                .font(.caption)
+                                .foregroundColor(Color(hex: "000000"))
+                        }
+                        .fullScreenCover(isPresented: $goToTabBarView) {
+                            TabBarView()
+                        }
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 60)
+                    */
                 }
-                .fullScreenCover(isPresented: $goToTabBarView) {
-                    TabBarView()
-                }
-                
-                // Home Button
-                /*NavigationLink {
-                 StartTournamentView()
-                 } label: {
-                 VStack(spacing: 4) {
-                 Image(systemName: "house.fill")
-                 .font(.system(size: 32))
-                 .foregroundColor(Color(hex: "000000"))
-                 Text("Home")
-                 .font(.caption)
-                 .foregroundColor(Color(hex: "000000"))
-                 }
-                 }
-                 .padding(.top, 20)*/
-                
-                Spacer()
             }
-            .padding(.horizontal)
-            .padding(.top, 60)
-            
         }
         .onAppear {
             playCelebrationSound()
         }
         .navigationBarBackButtonHidden()
     }
+            
     
     func playCelebrationSound() {
         SoundPlayer.shared.playSounds(soundNames: ["moreClaps", "smallDogBarking"])
     }
+            
 }
 
-#Preview {
-    if let winnerID = DummyData.pastWinnerIds.first,
-       let winnerDog = DummyData.dogs.first(where: { $0.id == winnerID }),
-       let shelter = DummyData.shelters.first(where: { $0.id == winnerDog.shelterId }) {
-        CongratulationsView(dog: winnerDog, shelter: shelter)
-    } else {
-        Text("Missing test data")
-    }
-}
+//#Preview {
+//    if let winnerID = DummyData.pastWinnerIds.first,
+//       let winnerDog = DummyData.dogs.first(where: { $0.id == winnerID }),
+//       let shelter = DummyData.shelters.first(where: { $0.id == winnerDog.shelterId }) {
+//        CongratulationsView(dog: winnerDog, shelter: shelter)
+//    } else {
+//        Text("Missing test data")
+//    }
+//}

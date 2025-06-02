@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct StartTournamentView: View {
+    @EnvironmentObject var tournamentVM: TournamentViewModel
+    @State private var navigateToTournament = false
+
     var body: some View {
-        VStack(spacing: 20) {
+        NavigationStack {
+            VStack(spacing: 20) {
+                // Header
                 HStack {
                     Text("Woofle")
-                        .font(.title) // Customize size
-                        .fontWeight(.bold) // Customize weight
-                        .foregroundColor(.primary) // Customize color
-                    
-                    Spacer() // Push title to the left
-                    
-                    NavigationLink(
-                        destination: ProfileView()
-                    ) {
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+
+                    Spacer()
+
+                    NavigationLink(destination: ProfileView()) {
                         Image(systemName: "person.crop.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
@@ -28,16 +31,21 @@ struct StartTournamentView: View {
                     }
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
-                
-                // Center content
+
+                // CTA
                 Text("Find your perfect dog")
                     .font(.title)
                     .padding(.bottom, 20)
-                NavigationLink{
-                    HomeViewDemo()
-                } label: {
+
+                Button(action: {
+                    tournamentVM.startNewTournament(
+                        dogs: DummyData.dogs,
+                        shelters: DummyData.shelters
+                    )
+                    navigateToTournament = true
+                }) {
                     ZStack {
                         Circle()
                             .fill(Color(hex: "DFE4D6"))
@@ -48,7 +56,8 @@ struct StartTournamentView: View {
                             .frame(width: 255, height: 255)
                     }
                 }
-                
+
+                // Animated dog GIF
                 HStack {
                     Spacer()
                     if let frames = extractFramesFromGIF(named: "Shiba Inu") {
@@ -57,36 +66,20 @@ struct StartTournamentView: View {
                             .padding()
                     }
                 }
-                
-            }
-            /*.navigationBarTitleDisplayMode(.inline)
-            .toolbar() {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        Text("Woofle")
-                            .font(.title) // Customize size
-                            .fontWeight(.bold) // Customize weight
-                            .foregroundColor(.primary) // Customize color
-                        Spacer() // Push title to the left
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(
-                        destination: ProfileView()
-                    ) {
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(Color(hex: "A3B18A"))
-                    }
-                }
 
-            }*/
+                // NavigationLink trigger
+                NavigationLink(destination: TournamentView(), isActive: $navigateToTournament) {
+                    EmptyView()
+                }
+                .hidden()
+            }
+        }
     }
 }
 
+
 #Preview {
     StartTournamentView()
-        .environmentObject(UserViewModel()) // Inject the required environment object
+        .environmentObject(UserViewModel())
+        .environmentObject(TournamentViewModel())// Inject the required environment object
 }

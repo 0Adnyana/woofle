@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TournamentView: View {
-    @ObservedObject var tournamentVM: TournamentViewModel
-    @Binding var path: [Route]
-    
+    @EnvironmentObject var tournamentVM: TournamentViewModel
     @State private var selectedDog: Dog?
     @State private var selectedShelter: Shelter?
     @State private var showDetails = false
@@ -20,7 +18,6 @@ struct TournamentView: View {
             VStack(spacing: 16) {
 
                 if tournamentVM.phase == .inProgress,
-                   
                    let match = tournamentVM.currentMatch {
                     headerView
                     matchView(match)
@@ -90,23 +87,6 @@ struct TournamentView: View {
 }
 
 #Preview {
-    let fallbackUser = UserProfile(
-        id: UUID(),
-        name: "Preview User",
-        gender: .other,
-        age: 25,
-        location: GeoLocation(latitude: -8.67, longitude: 115.21),
-        preferences: .init(
-            preferredBreeds: nil,
-            sizePreferences: [.medium],
-            activityLevels: [.moderate],
-            goodWithKids: false,
-            goodWithOtherDogs: nil,
-            personalityPreferences: [.playful],
-            preferredRadius: 30
-        )
-    )
-
     let userService = UserStorageService()
     let matchingService = TournamentMatchingService()
     let engine = TournamentEngine()
@@ -119,14 +99,55 @@ struct TournamentView: View {
         winnersStorage: winnersStorage
     )
 
-    // Injecting dummy user into storage (preview-safe write)
-    userService.save(fallbackUser)
-
     vm.startNewTournament(
         dogs: DummyData.dogs,
         shelters: DummyData.shelters
     )
 
-    return TournamentView(tournamentVM: vm, path: Binding.constant([.tournament]))
+    return TournamentView()
+        .environmentObject(vm)
 }
+
+
+//#Preview {
+//    let fallbackUser = UserProfile(
+//        id: UUID(),
+//        name: "Preview User",
+//        gender: .other,
+//        age: 25,
+//        location: GeoLocation(latitude: -8.67, longitude: 115.21),
+//        preferences: .init(
+//            preferredBreeds: nil,
+//            sizePreferences: [.medium],
+//            genderPreferences: [.female, .male],
+//            activityLevels: [.moderate],
+//            goodWithKids: false,
+//            goodWithOtherDogs: nil,
+//            personalityPreferences: [.playful],
+//            preferredRadius: 30
+//        )
+//    )
+//
+//    let userService = UserStorageService()
+//    let matchingService = TournamentMatchingService()
+//    let engine = TournamentEngine()
+//    let winnersStorage = PastWinnersStorageService()
+//
+//    let vm = TournamentViewModel(
+//        userService: userService,
+//        matchingService: matchingService,
+//        engine: engine,
+//        winnersStorage: winnersStorage
+//    )
+//
+//    // Injecting dummy user into storage (preview-safe write)
+////    userService.save(fallbackUser)
+//
+//    vm.startNewTournament(
+//        dogs: DummyData.dogs,
+//        shelters: DummyData.shelters
+//    )
+//
+//    TournamentView().environmentObject(vm)
+//}
 

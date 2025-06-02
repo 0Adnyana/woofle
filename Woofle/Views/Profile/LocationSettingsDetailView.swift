@@ -153,25 +153,26 @@ struct LocationSettingsDetailView: View {
         guard let coordinate = selectedCoordinate else { return }
 
         let existingUser = userViewModel.user
+        let locationCoordinates = GeoLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
-        let updatedUser = UserProfile(
-            id: existingUser.id,
-            name: existingUser.name,
-            gender: existingUser.gender,
-            age: existingUser.age,
-            location: GeoLocation(latitude: coordinate.latitude, longitude: coordinate.longitude),
-            preferences: UserPreferences(
-                preferredBreeds: existingUser.preferences.preferredBreeds,
-                sizePreferences: existingUser.preferences.sizePreferences,
-                activityLevels: existingUser.preferences.activityLevels,
-                goodWithKids: existingUser.preferences.goodWithKids,
-                goodWithOtherDogs: existingUser.preferences.goodWithOtherDogs,
-                personalityPreferences: existingUser.preferences.personalityPreferences,
-                preferredRadius: Double(selectedRadius)
-            )
-        )
+//        let updatedUser = UserProfile(
+//            id: existingUser.id,
+//            name: existingUser.name,
+//            gender: existingUser.gender,
+//            age: existingUser.age,
+//            location: GeoLocation(latitude: coordinate.latitude, longitude: coordinate.longitude),
+//            preferences: UserPreferences(
+//                preferredBreeds: existingUser.preferences.preferredBreeds,
+//                sizePreferences: existingUser.preferences.sizePreferences,
+//                activityLevels: existingUser.preferences.activityLevels,
+//                goodWithKids: existingUser.preferences.goodWithKids,
+//                goodWithOtherDogs: existingUser.preferences.goodWithOtherDogs,
+//                personalityPreferences: existingUser.preferences.personalityPreferences,
+//                preferredRadius: Double(selectedRadius)
+//            )
+//        )
 
-        userViewModel.update(updatedUser)
+        userViewModel.updateLocation(locationCoordinates)
     }
 
     private func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping (String?) -> Void) {

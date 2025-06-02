@@ -11,6 +11,8 @@ struct WinnerDogListView: View {
     private var winnerDogWithShelter: [DogWithShelter] = [DogWithShelter]()
     private var shelterList: [Shelter] = [Shelter]()
     
+    private let pastWinnerService = PastWinnersStorageService()
+    
     init() {
         var addedShelterId = Set<UUID>()
         
@@ -82,9 +84,9 @@ struct WinnerDogListView: View {
             }*/
         }
     }
-
+    
     func getWinnerDogList() -> [DogWithShelter] {
-        let pastWinnersList: [UUID] = DummyData.pastWinnerIds
+        let pastWinnersList: [UUID] = pastWinnerService.load()
         let dogList: [Dog] = DummyData.dogs
         let shelterList: [Shelter] = DummyData.shelters
         
@@ -96,6 +98,20 @@ struct WinnerDogListView: View {
             return DogWithShelter(dog: dog, shelter: shelter)
         }
     }
+
+//    func getWinnerDogList() -> [DogWithShelter] {
+//        let pastWinnersList: [UUID] = DummyData.pastWinnerIds
+//        let dogList: [Dog] = DummyData.dogs
+//        let shelterList: [Shelter] = DummyData.shelters
+//        
+//        return pastWinnersList.compactMap { id in
+//            guard let dog = dogList.first(where: { $0.id == id }),
+//                  let shelter = shelterList.first(where: { $0.id == dog.shelterId }) else {
+//                return nil
+//            }
+//            return DogWithShelter(dog: dog, shelter: shelter)
+//        }
+//    }
 }
 
 

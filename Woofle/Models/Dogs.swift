@@ -10,7 +10,7 @@ import Foundation
 struct Dog: Identifiable, Codable {
     let id: UUID
     let name: String
-    let gender: Gender
+    let gender: DogGender
     let breed: String
     let ageInMonths: Int
     let shelterId: UUID

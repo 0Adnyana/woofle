@@ -159,26 +159,7 @@ struct LocationView: View {
             Button(action: {
                 guard let coordinate = selectedCoordinate else { return }
 
-                let existingUser = userViewModel.user
-
-                let updatedUser = UserProfile(
-                    id: existingUser.id,
-                    name: existingUser.name,
-                    gender: existingUser.gender,
-                    age: existingUser.age,
-                    location: GeoLocation(latitude: coordinate.latitude, longitude: coordinate.longitude),
-                    preferences: UserPreferences(
-                        preferredBreeds: existingUser.preferences.preferredBreeds,
-                        sizePreferences: existingUser.preferences.sizePreferences,
-                        activityLevels: existingUser.preferences.activityLevels,
-                        goodWithKids: existingUser.preferences.goodWithKids,
-                        goodWithOtherDogs: existingUser.preferences.goodWithOtherDogs,
-                        personalityPreferences: existingUser.preferences.personalityPreferences,
-                        preferredRadius: Double(selectedRadius)
-                    )
-                )
-
-                userViewModel.update(updatedUser)
+                userViewModel.updateLocation(GeoLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
                 navigateNext = true  // <-- trigger navigation instead of dismissing
 
             }) {
@@ -196,7 +177,7 @@ struct LocationView: View {
             
             // Hidden NavigationLink to DogGenderSizeView
             NavigationLink(
-                destination: DogGenderSizeView().environmentObject(userViewModel),
+                destination: DogGenderSizeView(),
                 isActive: $navigateNext,
                 label: { EmptyView() }
             )

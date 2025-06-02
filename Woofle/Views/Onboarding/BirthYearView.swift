@@ -107,21 +107,7 @@ struct BirthYearView: View {
 
             // Next Button
             Button(action: {
-                guard let year = Int(selectedYear) else { return }
-                let currentYear = Calendar.current.component(.year, from: Date())
-                let age = max(currentYear - year, 0)
-
-                let existingUser = userViewModel.user
-                let updatedUser = UserProfile(
-                    id: existingUser.id,
-                    name: existingUser.name,
-                    gender: existingUser.gender,
-                    age: age,
-                    location: existingUser.location,
-                    preferences: existingUser.preferences
-                )
-
-                userViewModel.update(updatedUser)
+                userViewModel.updateBirthYear(selectedYear)
                 navigateToNext = true
             }) {
                 Text("Next")

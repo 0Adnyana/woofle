@@ -37,7 +37,7 @@ struct EnergyLevelView: View {
 
                 Spacer()
 
-                NavigationLink(destination: StartTournamentView()) {
+                NavigationLink(destination: TabBarView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
@@ -144,24 +144,24 @@ struct EnergyLevelView: View {
     }
 
     // Load current user preferences and map to selectedLevels strings
-    private func loadCurrentPreferences() {
-        // Your UserPreferences.activityLevels is [EnergyLevel]
-        // Map EnergyLevel enum cases to string matching "Low", "Middle", "High"
-        selectedLevels = Set(
-            userViewModel.user.preferences.activityLevels.compactMap {
-                switch $0 {
-                case .low: return "Low"
-                case .moderate: return "Middle"
-                case .high: return "High"
-                default: return nil
-                }
-            }
-        )
-    }
+//    private func loadCurrentPreferences() {
+//        // Your UserPreferences.activityLevels is [EnergyLevel]
+//        // Map EnergyLevel enum cases to string matching "Low", "Middle", "High"
+//        selectedLevels = Set(
+//            userViewModel.user.preferences.activityLevels.compactMap {
+//                switch $0 {
+//                case .low: return "Low"
+//                case .moderate: return "Middle"
+//                case .high: return "High"
+//                default: return nil
+//                }
+//            }
+//        )
+//    }
 
     // Save current selection back to userViewModel
     private func saveSelection() {
-        let currentPrefs = userViewModel.user.preferences
+//        let currentPrefs = userViewModel.user.preferences
 
         // Map strings back to EnergyLevel enum
         let mappedLevels: [EnergyLevel] = selectedLevels.compactMap { levelString in
@@ -173,26 +173,26 @@ struct EnergyLevelView: View {
             }
         }
 
-        let updatedPrefs = UserPreferences(
-            preferredBreeds: currentPrefs.preferredBreeds,
-            sizePreferences: currentPrefs.sizePreferences,
-            activityLevels: mappedLevels,
-            goodWithKids: currentPrefs.goodWithKids,
-            goodWithOtherDogs: currentPrefs.goodWithOtherDogs,
-            personalityPreferences: currentPrefs.personalityPreferences,
-            preferredRadius: currentPrefs.preferredRadius
-        )
+//        let updatedPrefs = UserPreferences(
+//            preferredBreeds: currentPrefs.preferredBreeds,
+//            sizePreferences: currentPrefs.sizePreferences,
+//            activityLevels: mappedLevels,
+//            goodWithKids: currentPrefs.goodWithKids,
+//            goodWithOtherDogs: currentPrefs.goodWithOtherDogs,
+//            personalityPreferences: currentPrefs.personalityPreferences,
+//            preferredRadius: currentPrefs.preferredRadius
+//        )
+//
+//        let updatedUser = UserProfile(
+//            id: userViewModel.user.id,
+//            name: userViewModel.user.name,
+//            gender: userViewModel.user.gender,
+//            age: userViewModel.user.age,
+//            location: userViewModel.user.location,
+//            preferences: updatedPrefs
+//        )
 
-        let updatedUser = UserProfile(
-            id: userViewModel.user.id,
-            name: userViewModel.user.name,
-            gender: userViewModel.user.gender,
-            age: userViewModel.user.age,
-            location: userViewModel.user.location,
-            preferences: updatedPrefs
-        )
-
-        userViewModel.update(updatedUser)
+        userViewModel.updateActivityLevels(mappedLevels)
     }
 }
 

@@ -38,6 +38,7 @@ struct CongratulationsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
+<<<<<<< HEAD
                 
                 // Dog card (info button works via DogCard)
                 DogCard(dog: dog, shelter: shelter, onSelect: {})
@@ -59,6 +60,20 @@ struct CongratulationsView: View {
                             .foregroundColor(Color(hex: "B67A4B"))
                             .fontWeight(.medium)
                     }
+=======
+
+            // Home Button
+            NavigationLink {
+                TabBarView()
+            } label: {
+                VStack(spacing: 4) {
+                    Image(systemName: "house.fill")
+                        .font(.system(size: 32))
+                        .foregroundColor(Color(hex: "000000"))
+                    Text("Home")
+                        .font(.caption)
+                        .foregroundColor(Color(hex: "000000"))
+>>>>>>> main
                 }
                 .fullScreenCover(isPresented: $goToTabBarView) {
                     TabBarView()

@@ -215,28 +215,30 @@ struct DogBehaviourView: View {
             PersonalityTrait(rawValue: trait.lowercased())
         }
         
-        // Create updated preferences
-        let updatedPreferences = UserPreferences(
-            preferredBreeds: current.preferences.preferredBreeds,
-            sizePreferences: current.preferences.sizePreferences,
-            activityLevels: current.preferences.activityLevels,
-            goodWithKids: isGoodWithKids,
-            goodWithOtherDogs: isGoodWithOtherDogs,
-            personalityPreferences: personalityTraits,
-            preferredRadius: current.preferences.preferredRadius
-        )
+//        // Create updated preferences
+//        let updatedPreferences = UserPreferences(
+//            preferredBreeds: current.preferences.preferredBreeds,
+//            sizePreferences: current.preferences.sizePreferences,
+//            activityLevels: current.preferences.activityLevels,
+//            goodWithKids: isGoodWithKids,
+//            goodWithOtherDogs: isGoodWithOtherDogs,
+//            personalityPreferences: personalityTraits,
+//            preferredRadius: current.preferences.preferredRadius
+//        )
+//        
+//        // Create updated user profile
+//        let updatedUser = UserProfile(
+//            id: current.id,
+//            name: current.name,
+//            gender: current.gender,
+//            age: current.age,
+//            location: current.location,
+//            preferences: updatedPreferences
+//        )
         
-        // Create updated user profile
-        let updatedUser = UserProfile(
-            id: current.id,
-            name: current.name,
-            gender: current.gender,
-            age: current.age,
-            location: current.location,
-            preferences: updatedPreferences
-        )
-        
-        userViewModel.update(updatedUser)
+        userViewModel.updatePersonalityPreferences(personalityTraits)
+        userViewModel.updateGoodWithKids(isGoodWithKids)
+        userViewModel.updateGoodWithOtherDogs(isGoodWithOtherDogs)
     }
 }
 

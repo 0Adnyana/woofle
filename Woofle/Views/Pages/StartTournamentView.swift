@@ -68,8 +68,8 @@ struct StartTournamentView: View {
                 }
 
                 // NavigationLink trigger
-                NavigationLink(destination: TournamentView(), isActive: $navigateToTournament) {
-                    EmptyView()
+                .navigationDestination(isPresented: $navigateToTournament) {
+                    TournamentView()
                 }
                 .hidden()
             }

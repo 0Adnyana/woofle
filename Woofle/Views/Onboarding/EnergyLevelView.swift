@@ -17,8 +17,8 @@ struct EnergyLevelView: View {
     @State private var navigateToNext = false
 
     var body: some View {
-        VStack(spacing: 20) {
-
+                VStack(spacing: 20) {
+            
             // Top Navigation
             HStack {
                 Button(action: {
@@ -28,15 +28,15 @@ struct EnergyLevelView: View {
                         .foregroundColor(Color(hex: "B67A4B"))
                         .font(.system(size: 20, weight: .medium))
                 }
-
+                
                 Spacer()
-
+                
                 Text("About your future dog")
                     .font(.headline)
                     .foregroundColor(.black)
-
+                
                 Spacer()
-
+                
                 NavigationLink(destination: TabBarView()) {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
@@ -44,7 +44,7 @@ struct EnergyLevelView: View {
                 }
             }
             .padding(.horizontal)
-
+            
             // Progress bar (2 of 5 filled)
             HStack(spacing: 8) {
                 ForEach(0..<5) { index in
@@ -52,7 +52,7 @@ struct EnergyLevelView: View {
                         Capsule()
                             .stroke(Color(hex: "B67A4B"), lineWidth: 2)
                             .frame(height: 10)
-
+                        
                         if index < 2 {
                             Capsule()
                                 .fill(Color(hex: "F8CE9B"))
@@ -62,23 +62,23 @@ struct EnergyLevelView: View {
                 }
             }
             .padding(.horizontal)
-
+            
             Spacer().frame(height: 5)
-
+            
             // Question
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose matching energy levels:")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.black)
-
+                
                 ForEach(energyLevels, id: \.self) { level in
                     energySelectableRow(title: level)
                 }
             }
             .padding(.horizontal)
-
+            
             Spacer()
-
+            
             // Next button - disabled if none selected
             Button(action: {
                 saveSelection()
@@ -95,16 +95,19 @@ struct EnergyLevelView: View {
             .padding(.horizontal)
             .padding(.bottom, 40)
             
-            NavigationLink(destination: PersonalityPreferenceView(), isActive: $navigateToNext) {
-                EmptyView()
-            }
-            .hidden()
-            .navigationBarBackButtonHidden()
+           
         }
+        
+    
         .padding(.top, 30)
         .background(Color.white)
 //        .onAppear(perform: loadCurrentPreferences)
+        .navigationDestination(isPresented: $navigateToNext) {
+                        PersonalityPreferenceView()
+                    }
+                    .navigationBarBackButtonHidden()
     }
+    
 
     // MARK: - Energy Selectable Row
     func energySelectableRow(title: String) -> some View {

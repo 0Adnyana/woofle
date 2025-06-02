@@ -20,7 +20,6 @@ struct BirthYearView: View {
     @State private var navigateToNext = false
 
     var body: some View {
-        NavigationStack {
             VStack(spacing: 20) {
                 // Header with centered title and back button
                 ZStack {
@@ -129,7 +128,7 @@ struct BirthYearView: View {
                 .navigationBarBackButtonHidden()
 
             }
-        }
+        
     }
 }
 

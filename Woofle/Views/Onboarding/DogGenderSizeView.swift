@@ -121,14 +121,20 @@ struct DogGenderSizeView: View {
 
 
             // Navigation
-            NavigationLink(destination: EnergyLevelView(), isActive: $navigateToNext) {
-                EmptyView()
-            }
-            .hidden()
+//            NavigationLink(destination: EnergyLevelView(), isActive: $navigateToNext) {
+//                EmptyView()
+//            }
+//            .hidden()
         }
         .padding(.top, 30)
         .background(Color.white)
         .navigationBarBackButtonHidden()
+        
+        // Add this modifier to your outer VStack (or directly to the body)
+        .navigationDestination(isPresented: $navigateToNext) {
+            EnergyLevelView()
+        }
+
     }
 
     // MARK: - UI Components

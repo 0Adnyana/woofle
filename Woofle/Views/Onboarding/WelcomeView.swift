@@ -69,9 +69,8 @@ struct WelcomeView: View {
 
                 Spacer()
 
-                    .navigationDestination(isPresented: $navigateToNext) {
-                        BirthYearView()
-                    }
+    
+
 
                 .hidden()
             }

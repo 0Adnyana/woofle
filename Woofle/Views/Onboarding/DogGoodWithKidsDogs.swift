@@ -40,7 +40,9 @@ struct DogGoodWithKidsDogs: View {
                     Text("Skip")
                         .foregroundColor(Color(hex: "B67A4B"))
                         .fontWeight(.medium)
-                }
+                }.simultaneousGesture(TapGesture().onEnded {
+                    userViewModel.completeOnboarding()
+                })
             }
             .padding(.horizontal)
 

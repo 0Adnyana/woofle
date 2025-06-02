@@ -48,9 +48,7 @@ struct CongratulationsView: View {
                     .foregroundColor(Color(hex: "999999"))
                     .padding(.horizontal)
                 
-                Button(action: {
-                    goToTabBarView = true
-                }) {
+                NavigationLink(destination: TabBarView()) {
                     VStack(spacing: 4) {
                         Image(systemName: "dog.circle")
                             .font(.system(size: 32))
@@ -59,28 +57,6 @@ struct CongratulationsView: View {
                             .foregroundColor(Color(hex: "B67A4B"))
                             .fontWeight(.medium)
                     }
-                    
-                    // Home Button
-                    /*NavigationLink {
-                        TabBarView()
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image(systemName: "house.fill")
-                                .font(.system(size: 32))
-                                .foregroundColor(Color(hex: "000000"))
-                            Text("Home")
-                                .font(.caption)
-                                .foregroundColor(Color(hex: "000000"))
-                        }
-                        .fullScreenCover(isPresented: $goToTabBarView) {
-                            TabBarView()
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 60)
-                    */
                 }
             }
         }

@@ -101,6 +101,7 @@ struct PersonalityPreferenceView: View {
         }
         .padding(.top, 30)
         .background(Color.white)
+        .navigationBarBackButtonHidden()
     }
 
     // MARK: - Trait Row

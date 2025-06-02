@@ -69,13 +69,17 @@ struct WelcomeView: View {
 
                 Spacer()
 
-                NavigationLink(destination: BirthYearView(), isActive: $navigateToNext) {
+                /*NavigationLink(destination: BirthYearView(), isActive: $navigateToNext) {
                     EmptyView()
                 }
-                .hidden()
+                .hidden()*/
             }
             .padding()
+            .navigationDestination(isPresented: $navigateToNext) {
+                BirthYearView()
+            }
         }
+        
     }
 }
 

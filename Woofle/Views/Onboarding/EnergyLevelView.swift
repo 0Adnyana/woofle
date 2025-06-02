@@ -94,12 +94,12 @@ struct EnergyLevelView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
-
-
+            
             NavigationLink(destination: PersonalityPreferenceView(), isActive: $navigateToNext) {
                 EmptyView()
             }
             .hidden()
+            .navigationBarBackButtonHidden()
         }
         .padding(.top, 30)
         .background(Color.white)

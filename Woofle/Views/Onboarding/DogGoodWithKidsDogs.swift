@@ -113,6 +113,7 @@ struct DogGoodWithKidsDogs: View {
             })
             .padding(.horizontal)
             .padding(.bottom, 40)
+            .navigationBarBackButtonHidden()
         }
         .padding(.top, 30)
         .background(Color.white)

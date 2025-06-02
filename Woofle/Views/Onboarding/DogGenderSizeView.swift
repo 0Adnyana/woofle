@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct DogGenderSizeView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userViewModel: UserViewModel
 
     @State private var selectedGenders: Set<String> = []
@@ -21,17 +22,29 @@ struct DogGenderSizeView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Header
+            // Top Navigation
             HStack {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(Color(hex: "B67A4B"))
+                        .font(.system(size: 20, weight: .medium))
+                }
+
                 Spacer()
-                Text("About your dog")
+
+                Text("About your future dog")
                     .font(.headline)
                     .foregroundColor(.black)
+
                 Spacer()
-                Button("Skip") {
-                    navigateToNext = true
+
+                NavigationLink(destination: TabBarView()) {
+                    Text("Skip")
+                        .foregroundColor(Color(hex: "B67A4B"))
+                        .fontWeight(.medium)
                 }
-                .foregroundColor(Color(hex: "B67A4B"))
-                .fontWeight(.medium)
             }
             .padding(.horizontal)
 

@@ -43,7 +43,7 @@ struct BreedPreferenceView: View {
 
                 Text("About your dog")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
@@ -80,7 +80,7 @@ struct BreedPreferenceView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose breeds you like:")
                         .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     
                     ForEach(breeds, id: \.self) { breed in
                         breedSelectableRow(title: breed)
@@ -140,7 +140,7 @@ struct BreedPreferenceView: View {
         }) {
             HStack {
                 Text(title)
-                    .foregroundColor(selectedBreeds.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedBreeds.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

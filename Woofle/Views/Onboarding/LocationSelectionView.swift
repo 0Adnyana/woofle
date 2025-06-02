@@ -21,7 +21,7 @@ import CoreLocation
 struct LocationView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userViewModel: UserViewModel
-
+    
     @State private var selectedLocation: String? = nil
     @State private var selectedCoordinate: CLLocationCoordinate2D? = nil
     @State private var selectedRadius: Int = 30
@@ -30,13 +30,13 @@ struct LocationView: View {
     @State private var radiusSelected = false
     
     @StateObject private var locationManager = LocationManager()
-
-    @State private var navigateNext = false 
-
+    
+    @State private var navigateNext = false
+    
     var isFormComplete: Bool {
         selectedLocation != nil && selectedRadius > 0
     }
-
+    
     var body: some View {
         VStack(spacing: 20) {
             // Header
@@ -51,13 +51,13 @@ struct LocationView: View {
                     }
                     Spacer()
                 }
-
+                
                 Text("About you")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
             .padding(.horizontal)
-
+            
             // Progress bar
             HStack(spacing: 8) {
                 ForEach(0..<3) { _ in
@@ -72,20 +72,20 @@ struct LocationView: View {
                 }
             }
             .padding(.horizontal)
-
+            
             Spacer().frame(height: 5)
-
+            
             // Location Picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("Where do you live?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
-
+                    .foregroundColor(.primary)
+                
                 Button(action: {
                     showMapPicker = true
                 }) {
                     Text(selectedLocation ?? "Location")
-                        .foregroundColor(selectedLocation == nil ? .gray : .black)
+                        .foregroundColor(selectedLocation == nil ? .gray : .primary)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -98,20 +98,20 @@ struct LocationView: View {
             .sheet(isPresented: $showMapPicker) {
                 MapPickerView2(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
             }
-
+            
             // Distance Picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("Max distance to shelter")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .padding(.top, 57)
                     .multilineTextAlignment(.leading)
-
+                
                 Button(action: {
                     showRadiusPicker.toggle()
                 }) {
                     Text("\(selectedRadius) km")
-                        .foregroundColor(radiusSelected ? .black : .gray)
+                        .foregroundColor(radiusSelected ? .primary : .gray)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -119,7 +119,7 @@ struct LocationView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                 }
-
+                
                 if showRadiusPicker {
                     Picker("Radius", selection: Binding(
                         get: { selectedRadius },
@@ -137,20 +137,10 @@ struct LocationView: View {
                 }
             }
             .padding(.horizontal)
-
+            
             Spacer()
-
-            // Disclaimer
-            HStack(alignment: .top, spacing: 6) {
-                Image(systemName: "questionmark.circle.fill")
-                    .foregroundColor(Color(hex: "B8B8B8"))
-                    .font(.system(size: 18))
-
-                Text("We use your area to show dogs near you")
-                    .foregroundColor(Color(hex: "B8B8B8"))
-                    .font(.system(size: 15))
-                
-                Spacer()
+            
+ 
                 
                 // Disclaimer
                 HStack(alignment: .top, spacing: 6) {
@@ -189,28 +179,26 @@ struct LocationView: View {
                 
                 // Hidden NavigationLink to DogGenderSizeView
                 .navigationDestination(isPresented: $navigateNext) {
-                        DogGenderSizeView()
-                    }
+                    DogGenderSizeView()
+                }
                 .navigationBarBackButtonHidden()
-
-//
+                
+                //
                 
             }
             .padding(.top, 30)
             .background(Color.white)
-        
-    }
-}
-
-//PREVIEW
-struct LocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            LocationView()
-                .environmentObject(UserViewModel())
+            
         }
     }
-}
-
-
+    
+    //PREVIEW
+    struct LocationView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationView {
+                LocationView()
+                    .environmentObject(UserViewModel())
+            }
+        }
+    }
 

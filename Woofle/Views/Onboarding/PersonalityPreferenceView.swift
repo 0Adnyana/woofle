@@ -19,7 +19,6 @@ struct PersonalityPreferenceView: View {
     let traits = ["Playful", "Calm", "Curious", "Affectionate", "Protective", "Independent"]
 
     var body: some View {
-        NavigationStack{
             VStack(spacing: 20) {
                 
                 // Top Navigation
@@ -36,7 +35,7 @@ struct PersonalityPreferenceView: View {
                     
                     Text("About your future dog")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     
                     Spacer()
                     
@@ -72,7 +71,7 @@ struct PersonalityPreferenceView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Select personality traits:")
                         .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     
                     ForEach(traits, id: \.self) { trait in
                         traitSelectableRow(title: trait)
@@ -106,7 +105,7 @@ struct PersonalityPreferenceView: View {
             .padding(.top, 30)
             .background(Color.white)
             .navigationBarBackButtonHidden()
-        }
+        
     }
 
     // MARK: - Trait Row
@@ -120,7 +119,7 @@ struct PersonalityPreferenceView: View {
         }) {
             HStack {
                 Text(title)
-                    .foregroundColor(selectedTraits.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedTraits.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

@@ -57,7 +57,7 @@ struct WelcomeView: View {
                             navigateToNext = true
                         }) {
                             Image(systemName: "arrow.turn.down.left")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .padding()
                         }
                         .padding(.trailing, 8)

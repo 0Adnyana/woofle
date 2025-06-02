@@ -36,7 +36,7 @@ struct BirthYearView: View {
                     
                     Text("About you")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .padding(.horizontal)
                 
@@ -63,14 +63,14 @@ struct BirthYearView: View {
                 // Title
                 Text("What's your birth year?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 
                 // Custom input field
                 Button(action: {
                     showPicker.toggle()
                 }) {
                     Text(selectedYear)
-                        .foregroundColor(selectedYear == "2025" ? Color(hex: "999999") : .black)
+                        .foregroundColor(selectedYear == "2025" ? Color(hex: "999999") : .primary)
                         .frame(width: 350, height: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)

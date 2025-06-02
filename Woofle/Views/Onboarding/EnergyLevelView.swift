@@ -33,7 +33,7 @@ struct EnergyLevelView: View {
                 
                 Text("About your future dog")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 
                 Spacer()
                 
@@ -69,7 +69,7 @@ struct EnergyLevelView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose matching energy levels:")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 
                 ForEach(energyLevels, id: \.self) { level in
                     energySelectableRow(title: level)
@@ -120,7 +120,7 @@ struct EnergyLevelView: View {
         }) {
             HStack {
                 Text(title)
-                    .foregroundColor(selectedLevels.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedLevels.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

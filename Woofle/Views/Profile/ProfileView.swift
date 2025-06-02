@@ -38,7 +38,7 @@ struct ProfileView: View {
 
             Text("Profile Settings")
                 .font(.headline)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
         }
         .padding(.horizontal)
         .padding(.top, 10)
@@ -87,7 +87,7 @@ struct ProfileView: View {
                 )
             }
         }
-        .background(Color.white)
+        .background(Color(.systemBackground))
     }
 
     private var dogPreferencesSection: some View {

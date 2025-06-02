@@ -26,7 +26,7 @@ struct GenderSelectionView: View {
                     
                     Text("About you")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .padding(.horizontal)
                 
@@ -53,7 +53,7 @@ struct GenderSelectionView: View {
                 // Title
                 Text("What's your gender?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 
                 // Gender buttons
                 VStack(spacing: 16) {
@@ -68,7 +68,7 @@ struct GenderSelectionView: View {
                                 .background(
                                     selectedGender == gender ? Color(red: 0.996, green: 0.961, blue: 0.922) : Color.white
                                 )
-                                .foregroundColor(selectedGender == gender ? .black : Color.gray)
+                                .foregroundColor(selectedGender == gender ? .primary : Color.gray)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(

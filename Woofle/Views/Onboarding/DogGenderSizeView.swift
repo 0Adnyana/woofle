@@ -37,7 +37,7 @@ struct DogGenderSizeView: View {
 
                 Text("About your future dog")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
@@ -70,7 +70,7 @@ struct DogGenderSizeView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Preferred gender(s)?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 ForEach(dogGenders, id: \.self) { gender in
                     genderToggleButton(title: gender)
                 }
@@ -81,7 +81,7 @@ struct DogGenderSizeView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose preferred sizes:")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 ForEach(sizes, id: \.self) { size in
                     sizeToggleRow(title: size)
@@ -148,7 +148,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedGenders.contains(title) ? .primary : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {
@@ -194,7 +194,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedSizes.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedSizes.contains(title) ? .primary : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {

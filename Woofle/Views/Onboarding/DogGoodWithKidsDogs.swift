@@ -32,7 +32,7 @@ struct DogGoodWithKidsDogs: View {
 
                 Text("About your future dog")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
@@ -66,7 +66,7 @@ struct DogGoodWithKidsDogs: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("The dog should be:")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 ForEach(options, id: \.self) { option in
                     selectableRow(title: option)
@@ -113,7 +113,7 @@ struct DogGoodWithKidsDogs: View {
         }) {
             HStack {
                 Text(title)
-                    .foregroundColor(selectedOptions.contains(title) ? .black : .gray)
+                    .foregroundColor(selectedOptions.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

@@ -2,9 +2,6 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
-import SwiftUI
-import MapKit
-import CoreLocation
 
 // MARK: - User Profile Settings Main View
 struct ProfileView: View {
@@ -109,13 +106,15 @@ struct ProfileView: View {
             }
             Divider().padding(.leading, 72)
 
-            NavigationLink(destination: Text("Behaviour Settings")) {
+            NavigationLink(destination: DogBehaviourView()
+                .environmentObject(userViewModel)) {
                 rowView(
                     iconName: "hand.raised.fill",
                     title: "Behaviour",
                     subtitle: "Edit dog personality"
                 )
             }
+
         }
         .background(Color.white)
     }

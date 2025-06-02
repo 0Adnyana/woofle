@@ -19,6 +19,7 @@ struct LocationSettingsDetailView: View {
     @State private var showRadiusPicker = false
     @State private var showMapPicker = false
     @State private var radiusSelected = false
+    
 
     var body: some View {
         VStack(spacing: 20) {
@@ -63,8 +64,9 @@ struct LocationSettingsDetailView: View {
             }
             .padding(.horizontal)
             .sheet(isPresented: $showMapPicker) {
-                MapPickerView(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
+                MapPickerView2(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
             }
+
 
             // Distance Picker
             VStack(alignment: .leading, spacing: 8) {

@@ -96,7 +96,7 @@ struct LocationView: View {
             }
             .padding(.horizontal)
             .sheet(isPresented: $showMapPicker) {
-                MapPickerView(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
+                MapPickerView2(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
             }
 
             // Distance Picker

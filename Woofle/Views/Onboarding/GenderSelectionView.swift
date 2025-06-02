@@ -115,17 +115,7 @@ struct GenderSelectionView: View {
                     genderEnum = .other
                 }
 
-                let current = userViewModel.user
-                let updated = UserProfile(
-                    id: current.id,
-                    name: current.name,
-                    gender: genderEnum,
-                    age: current.age,
-                    location: current.location,
-                    preferences: current.preferences
-                )
-
-                userViewModel.update(updated)
+                userViewModel.updateGender(genderEnum)
                 navigateToNext = true
             }) {
                 Text("Next")

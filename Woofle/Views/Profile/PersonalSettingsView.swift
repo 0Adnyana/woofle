@@ -190,6 +190,6 @@ struct PersonalSettingsDetailView: View {
             preferences: current.preferences
         )
 
-        userViewModel.update(updatedUser)
+        userViewModel.updateUserProfile(updatedUser)
     }
 }

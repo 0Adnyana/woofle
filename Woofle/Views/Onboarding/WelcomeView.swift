@@ -46,32 +46,14 @@ struct WelcomeView: View {
                         .submitLabel(.done)
                         .onSubmit {
                             if !nameInput.isEmpty {
-                                let existingUser = userViewModel.user
-                                let updatedUser = UserProfile(
-                                    id: existingUser.id,
-                                    name: nameInput,
-                                    gender: existingUser.gender,
-                                    age: existingUser.age,
-                                    location: existingUser.location,
-                                    preferences: existingUser.preferences
-                                )
-                                userViewModel.update(updatedUser)
+                                userViewModel.updateName(nameInput)
                                 navigateToNext = true
                             }
                         }
 
                     if !nameInput.isEmpty {
                         Button(action: {
-                            let existingUser = userViewModel.user
-                            let updatedUser = UserProfile(
-                                id: existingUser.id,
-                                name: nameInput,
-                                gender: existingUser.gender,
-                                age: existingUser.age,
-                                location: existingUser.location,
-                                preferences: existingUser.preferences
-                            )
-                            userViewModel.update(updatedUser)
+                            userViewModel.updateName(nameInput)
                             navigateToNext = true
                         }) {
                             Image(systemName: "arrow.turn.down.left")
@@ -99,6 +81,7 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
+        
         WelcomeView()
             .environmentObject(UserViewModel())
     }

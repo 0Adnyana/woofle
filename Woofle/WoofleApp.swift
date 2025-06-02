@@ -10,11 +10,12 @@ import SwiftUI
 
 @main
 struct WoofleApp: App {
-    @StateObject private var userViewModel = UserViewModel()
+//    @StateObject private var userViewModel = UserViewModel()
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
-            .environmentObject(userViewModel)
+//            WelcomeView()
+//            .environmentObject(userViewModel)
+            RootView()
         }
     }
 }

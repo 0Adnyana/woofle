@@ -12,13 +12,13 @@ struct DogBasicsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     // MARK: - State Variables
-    @State private var selectedGender: String? = nil
+    @State private var selectedGenders: Set<String> = []
     @State private var selectedSizes: Set<String> = []
     @State private var selectedEnergyLevels: Set<String> = []
     @State private var selectedBreeds: Set<String> = []
     
     // MARK: - Data Arrays
-    let genders = ["female", "male"]
+    let dogGenders = ["female", "male"]
     let sizes = ["small", "middle", "high"]
     let energyLevels = ["Low", "Middle", "High"]
     let breeds = [
@@ -63,8 +63,8 @@ struct DogBasicsView: View {
                         .padding(.horizontal)
                     
                     HStack(spacing: 12) {
-                        ForEach(genders, id: \.self) { gender in
-                            genderButton(title: gender)
+                        ForEach(dogGenders, id: \.self) { gender in
+                            genderToggleButton(title: gender)
                         }
                     }
                     .padding(.horizontal)
@@ -132,18 +132,40 @@ struct DogBasicsView: View {
     }
     
     // MARK: - UI Components
-    func genderButton(title: String) -> some View {
+//    func genderButton(title: String) -> some View {
+//        Button {
+//            selectedGender = selectedGender == title ? nil : title
+//        } label: {
+//            Text(title.capitalized)
+//                .foregroundColor(selectedGender == title ? .black : .gray)
+//                .frame(height: 50)
+//                .frame(maxWidth: .infinity)
+//                .background(selectedGender == title ? Color(hex: "F8EEDF") : Color.white)
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 12)
+//                        .stroke(selectedGender == title ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+//                )
+//                .cornerRadius(12)
+//        }
+//    }
+    
+    
+    func genderToggleButton(title: String) -> some View {
         Button {
-            selectedGender = selectedGender == title ? nil : title
+            if selectedGenders.contains(title) {
+                selectedGenders.remove(title)
+            } else {
+                selectedGenders.insert(title)
+            }
         } label: {
             Text(title.capitalized)
-                .foregroundColor(selectedGender == title ? .black : .gray)
+                .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .background(selectedGender == title ? Color(hex: "F8EEDF") : Color.white)
+                .background(selectedGenders.contains(title) ? Color(hex: "F8EEDF") : Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(selectedGender == title ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+                        .stroke(selectedGenders.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
                 )
                 .cornerRadius(12)
         }
@@ -291,6 +313,10 @@ struct DogBasicsView: View {
         // Convert selectedSizes to Size enum array
         let sizesEnum = selectedSizes.compactMap { Size(rawValue: $0.lowercased()) }
         
+        let genderEnum = selectedGenders.compactMap {
+            DogGender(rawValue: $0.lowercased())
+        }
+        
         // Convert selectedEnergyLevels to EnergyLevel enum array
         let energyLevelsEnum: [EnergyLevel] = selectedEnergyLevels.compactMap { levelString in
             switch levelString {
@@ -305,6 +331,7 @@ struct DogBasicsView: View {
         let updatedPreferences = UserPreferences(
             preferredBreeds: Array(selectedBreeds),
             sizePreferences: sizesEnum,
+            genderPreferences: genderEnum,
             activityLevels: energyLevelsEnum,
             goodWithKids: current.preferences.goodWithKids,
             goodWithOtherDogs: current.preferences.goodWithOtherDogs,
@@ -312,17 +339,17 @@ struct DogBasicsView: View {
             preferredRadius: current.preferences.preferredRadius
         )
         
-        // Create updated user profile
-        let updatedUser = UserProfile(
-            id: current.id,
-            name: current.name,
-            gender: current.gender,
-            age: current.age,
-            location: current.location,
-            preferences: updatedPreferences
-        )
+//        // Create updated user profile
+//        let updatedUser = UserProfile(
+//            id: current.id,
+//            name: current.name,
+//            gender: current.gender,
+//            age: current.age,
+//            location: current.location,
+//            preferences: updatedPreferences
+//        )
         
-        userViewModel.update(updatedUser)
+        userViewModel.updateUserPreferences(updatedPreferences)
     }
 }
 

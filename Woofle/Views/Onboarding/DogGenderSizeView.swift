@@ -81,7 +81,17 @@ struct DogGenderSizeView: View {
 
             // Next Button
             Button(action: {
-                savePreferences()
+                let finalDogGenders: [DogGender] = selectedGenders.isEmpty
+                    ? dogGenders.compactMap { DogGender(rawValue: $0.lowercased()) }
+                    : selectedGenders.compactMap { DogGender(rawValue: $0.lowercased()) }
+
+                let finalSizes: [Size] = selectedSizes.isEmpty
+                    ? sizes.compactMap { Size(rawValue: $0.lowercased()) }
+                    : selectedSizes.compactMap { Size(rawValue: $0.lowercased()) }
+
+                userViewModel.updateGenderPreferences(finalDogGenders)
+                userViewModel.updateSizePreferences(finalSizes)
+
                 navigateToNext = true
             }) {
                 Text("Next")
@@ -94,6 +104,7 @@ struct DogGenderSizeView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
+
 
             // Navigation
             NavigationLink(destination: EnergyLevelView(), isActive: $navigateToNext) {

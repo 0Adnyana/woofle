@@ -24,6 +24,7 @@ struct DogBasicsView: View {
     let breeds = [
         "Golden Retriever",
         "Labrador Retriever",
+        "Beagle",
         "Pomeranian",
         "Shih Tzu",
         "German Shepherd",
@@ -62,10 +63,8 @@ struct DogBasicsView: View {
                         .foregroundColor(.black)
                         .padding(.horizontal)
                     
-                    HStack(spacing: 12) {
-                        ForEach(dogGenders, id: \.self) { gender in
-                            genderToggleButton(title: gender)
-                        }
+                    ForEach(dogGenders, id: \.self) { gender in
+                        genderToggleButton(title: gender)
                     }
                     .padding(.horizontal)
                 }
@@ -132,23 +131,6 @@ struct DogBasicsView: View {
     }
     
     // MARK: - UI Components
-//    func genderButton(title: String) -> some View {
-//        Button {
-//            selectedGender = selectedGender == title ? nil : title
-//        } label: {
-//            Text(title.capitalized)
-//                .foregroundColor(selectedGender == title ? .black : .gray)
-//                .frame(height: 50)
-//                .frame(maxWidth: .infinity)
-//                .background(selectedGender == title ? Color(hex: "F8EEDF") : Color.white)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 12)
-//                        .stroke(selectedGender == title ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
-//                )
-//                .cornerRadius(12)
-//        }
-//    }
-    
     
     func genderToggleButton(title: String) -> some View {
         Button {
@@ -158,16 +140,31 @@ struct DogBasicsView: View {
                 selectedGenders.insert(title)
             }
         } label: {
-            Text(title.capitalized)
-                .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(selectedGenders.contains(title) ? Color(hex: "F8EEDF") : Color.white)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(selectedGenders.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
-                )
-                .cornerRadius(12)
+            HStack {
+                Text(title.capitalized)
+                    .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
+                    .font(.system(size: 16))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                ZStack {
+                    Circle()
+                        .stroke(selectedGenders.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 2)
+                        .frame(width: 24, height: 24)
+                    if selectedGenders.contains(title) {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(Color(hex: "B67A4B"))
+                            .font(.system(size: 12, weight: .bold))
+                    }
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(selectedGenders.contains(title) ? Color(hex: "F8EEDF") : Color.white)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(selectedGenders.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+            )
+            .cornerRadius(12)
         }
     }
     
@@ -290,6 +287,8 @@ struct DogBasicsView: View {
         // Load size preferences
         selectedSizes = Set(preferences.sizePreferences.map { $0.rawValue })
         
+        selectedGenders = Set(preferences.genderPreferences.map { $0.rawValue })
+        
         // Load energy levels
         selectedEnergyLevels = Set(
             preferences.activityLevels.compactMap {
@@ -327,29 +326,11 @@ struct DogBasicsView: View {
             }
         }
         
-        // Create updated preferences
-        let updatedPreferences = UserPreferences(
-            preferredBreeds: Array(selectedBreeds),
-            sizePreferences: sizesEnum,
-            genderPreferences: genderEnum,
-            activityLevels: energyLevelsEnum,
-            goodWithKids: current.preferences.goodWithKids,
-            goodWithOtherDogs: current.preferences.goodWithOtherDogs,
-            personalityPreferences: current.preferences.personalityPreferences,
-            preferredRadius: current.preferences.preferredRadius
-        )
-        
-//        // Create updated user profile
-//        let updatedUser = UserProfile(
-//            id: current.id,
-//            name: current.name,
-//            gender: current.gender,
-//            age: current.age,
-//            location: current.location,
-//            preferences: updatedPreferences
-//        )
-        
-        userViewModel.updateUserPreferences(updatedPreferences)
+        // Update Preferences
+        userViewModel.updateSizePreferences(sizesEnum)
+        userViewModel.updateGenderPreferences(genderEnum)
+        userViewModel.updateActivityLevels(energyLevelsEnum)
+        userViewModel.updateBreedPreferences(Array(selectedBreeds))
     }
 }
 

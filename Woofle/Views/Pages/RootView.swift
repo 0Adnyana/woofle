@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RootView: View {
-    @AppStorage("isUserOnboarded") var isUserOnboarded: Bool = false
         @StateObject private var tournamentVM = TournamentViewModel(
             userService: UserStorageService(),
             matchingService: TournamentMatchingService(),
@@ -18,7 +17,7 @@ struct RootView: View {
     @StateObject private var userVM = UserViewModel()
         
         var body: some View {
-            if isUserOnboarded {
+            if userVM.isUserOnboarded {
                 TabBarView()
                     .environmentObject(tournamentVM)
                     .environmentObject(userVM)

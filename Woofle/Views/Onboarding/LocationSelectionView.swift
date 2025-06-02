@@ -38,105 +38,117 @@ struct LocationView: View {
     }
 
     var body: some View {
-            VStack(spacing: 20) {
-                // Header
-                ZStack {
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color(hex: "B67A4B"))
-                                .font(.system(size: 20, weight: .medium))
-                        }
-                        Spacer()
-                    }
-                    
-                    Text("About you")
-                        .font(.headline)
-                        .foregroundColor(.black)
-                }
-                .padding(.horizontal)
-                
-                // Progress bar
-                HStack(spacing: 8) {
-                    ForEach(0..<3) { _ in
-                        ZStack {
-                            Capsule()
-                                .stroke(Color(hex: "B67A4B"), lineWidth: 2)
-                                .frame(height: 10)
-                            Capsule()
-                                .fill(Color(hex: "F8CE9B"))
-                                .frame(height: 10)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-                
-                Spacer().frame(height: 5)
-                
-                // Location Picker
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Where do you live?")
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.black)
-                    
+        VStack(spacing: 20) {
+            // Header
+            ZStack {
+                HStack {
                     Button(action: {
-                        showMapPicker = true
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text(selectedLocation ?? "Location")
-                            .foregroundColor(selectedLocation == nil ? .gray : .black)
-                            .frame(height: 50)
-                            .frame(maxWidth: .infinity)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color(hex: "B67A4B"))
+                            .font(.system(size: 20, weight: .medium))
+                    }
+                    Spacer()
+                }
+
+                Text("About you")
+                    .font(.headline)
+                    .foregroundColor(.black)
+            }
+            .padding(.horizontal)
+
+            // Progress bar
+            HStack(spacing: 8) {
+                ForEach(0..<3) { _ in
+                    ZStack {
+                        Capsule()
+                            .stroke(Color(hex: "B67A4B"), lineWidth: 2)
+                            .frame(height: 10)
+                        Capsule()
+                            .fill(Color(hex: "F8CE9B"))
+                            .frame(height: 10)
                     }
                 }
-                .padding(.horizontal)
-                .sheet(isPresented: $showMapPicker) {
-                    MapPickerView(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
+            }
+            .padding(.horizontal)
+
+            Spacer().frame(height: 5)
+
+            // Location Picker
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Where do you live?")
+                    .font(.system(size: 24, weight: .semibold))
+                    .foregroundColor(.black)
+
+                Button(action: {
+                    showMapPicker = true
+                }) {
+                    Text(selectedLocation ?? "Location")
+                        .foregroundColor(selectedLocation == nil ? .gray : .black)
+                        .frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                 }
-                
-                // Distance Picker
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Max distance to shelter")
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.black)
-                        .padding(.top, 57)
-                        .multilineTextAlignment(.leading)
-                    
-                    Button(action: {
-                        showRadiusPicker.toggle()
-                    }) {
-                        Text("\(selectedRadius) km")
-                            .foregroundColor(radiusSelected ? .black : .gray)
-                            .frame(height: 50)
-                            .frame(maxWidth: .infinity)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
-                    }
-                    
-                    if showRadiusPicker {
-                        Picker("Radius", selection: Binding(
-                            get: { selectedRadius },
-                            set: { newValue in
-                                selectedRadius = newValue
-                                radiusSelected = true
-                            }
-                        )) {
-                            ForEach(1...300, id: \.self) { value in
-                                Text("\(value) km").tag(value)
-                            }
+            }
+            .padding(.horizontal)
+            .sheet(isPresented: $showMapPicker) {
+                MapPickerView2(selectedCoordinate: $selectedCoordinate, selectedLocation: $selectedLocation)
+            }
+
+            // Distance Picker
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Max distance to shelter")
+                    .font(.system(size: 24, weight: .semibold))
+                    .foregroundColor(.black)
+                    .padding(.top, 57)
+                    .multilineTextAlignment(.leading)
+
+                Button(action: {
+                    showRadiusPicker.toggle()
+                }) {
+                    Text("\(selectedRadius) km")
+                        .foregroundColor(radiusSelected ? .black : .gray)
+                        .frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                }
+
+                if showRadiusPicker {
+                    Picker("Radius", selection: Binding(
+                        get: { selectedRadius },
+                        set: { newValue in
+                            selectedRadius = newValue
+                            radiusSelected = true
                         }
-                        .pickerStyle(WheelPickerStyle())
-                        .frame(height: 120)
+                    )) {
+                        ForEach(1...300, id: \.self) { value in
+                            Text("\(value) km").tag(value)
+                        }
                     }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(height: 120)
                 }
-                .padding(.horizontal)
+            }
+            .padding(.horizontal)
+
+            Spacer()
+
+            // Disclaimer
+            HStack(alignment: .top, spacing: 6) {
+                Image(systemName: "questionmark.circle.fill")
+                    .foregroundColor(Color(hex: "B8B8B8"))
+                    .font(.system(size: 18))
+
+                Text("We use your area to show dogs near you")
+                    .foregroundColor(Color(hex: "B8B8B8"))
+                    .font(.system(size: 15))
                 
                 Spacer()
                 

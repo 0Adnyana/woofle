@@ -34,4 +34,20 @@ final class PastWinnersStorageService {
             print("❌ Failed to save winners: \(error)")
         }
     }
+    
+    func delete(deletedDog: Dog) {
+        var all = load()
+        all.removeAll(where: { $0 == deletedDog.id })
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName) else {
+            print("❌ Could not get file URL")
+            return
+        }
+        do {
+            let data = try JSONEncoder().encode(all)
+            try data.write(to: url)
+            print("✅ Saved winners to \(url)")
+        } catch {
+            print("❌ Failed to save winners: \(error)")
+        }
+    }
 }

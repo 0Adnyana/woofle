@@ -46,8 +46,9 @@ struct LocationSettingsDetailView: View {
             // Location Picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("Where do you live?")
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.primary)
+                    .padding(.horizontal)
 
                 Button(action: {
                     showMapPicker = true
@@ -71,9 +72,9 @@ struct LocationSettingsDetailView: View {
             // Distance Picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("Distance between you and the dog shelter:")
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.primary)
-                    .padding(.top, 40)
+                    .padding(.horizontal)
 
                 Button(action: {
                     showRadiusPicker.toggle()

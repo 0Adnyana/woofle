@@ -69,7 +69,7 @@ struct EnergyLevelView: View {
             
             // Question
             VStack(alignment: .leading, spacing: 12) {
-                Text("Choose matching energy levels:")
+                Text("How much energy should your dog have?")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.primary)
                 

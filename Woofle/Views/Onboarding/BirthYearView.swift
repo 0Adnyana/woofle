@@ -42,7 +42,7 @@ struct BirthYearView: View {
                 
                 // Progress Bar
                 HStack(spacing: 8) {
-                    ForEach(0..<3) { index in
+                    ForEach(0..<4) { index in
                         ZStack {
                             Capsule()
                                 .stroke(Color(hex: "B67A4B"), lineWidth: 2)

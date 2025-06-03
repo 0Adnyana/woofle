@@ -58,21 +58,24 @@ struct LocationView: View {
             }
             .padding(.horizontal)
             
-            // Progress bar
+            // Progress bar (3 of 4 steps → 3 filled bars)
             HStack(spacing: 8) {
-                ForEach(0..<3) { _ in
+                ForEach(0..<4) { index in
                     ZStack {
                         Capsule()
                             .stroke(Color(hex: "B67A4B"), lineWidth: 2)
                             .frame(height: 10)
-                        Capsule()
-                            .fill(Color(hex: "F8CE9B"))
-                            .frame(height: 10)
+                        
+                        if index < 3 { // Only fill first 3 bars
+                            Capsule()
+                                .fill(Color(hex: "F8CE9B"))
+                                .frame(height: 10)
+                        }
                     }
                 }
             }
             .padding(.horizontal)
-            
+
             Spacer().frame(height: 5)
             
             // Location Picker
@@ -179,7 +182,7 @@ struct LocationView: View {
                 
                 // Hidden NavigationLink to DogGenderSizeView
                 .navigationDestination(isPresented: $navigateNext) {
-                    DogGenderSizeView()
+                    DogGoodWithKidsDogs()
                 }
                 .navigationBarBackButtonHidden()
                 

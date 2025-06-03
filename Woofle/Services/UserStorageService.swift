@@ -32,6 +32,11 @@ final class UserStorageService {
             print("❌ Failed to save user profile: \(error)")
         }
     }
+    
+    func delete() {
+        guard let url = getFileURL() else { return }
+        try? FileManager.default.removeItem(at: url)
+    }
 
     private func getFileURL() -> URL? {
         FileManager.default

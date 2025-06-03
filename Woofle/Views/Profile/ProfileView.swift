@@ -16,6 +16,11 @@ struct ProfileView: View {
                 avatarSection
                 personalInformationSection
                 dogPreferencesSection
+                
+                Button("Reset All Data") {
+                    userViewModel.resetAllUserData()
+                }
+
             }
             .padding(.bottom)
             .background(.secondary.opacity(0.05))

@@ -37,7 +37,7 @@ struct LocationSettingsDetailView: View {
                 }
                 Text("Location Settings")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
             .padding(.horizontal)
 
@@ -47,13 +47,13 @@ struct LocationSettingsDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Where do you live?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Button(action: {
                     showMapPicker = true
                 }) {
                     Text(selectedLocation ?? "Location")
-                        .foregroundColor(selectedLocation == nil ? .gray : .black)
+                        .foregroundColor(selectedLocation == nil ? .secondary : .primary)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -72,14 +72,14 @@ struct LocationSettingsDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Distance between you and the dog shelter:")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .padding(.top, 40)
 
                 Button(action: {
                     showRadiusPicker.toggle()
                 }) {
                     Text("\(selectedRadius) km")
-                        .foregroundColor(radiusSelected ? .black : .gray)
+                        .foregroundColor(radiusSelected ? .primary : .secondary)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -147,8 +147,9 @@ struct LocationSettingsDetailView: View {
                 selectedLocation = address ?? "Your location"
             }
         }
-        .background(Color.white)
+        //.background(Color.white)
         .padding(.top, 30)
+        .navigationBarBackButtonHidden()
     }
 
     private func saveChanges() {

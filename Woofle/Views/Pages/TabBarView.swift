@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color(.systemBackground)) // Set your desired background color here
+        
+        // Optional: Customize selection indicator or shadow if needed
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         NavigationStack {
             TabView {

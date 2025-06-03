@@ -41,10 +41,6 @@ struct ProfileView: View {
                     .foregroundColor(.primary)
                 Spacer()
             }
-
-            Text("Profile Settings")
-                .font(.headline)
-                .foregroundColor(.primary)
         }
         .padding(.horizontal)
         .padding(.top, 10)

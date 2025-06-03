@@ -18,11 +18,16 @@ struct DogBehaviourView: View {
     @State private var isGoodWithOtherDogs: Bool = false
     
     // MARK: - Data Arrays
-    let personalities = ["Playful", "Calm", "Curious", "Affectionate", "Protective", "Independent"]
+    let personalities: [String]
+    
+    init() {
+        self.personalities = PersonalityTrait.allCases.map { $0.rawValue }
+    }
     
     var body: some View {
 
-            VStack(spacing: 24) {
+        VStack(spacing: 24) {
+            
                 // Header
                 ZStack {
                     HStack {
@@ -37,16 +42,19 @@ struct DogBehaviourView: View {
                     }
                     Text("Dog Behaviour")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)
                 
+            
+            
+            ScrollView {
                 // Personality Section
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose preferred personalities:")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     ForEach(personalities, id: \.self) { personality in
@@ -59,7 +67,7 @@ struct DogBehaviourView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("The dog should be:")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     goodWithKidsRow()
@@ -69,24 +77,27 @@ struct DogBehaviourView: View {
                         .padding(.horizontal)
                 }
                 
-                Spacer().frame(height: 10)
-                
-                // Save Button
-                Button(action: {
-                    saveChanges()
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Save")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(hex: "A3B18A"))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
-                .padding(.horizontal)
             }
+            Spacer().frame(height: 10)
+            
+            // Save Button
+            Button(action: {
+                saveChanges()
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("Save")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(hex: "A3B18A"))
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 40)
+        }
         .onAppear(perform: loadCurrentPreferences)
+        .navigationBarBackButtonHidden()
     }
     
     // MARK: - UI Components
@@ -99,7 +110,7 @@ struct DogBehaviourView: View {
             }
         }) {
             HStack {
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedPersonalities.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
                     .frame(maxWidth: .infinity, alignment: .center)

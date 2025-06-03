@@ -68,6 +68,8 @@ struct DogGenderSizeView: View {
             }
             .padding(.horizontal)
 
+            Spacer().frame(height: 5)
+            
             // Gender Preferences
             VStack(alignment: .leading, spacing: 12) {
                 Text("Preferred gender(s)?")
@@ -79,6 +81,8 @@ struct DogGenderSizeView: View {
             }
             .padding(.horizontal)
 
+            Spacer().frame(height: 5)
+            
             // Size Preferences
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose preferred sizes:")

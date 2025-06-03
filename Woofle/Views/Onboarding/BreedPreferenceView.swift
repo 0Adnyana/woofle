@@ -13,21 +13,14 @@ struct BreedPreferenceView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var selectedBreeds: Set<String> = []
 
-    let breeds = [
-        "Golden Retriever",
-        "Labrador Retriever",
-        "Pomeranian",
-        "Shih Tzu",
-        "German Shepherd",
-        "Bulldog",
-        "Siberian Husky",
-        "Chihuahua",
-        "Dachshund",
-        "Beagles"
-    ]
+    let breeds: [String]
 
+    init() {
+        self.breeds = BreedLoader.loadBreeds()
+    }
+    
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 20) {
 
             // Top Navigation
             HStack {
@@ -75,57 +68,64 @@ struct BreedPreferenceView: View {
             }
             .padding(.horizontal)
 
-            Spacer().frame(height: 10)
+            Spacer().frame(height: 5)
 
             // Question & Breed List
-            ScrollView {
+            
+           
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose breeds you like:")
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundColor(.primary)
                     
-                    ForEach(breeds, id: \.self) { breed in
-                        breedSelectableRow(title: breed)
+                    ScrollView {
+                        VStack {
+                            ForEach(breeds, id: \.self) { breed in
+                                breedSelectableRow(title: breed)
+                            }
+                        }
+                        .padding(.bottom, 20)
                     }
+                    
                 }
                 .padding(.horizontal)
-            }
-
-            Spacer().frame(height: 5)
-
-            // Always-enabled Next button
-            NavigationLink(destination: DogGoodWithKidsDogs()) {
-                Text("Next")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(hex: "A0B58E"))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-//                let existing = userViewModel.user
-//                let updated = UserProfile(
-//                    id: existing.id,
-//                    name: existing.name,
-//                    gender: existing.gender,
-//                    age: existing.age,
-//                    location: existing.location,
-//                    preferences: UserPreferences(
-//                        preferredBreeds: Array(selectedBreeds),
-//                        sizePreferences: existing.preferences.sizePreferences,
-//                        activityLevels: existing.preferences.activityLevels,
-//                        goodWithKids: existing.preferences.goodWithKids,
-//                        goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
-//                        personalityPreferences: existing.preferences.personalityPreferences,
-//                        preferredRadius: existing.preferences.preferredRadius
-//                    )
-//                )
-                userViewModel.updateBreedPreferences(Array(selectedBreeds))
-            })
-
-            .padding(.horizontal)
-            .padding(.bottom, 40)
+                
+                Spacer()
+                
+                // Always-enabled Next button
+                NavigationLink(destination: DogGoodWithKidsDogs()) {
+                    Text("Next")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color(hex: "A0B58E"))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .simultaneousGesture(TapGesture().onEnded {
+                    //                let existing = userViewModel.user
+                    //                let updated = UserProfile(
+                    //                    id: existing.id,
+                    //                    name: existing.name,
+                    //                    gender: existing.gender,
+                    //                    age: existing.age,
+                    //                    location: existing.location,
+                    //                    preferences: UserPreferences(
+                    //                        preferredBreeds: Array(selectedBreeds),
+                    //                        sizePreferences: existing.preferences.sizePreferences,
+                    //                        activityLevels: existing.preferences.activityLevels,
+                    //                        goodWithKids: existing.preferences.goodWithKids,
+                    //                        goodWithOtherDogs: existing.preferences.goodWithOtherDogs,
+                    //                        personalityPreferences: existing.preferences.personalityPreferences,
+                    //                        preferredRadius: existing.preferences.preferredRadius
+                    //                    )
+                    //                )
+                    userViewModel.updateBreedPreferences(Array(selectedBreeds))
+                })
+                .padding(.horizontal)
+                .padding(.bottom, 40)
+            
+                
         }
         .padding(.top, 30)
         .background(Color.white)

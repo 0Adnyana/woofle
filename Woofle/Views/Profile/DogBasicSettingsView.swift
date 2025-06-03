@@ -18,21 +18,17 @@ struct DogBasicsView: View {
     @State private var selectedBreeds: Set<String> = []
     
     // MARK: - Data Arrays
-    let dogGenders = ["female", "male"]
-    let sizes = ["small", "medium", "large"]
-    let energyLevels = ["Low", "Middle", "High"]
-    let breeds = [
-        "Golden Retriever",
-        "Labrador Retriever",
-        "Beagle",
-        "Pomeranian",
-        "Shih Tzu",
-        "German Shepherd",
-        "Bulldog",
-        "Siberian Husky",
-        "Chihuahua",
-        "Dachshund"
-    ]
+    let dogGenders: [String]
+    let sizes: [String]
+    let energyLevels: [String]
+    let breeds: [String]
+    
+    init() {
+        self.breeds = BreedLoader.loadBreeds()
+        self.dogGenders = DogGender.allCases.map { $0.rawValue }
+        self.sizes = Size.allCases.map { $0.rawValue }
+        self.energyLevels = EnergyLevel.allCases.map { $0.rawValue }
+    }
     
     var body: some View {
         ScrollView {
@@ -51,7 +47,7 @@ struct DogBasicsView: View {
                     }
                     Text("Dog Basics")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)
@@ -60,7 +56,7 @@ struct DogBasicsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Preferred gender?")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     ForEach(dogGenders, id: \.self) { gender in
@@ -73,7 +69,7 @@ struct DogBasicsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose preferred sizes:")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     ForEach(sizes, id: \.self) { size in
@@ -86,7 +82,7 @@ struct DogBasicsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose matching energy levels:")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     ForEach(energyLevels, id: \.self) { level in
@@ -99,7 +95,7 @@ struct DogBasicsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Choose breeds you like:")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
                     
                     ForEach(breeds, id: \.self) { breed in
@@ -126,6 +122,7 @@ struct DogBasicsView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 40)
             }
+            .navigationBarBackButtonHidden()
         }
         .onAppear(perform: loadCurrentPreferences)
     }
@@ -213,7 +210,7 @@ struct DogBasicsView: View {
             }
         }) {
             HStack {
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedEnergyLevels.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
                 

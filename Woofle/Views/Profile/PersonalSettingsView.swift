@@ -39,7 +39,7 @@ struct PersonalSettingsDetailView: View {
                 }
                 Text("Personal Settings")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
             .padding(.horizontal)
             .padding(.top, 10)
@@ -48,7 +48,7 @@ struct PersonalSettingsDetailView: View {
             ZStack(alignment: .trailing) {
                 TextField("Your Name", text: $nameInput)
                     .padding()
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color.gray.opacity(0.3))
                     .cornerRadius(15)
                     .submitLabel(.done)
                     .onAppear {
@@ -108,13 +108,13 @@ struct PersonalSettingsDetailView: View {
             VStack(spacing: 8) {
                 Text("What's your birth year?")
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
 
                 Button(action: {
                     showPicker.toggle()
                 }) {
                     Text(selectedYear == "2025" ? "Select Year" : selectedYear)
-                        .foregroundColor(selectedYear == "2025" ? Color(hex: "999999") : .black)
+                        .foregroundColor(selectedYear == "2025" ? Color(hex: "999999") : .primary)
                         .frame(width: 350, height: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -159,6 +159,7 @@ struct PersonalSettingsDetailView: View {
             .padding(.horizontal)
             .padding(.bottom, 40)
         }
+        .navigationBarBackButtonHidden()
     }
 
     private var isFormComplete: Bool {

@@ -17,7 +17,7 @@ struct EnergyLevelView: View {
     @State private var navigateToNext = false
 
     var body: some View {
-                VStack(spacing: 20) {
+        VStack(spacing: 20) {
             
             // Top Navigation
             HStack {
@@ -46,7 +46,7 @@ struct EnergyLevelView: View {
                 })
             }
             .padding(.horizontal)
-            
+                    
             // Progress bar (2 of 5 filled)
             HStack(spacing: 8) {
                 ForEach(0..<5) { index in
@@ -96,11 +96,7 @@ struct EnergyLevelView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
-            
-           
         }
-        
-    
         .padding(.top, 30)
         .background(Color.white)
 //        .onAppear(perform: loadCurrentPreferences)

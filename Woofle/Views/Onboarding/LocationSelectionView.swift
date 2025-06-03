@@ -85,7 +85,7 @@ struct LocationView: View {
                     showMapPicker = true
                 }) {
                     Text(selectedLocation ?? "Location")
-                        .foregroundColor(selectedLocation == nil ? .gray : .primary)
+                        .foregroundColor(selectedLocation == nil ? .gray : .black)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -111,7 +111,7 @@ struct LocationView: View {
                     showRadiusPicker.toggle()
                 }) {
                     Text("\(selectedRadius) km")
-                        .foregroundColor(radiusSelected ? .primary : .gray)
+                        .foregroundColor(radiusSelected ? .black : .gray)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(
@@ -187,7 +187,6 @@ struct LocationView: View {
                 
             }
             .padding(.top, 30)
-            .background(Color.white)
             
         }
     }

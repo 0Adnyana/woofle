@@ -59,6 +59,7 @@ struct CongratulationsView: View {
                     }
                 }
             }
+            .padding(.top, 30)
         }
         .onAppear {
             playCelebrationSound()

@@ -16,7 +16,11 @@ struct PersonalityPreferenceView: View {
     @State private var selectedTraits: Set<String> = []
     @State private var navigateToNext = false
     
-    let traits = ["Playful", "Calm", "Curious", "Affectionate", "Protective", "Independent"]
+    let traits: [String]
+    
+    init() {
+        self.traits = PersonalityTrait.allCases.map { $0.rawValue }
+    }
     
     var body: some View {
         VStack(spacing: 20) {
@@ -98,7 +102,6 @@ struct PersonalityPreferenceView: View {
             .padding(.bottom, 40)
         }
         .padding(.top, 30)
-        .background(Color.white)
         .navigationBarBackButtonHidden()
         .navigationDestination(isPresented: $navigateToNext) {
             BreedPreferenceView()
@@ -117,7 +120,7 @@ struct PersonalityPreferenceView: View {
             }
         }) {
             HStack {
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedTraits.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
                 

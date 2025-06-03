@@ -101,7 +101,6 @@ struct DogGoodWithKidsDogs: View {
             .navigationBarBackButtonHidden()
         }
         .padding(.top, 30)
-        .background(Color.white)
     }
 
     // MARK: - Selectable Row
@@ -114,7 +113,7 @@ struct DogGoodWithKidsDogs: View {
             }
         }) {
             HStack {
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedOptions.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 

@@ -12,10 +12,14 @@ struct EnergyLevelView: View {
 
     @State private var selectedLevels: Set<String> = []
 
-    let energyLevels = ["Low", "Middle", "High"]
+    let energyLevels: [String]
 
     @State private var navigateToNext = false
 
+    init() {
+        self.energyLevels = EnergyLevel.allCases.map { $0.rawValue }
+    }
+    
     var body: some View {
         VStack(spacing: 20) {
             
@@ -98,7 +102,6 @@ struct EnergyLevelView: View {
             .padding(.bottom, 40)
         }
         .padding(.top, 30)
-        .background(Color.white)
 //        .onAppear(perform: loadCurrentPreferences)
         .navigationDestination(isPresented: $navigateToNext) {
                         PersonalityPreferenceView()
@@ -117,7 +120,7 @@ struct EnergyLevelView: View {
             }
         }) {
             HStack {
-                Text(title)
+                Text(title.capitalized)
                     .foregroundColor(selectedLevels.contains(title) ? .primary : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 

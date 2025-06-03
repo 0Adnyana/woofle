@@ -137,14 +137,10 @@ struct GenderSelectionView: View {
 
             }
             .padding(.top, 30)
-            .background(Color.white)
             .navigationDestination(isPresented: $navigateToNext) {
                 LocationView()
             }
             .navigationBarBackButtonHidden()
-
-        
-        
     }
 }
 

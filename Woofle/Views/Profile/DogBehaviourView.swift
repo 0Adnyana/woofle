@@ -122,10 +122,16 @@ struct DogBehaviourView: View {
     private func loadCurrentPreferences() {
         let preferences = userViewModel.user.preferences
         
-        // Load personality preferences - convert PersonalityTrait enum to strings
-        selectedPersonalities = Set(preferences.personalityPreferences.compactMap { trait in
-            trait.rawValue.capitalized
-        } ?? [])
+//        selectedPersonalities = Set(preferences.personalityPreferences.compactMap { trait in
+//            trait.rawValue.capitalized
+//        } ?? [])
+        
+        selectedPersonalities = Set(preferences.personalityPreferences.map { $0.rawValue })
+
+        
+        // Load good with kids/dogs preferences
+        isGoodWithKids = preferences.goodWithKids ?? false
+        isGoodWithOtherDogs = preferences.goodWithOtherDogs ?? false
     }
     
     private func saveChanges() {

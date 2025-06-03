@@ -297,10 +297,10 @@ struct DogBasicsView: View {
         selectedEnergyLevels = Set(
             preferences.activityLevels.compactMap {
                 switch $0 {
-                case .low: return "Low"
-                case .moderate: return "Middle"
-                case .high: return "High"
-                default: return nil
+                case .low: return "low"
+                case .moderate: return "moderate"
+                case .high: return "high"
+
                 }
             }
         )
@@ -329,9 +329,9 @@ struct DogBasicsView: View {
         // Convert selectedEnergyLevels to EnergyLevel enum array
         let energyLevelsEnum: [EnergyLevel] = selectedEnergyLevels.compactMap { levelString in
             switch levelString {
-            case "Low": return .low
-            case "Middle": return .moderate
-            case "High": return .high
+            case "low": return .low
+            case "moderate": return .moderate
+            case "high": return .high
             default: return nil
             }
         }

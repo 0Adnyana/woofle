@@ -141,7 +141,7 @@ struct BreedPreferenceView: View {
         }) {
             HStack {
                 Text(title.capitalized)
-                    .foregroundColor(selectedBreeds.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedBreeds.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

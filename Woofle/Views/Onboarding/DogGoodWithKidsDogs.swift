@@ -114,7 +114,7 @@ struct DogGoodWithKidsDogs: View {
         }) {
             HStack {
                 Text(title.capitalized)
-                    .foregroundColor(selectedOptions.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedOptions.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

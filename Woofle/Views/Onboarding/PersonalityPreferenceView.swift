@@ -121,7 +121,7 @@ struct PersonalityPreferenceView: View {
         }) {
             HStack {
                 Text(title.capitalized)
-                    .foregroundColor(selectedTraits.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedTraits.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 ZStack {

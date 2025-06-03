@@ -158,7 +158,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedGenders.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {
@@ -204,7 +204,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedSizes.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedSizes.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {

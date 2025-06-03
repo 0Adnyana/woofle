@@ -121,7 +121,7 @@ struct EnergyLevelView: View {
         }) {
             HStack {
                 Text(title.capitalized)
-                    .foregroundColor(selectedLevels.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedLevels.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

@@ -85,7 +85,7 @@ struct LocationView: View {
                     showMapPicker = true
                 }) {
                     Text(selectedLocation ?? "Location")
-                        .foregroundColor(selectedLocation == nil ? .gray : .black)
+                        .foregroundColor(selectedLocation == nil ? .gray : .primary)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .overlay(

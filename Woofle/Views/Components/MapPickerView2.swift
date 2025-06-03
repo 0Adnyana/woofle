@@ -52,6 +52,7 @@ struct MapPickerView2: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(suggestion.title)
                                         .fontWeight(.medium)
+                                        .foregroundColor(.black)
                                     if !suggestion.subtitle.isEmpty {
                                         Text(suggestion.subtitle)
                                             .font(.subheadline)
@@ -60,7 +61,6 @@ struct MapPickerView2: View {
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color.white)
                                 .contentShape(Rectangle())
                                 .onTapGesture {
                                     let request = MKLocalSearch.Request(completion: suggestion)

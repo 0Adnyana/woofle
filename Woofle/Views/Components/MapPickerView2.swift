@@ -14,12 +14,14 @@ struct MapPickerView2: View {
     @Binding var selectedCoordinate: CLLocationCoordinate2D?
     @Binding var selectedLocation: String?
 
-    @State private var mapRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-    )
     @State private var locationQuery = ""
     @StateObject private var completer = LocationSearchCompleter()
+    @StateObject private var locationManager = LocationManager()
+
+    @State private var mapRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    )
 
     var body: some View {
         NavigationView {
@@ -43,6 +45,7 @@ struct MapPickerView2: View {
                             completer.updateQuery(newValue)
                         }
 
+                    // Suggestions
                     if !completer.suggestions.isEmpty {
                         let maxSuggestions = 5
                         let visibleSuggestions = Array(completer.suggestions.prefix(maxSuggestions))
@@ -100,6 +103,14 @@ struct MapPickerView2: View {
                     }
                 }
             }
+            .onReceive(locationManager.$lastKnownCoordinate) { location in
+                if let location = location {
+                    mapRegion.center = location
+                } else {
+                    // fallback if location can't be determined
+                    mapRegion.center = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // SF
+                }
+            }
         }
     }
 }
@@ -108,5 +119,7 @@ struct MapPin: Identifiable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
 }
+
+
 
 

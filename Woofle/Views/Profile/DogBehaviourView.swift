@@ -208,10 +208,12 @@ struct DogBehaviourView: View {
     private func loadCurrentPreferences() {
         let preferences = userViewModel.user.preferences
         
-        // Load personality preferences - convert PersonalityTrait enum to strings
-        selectedPersonalities = Set(preferences.personalityPreferences.compactMap { trait in
-            trait.rawValue.capitalized
-        } ?? [])
+//        selectedPersonalities = Set(preferences.personalityPreferences.compactMap { trait in
+//            trait.rawValue.capitalized
+//        } ?? [])
+        
+        selectedPersonalities = Set(preferences.personalityPreferences.map { $0.rawValue })
+
         
         // Load good with kids/dogs preferences
         isGoodWithKids = preferences.goodWithKids ?? false
@@ -225,27 +227,6 @@ struct DogBehaviourView: View {
         let personalityTraits = selectedPersonalities.compactMap { trait in
             PersonalityTrait(rawValue: trait.lowercased())
         }
-        
-//        // Create updated preferences
-//        let updatedPreferences = UserPreferences(
-//            preferredBreeds: current.preferences.preferredBreeds,
-//            sizePreferences: current.preferences.sizePreferences,
-//            activityLevels: current.preferences.activityLevels,
-//            goodWithKids: isGoodWithKids,
-//            goodWithOtherDogs: isGoodWithOtherDogs,
-//            personalityPreferences: personalityTraits,
-//            preferredRadius: current.preferences.preferredRadius
-//        )
-//        
-//        // Create updated user profile
-//        let updatedUser = UserProfile(
-//            id: current.id,
-//            name: current.name,
-//            gender: current.gender,
-//            age: current.age,
-//            location: current.location,
-//            preferences: updatedPreferences
-//        )
         
         userViewModel.updatePersonalityPreferences(personalityTraits)
         userViewModel.updateGoodWithKids(isGoodWithKids)

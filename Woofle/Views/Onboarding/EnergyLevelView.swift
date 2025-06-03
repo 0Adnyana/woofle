@@ -165,36 +165,17 @@ struct EnergyLevelView: View {
 
     // Save current selection back to userViewModel
     private func saveSelection() {
-//        let currentPrefs = userViewModel.user.preferences
 
         // Map strings back to EnergyLevel enum
         let mappedLevels: [EnergyLevel] = selectedLevels.compactMap { levelString in
             switch levelString {
-            case "Low": return .low
-            case "Middle": return .moderate
-            case "High": return .high
+            case "low": return .low
+            case "moderate": return .moderate
+            case "high": return .high
             default: return nil
             }
         }
 
-//        let updatedPrefs = UserPreferences(
-//            preferredBreeds: currentPrefs.preferredBreeds,
-//            sizePreferences: currentPrefs.sizePreferences,
-//            activityLevels: mappedLevels,
-//            goodWithKids: currentPrefs.goodWithKids,
-//            goodWithOtherDogs: currentPrefs.goodWithOtherDogs,
-//            personalityPreferences: currentPrefs.personalityPreferences,
-//            preferredRadius: currentPrefs.preferredRadius
-//        )
-//
-//        let updatedUser = UserProfile(
-//            id: userViewModel.user.id,
-//            name: userViewModel.user.name,
-//            gender: userViewModel.user.gender,
-//            age: userViewModel.user.age,
-//            location: userViewModel.user.location,
-//            preferences: updatedPrefs
-//        )
 
         userViewModel.updateActivityLevels(mappedLevels)
     }

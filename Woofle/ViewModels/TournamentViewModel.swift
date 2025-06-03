@@ -27,7 +27,18 @@ final class TournamentViewModel: ObservableObject {
 
 
     var matchProgressText: String {
-        return "Round \(currentMatchIndex + 1) of \(bracket.count)"
+        if currentRound == 1 {
+            return "Quarterfinal\n Round \(currentMatchIndex + 1) of \(bracket.count)"
+        }
+        else if currentRound == 2 {
+            return "   Semifinal\n Round \(currentMatchIndex + 1) of \(bracket.count)"
+        }
+        else if currentRound == 3 {
+            return "         Final\n Round \(currentMatchIndex + 1) of \(bracket.count)"
+        }
+        else {
+            return "Round \(currentMatchIndex + 1) of \(bracket.count)"
+        }
     }
 
     private let userService: UserStorageService

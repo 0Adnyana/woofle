@@ -259,7 +259,7 @@ struct PersonalSettingsDetailView: View {
                     .fontWeight(.medium)
                     .frame(width: (350 - 16) / 2, height: 50)  // half width minus spacing
                     .background(selected.wrappedValue == true ? Color(hex: "F8EEDF") : Color.white)
-                    .foregroundColor(selected.wrappedValue == true ? .primary : .gray)
+                    .foregroundColor(selected.wrappedValue == true ? .black : .gray)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(selected.wrappedValue == true ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
@@ -272,7 +272,7 @@ struct PersonalSettingsDetailView: View {
                     .fontWeight(.medium)
                     .frame(width: (350 - 16) / 2, height: 50)
                     .background(selected.wrappedValue == false ? Color(hex: "F8EEDF") : Color.white)
-                    .foregroundColor(selected.wrappedValue == false ? .primary : .gray)
+                    .foregroundColor(selected.wrappedValue == false ? .black : .gray)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(selected.wrappedValue == false ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)

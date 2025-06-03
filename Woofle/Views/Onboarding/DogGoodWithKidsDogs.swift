@@ -104,7 +104,6 @@ struct DogGoodWithKidsDogs: View {
                 .padding(.bottom, 40)
             }
             .padding(.top, 30)
-            .background(Color.white)
             .navigationBarBackButtonHidden()
 
             // NAvigation to DogGenderSizeView
@@ -125,7 +124,7 @@ struct DogGoodWithKidsDogs: View {
                     .fontWeight(.medium)
                     .frame(maxWidth: .infinity, maxHeight: 44)
                     .background(selected.wrappedValue == true ? Color(hex: "F8EEDF") : Color.white)
-                    .foregroundColor(selected.wrappedValue == true ? .primary : .gray)
+                    .foregroundColor(selected.wrappedValue == true ? .black : .gray)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(selected.wrappedValue == true ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
@@ -141,7 +140,7 @@ struct DogGoodWithKidsDogs: View {
                     .fontWeight(.medium)
                     .frame(maxWidth: .infinity, maxHeight: 44)
                     .background(selected.wrappedValue == false ? Color(hex: "F8EEDF") : Color.white)
-                    .foregroundColor(selected.wrappedValue == false ? .primary : .gray)
+                    .foregroundColor(selected.wrappedValue == false ? .black : .gray)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(selected.wrappedValue == false ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)

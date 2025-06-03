@@ -40,19 +40,19 @@ struct BreedPreferenceView: View {
 
                 Spacer()
 
-                NavigationLink(destination: TabBarView()) {
-                    Text("Skip")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .fontWeight(.medium)
-                }.simultaneousGesture(TapGesture().onEnded {
-                    userViewModel.completeOnboarding()
-                })
+//                NavigationLink(destination: TabBarView()) {
+//                    Text("Skip")
+//                        .foregroundColor(Color(hex: "B67A4B"))
+//                        .fontWeight(.medium)
+//                }.simultaneousGesture(TapGesture().onEnded {
+//                    userViewModel.completeOnboarding()
+//                })
             }
             .padding(.horizontal)
 
             // Progress Bar (4 of 5 filled)
             HStack(spacing: 8) {
-                ForEach(0..<5) { index in
+                ForEach(0..<4) { index in
                     ZStack {
                         Capsule()
                             .stroke(Color(hex: "B67A4B"), lineWidth: 2)
@@ -93,7 +93,7 @@ struct BreedPreferenceView: View {
                 Spacer()
                 
                 // Always-enabled Next button
-                NavigationLink(destination: DogGoodWithKidsDogs()) {
+                NavigationLink(destination: TabBarView()) {
                     Text("Next")
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)

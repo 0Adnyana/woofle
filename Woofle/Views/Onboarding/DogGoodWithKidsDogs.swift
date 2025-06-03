@@ -1,10 +1,12 @@
+//////
+//////  DogGoodWithKidsDogs.swift
+//////  Woofle
+//////
+//////  Created by Rahel on 30/05/25.
+//////
+////
 //
-//  DogGoodWithKidsDogs.swift
-//  Woofle
 //
-//  Created by Rahel on 30/05/25.
-//
-
 
 import SwiftUI
 
@@ -12,131 +14,143 @@ struct DogGoodWithKidsDogs: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userViewModel: UserViewModel
 
-    @State private var selectedOptions: Set<String> = []
-
-    let options = ["Good with kids", "Good with other dogs"]
+    @State private var livesWithKids: Bool? = nil
+    @State private var livesWithDogs: Bool? = nil
+    @State private var navigateToNext = false
 
     var body: some View {
-        VStack(spacing: 20) {
-            // Top Navigation
-            HStack {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .font(.system(size: 20, weight: .medium))
+        NavigationStack {  // NavigationStack statt nur VStack
+            VStack(spacing: 20) {
+                // Top Navigation
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color(hex: "B67A4B"))
+                            .font(.system(size: 20, weight: .medium))
+                    }
+
+                    Spacer()
+
+                    Text("About your future dog")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+
+                    Spacer()
                 }
+                .padding(.horizontal)
 
-                Spacer()
+                // Progress bar (4 of 4 filled with stroke)
+                HStack(spacing: 8) {
+                    ForEach(0..<4) { _ in
+                        ZStack {
+                            Capsule()
+                                .stroke(Color(hex: "B67A4B"), lineWidth: 2)
+                                .frame(height: 10)
 
-                Text("About your future dog")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-
-                Spacer()
-
-                NavigationLink(destination: TabBarView()) {
-                    Text("Skip")
-                        .foregroundColor(Color(hex: "B67A4B"))
-                        .fontWeight(.medium)
-                }.simultaneousGesture(TapGesture().onEnded {
-                    userViewModel.completeOnboarding()
-                })
-            }
-            .padding(.horizontal)
-
-            // Progress bar (5 of 5 filled with stroke)
-            HStack(spacing: 8) {
-                ForEach(0..<5) { _ in
-                    ZStack {
-                        Capsule()
-                            .stroke(Color(hex: "B67A4B"), lineWidth: 2)
-                            .frame(height: 10)
-
-                        Capsule()
-                            .fill(Color(hex: "F8CE9B"))
-                            .frame(height: 10)
+                            Capsule()
+                                .fill(Color(hex: "F8CE9B"))
+                                .frame(height: 10)
+                        }
                     }
                 }
-            }
-            .padding(.horizontal)
+                .padding(.horizontal)
 
-            Spacer().frame(height: 5)
+                Spacer().frame(height: 5)
 
-            // Question
-            VStack(alignment: .leading, spacing: 12) {
-                Text("The dog should be:")
-                    .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.primary)
+                // Questions
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Any kids at home?")
+                            .font(.system(size: 20, weight: .semibold))
 
-                ForEach(options, id: \.self) { option in
-                    selectableRow(title: option)
+                        yesNoButtons(selected: $livesWithKids)
+                    }
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Any dogs at home?")
+                            .font(.system(size: 20, weight: .semibold))
+
+                        yesNoButtons(selected: $livesWithDogs)
+                    }
                 }
+                .padding(.horizontal)
+
+                Spacer()
+
+                // Next Button
+                Button(action: {
+                    if let kids = livesWithKids, let dogs = livesWithDogs {
+                        userViewModel.updateGoodWithKids(kids)
+                        userViewModel.updateGoodWithOtherDogs(dogs)
+                        navigateToNext = true
+                    }
+                }) {
+                    Text("Next")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(
+                            (livesWithKids != nil && livesWithDogs != nil)
+                            ? Color(hex: "A0B58E")
+                            : Color.gray.opacity(0.5)
+                        )
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .disabled(livesWithKids == nil || livesWithDogs == nil)
+                .padding(.horizontal)
+                .padding(.bottom, 40)
             }
-            .padding(.horizontal)
-
-            Spacer()
-
-            // Always-active Next button
-            NavigationLink(destination: TabBarView()) {
-                Text("Next")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(hex: "A0B58E"))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                let goodWithKids = selectedOptions.contains("Good with kids")
-                let goodWithOtherDogs = selectedOptions.contains("Good with other dogs")
-
-                userViewModel.updateGoodWithKids(goodWithKids)
-                userViewModel.updateGoodWithOtherDogs(goodWithOtherDogs)
-                userViewModel.completeOnboarding()
-            })
-            .padding(.horizontal)
-            .padding(.bottom, 40)
+            .padding(.top, 30)
+            .background(Color.white)
             .navigationBarBackButtonHidden()
+
+            // NAvigation to DogGenderSizeView
+            .navigationDestination(isPresented: $navigateToNext) {
+                DogGenderSizeView()
+            }
         }
         .padding(.top, 30)
     }
 
-    // MARK: - Selectable Row
-    func selectableRow(title: String) -> some View {
-        Button(action: {
-            if selectedOptions.contains(title) {
-                selectedOptions.remove(title)
-            } else {
-                selectedOptions.insert(title)
+    // MARK: - Yes/No buttons
+    func yesNoButtons(selected: Binding<Bool?>) -> some View {
+        HStack(spacing: 16) {
+            Button(action: {
+                selected.wrappedValue = true
+            }) {
+                Text("Yes")
+                    .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, maxHeight: 44)
+                    .background(selected.wrappedValue == true ? Color(hex: "F8EEDF") : Color.white)
+                    .foregroundColor(selected.wrappedValue == true ? .primary : .gray)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(selected.wrappedValue == true ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+                    )
+                    .cornerRadius(12)
             }
-        }) {
-            HStack {
-                Text(title.capitalized)
-                    .foregroundColor(selectedOptions.contains(title) ? .black : .gray)
-                    .frame(maxWidth: .infinity, alignment: .center)
+            .buttonStyle(PlainButtonStyle())
 
-                ZStack {
-                    Circle()
-                        .stroke(selectedOptions.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 2)
-                        .frame(width: 24, height: 24)
-
-                    if selectedOptions.contains(title) {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(Color(hex: "B67A4B"))
-                            .font(.system(size: 12, weight: .bold))
-                    }
-                }
+            Button(action: {
+                selected.wrappedValue = false
+            }) {
+                Text("No")
+                    .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, maxHeight: 44)
+                    .background(selected.wrappedValue == false ? Color(hex: "F8EEDF") : Color.white)
+                    .foregroundColor(selected.wrappedValue == false ? .primary : .gray)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(selected.wrappedValue == false ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
+                    )
+                    .cornerRadius(12)
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(selectedOptions.contains(title) ? Color(hex: "F8EEDF") : Color.white)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(selectedOptions.contains(title) ? Color(hex: "B67A4B") : Color.gray, lineWidth: 1)
-            )
-            .cornerRadius(12)
+            .buttonStyle(PlainButtonStyle())
         }
     }
 }
+
+

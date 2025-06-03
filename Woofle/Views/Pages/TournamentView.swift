@@ -55,9 +55,9 @@ struct TournamentView: View {
                         tournamentVM.selectWinner(match[0])
                     })
 
-                    Text("—————— VS ——————")
+                    Text("—————--— VS ———--———")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .frame(minWidth: 40)
 
                     DogCard(dog: match[1], shelter: shelter2, onSelect: {

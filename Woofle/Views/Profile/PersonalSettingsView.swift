@@ -24,7 +24,7 @@ struct PersonalSettingsDetailView: View {
     var genders = ["Male", "Female", "Non Binary"]
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
             // Header
             ZStack {
                 HStack {
@@ -34,6 +34,7 @@ struct PersonalSettingsDetailView: View {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color(hex: "B67A4B"))
                             .font(.system(size: 20, weight: .medium))
+                            .padding()
                     }
                     Spacer()
                 }
@@ -193,4 +194,8 @@ struct PersonalSettingsDetailView: View {
 
         userViewModel.updateUserProfile(updatedUser)
     }
+}
+
+#Preview {
+    PersonalSettingsDetailView().environmentObject(UserViewModel())
 }

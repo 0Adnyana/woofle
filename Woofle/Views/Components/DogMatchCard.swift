@@ -29,7 +29,7 @@ struct DogCard: View {
 
                 HStack {
                     Text("\(dog.name.capitalized) • \(getYearsfromMonth(for: dog.ageInMonths)) • \(dog.gender.rawValue.capitalized)")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.body)
 
                     Spacer()
@@ -45,7 +45,6 @@ struct DogCard: View {
                 .background(Color(.systemBackground))
                 .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
             }
-            .background(Color.white)
             .cornerRadius(20)
             .shadow(radius: 5)
             .padding(.horizontal)

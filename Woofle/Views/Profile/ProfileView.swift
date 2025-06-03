@@ -9,7 +9,7 @@ struct ProfileView: View {
     @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 24) {
             header
 
             VStack(spacing: 16) {
@@ -17,9 +17,12 @@ struct ProfileView: View {
                 personalInformationSection
                 dogPreferencesSection
                 
+                Spacer()
+                
                 Button("Reset All Data") {
                     userViewModel.resetAllUserData()
                 }
+                .foregroundColor(.red)
 
             }
             .padding(.bottom)
@@ -31,7 +34,7 @@ struct ProfileView: View {
     }
 
     private var header: some View {
-        VStack {
+        ZStack {
             HStack {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -41,11 +44,10 @@ struct ProfileView: View {
                         .font(.system(size: 20, weight: .medium))
                 }
                 Spacer()
-                Text("Profile Settings")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                Spacer()
             }
+            Text("Personal Settings")
+                .font(.headline)
+                .foregroundColor(.primary)
         }
         .padding(.horizontal)
         .padding(.top, 10)

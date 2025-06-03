@@ -27,12 +27,13 @@ struct TournamentMatchingService {
                 return false
             }
             if let requiresKids = user.preferences.goodWithKids,
-               requiresKids != dog.traits.goodWithKids {
+               requiresKids == true && dog.traits.goodWithKids == false {
                 print("❌ Dog \(dog.name) rejected due to goodWithKids mismatch")
                 return false
             }
-            if let requiresDogs = user.preferences.goodWithOtherDogs,
-               requiresDogs != dog.traits.goodWithOtherDogs {
+
+            if let requiresOtherDogs = user.preferences.goodWithOtherDogs,
+               requiresOtherDogs == true && dog.traits.goodWithOtherDogs == false {
                 print("❌ Dog \(dog.name) rejected due to goodWithOtherDogs mismatch")
                 return false
             }

@@ -112,6 +112,7 @@ struct DogGoodWithKidsDogs: View {
                 DogGenderSizeView()
             }
         }
+        .padding(.top, 30)
     }
 
     // MARK: - Yes/No buttons

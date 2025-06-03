@@ -50,4 +50,22 @@ final class PastWinnersStorageService {
             print("❌ Failed to save winners: \(error)")
         }
     }
+    
+    func deleteAll() {
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName),
+              FileManager.default.fileExists(atPath: url.path) else {
+            print("⚠️ No past_winners.json file to delete.")
+            return
+        }
+
+        do {
+            try FileManager.default.removeItem(at: url)
+            print("🗑️ Deleted all past winners from \(url)")
+        } catch {
+            print("❌ Failed to delete past winners file: \(error)")
+        }
+    }
+
+    
+    
 }

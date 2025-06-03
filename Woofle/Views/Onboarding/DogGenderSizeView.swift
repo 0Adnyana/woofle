@@ -16,9 +16,14 @@ struct DogGenderSizeView: View {
     @State private var selectedSizes: Set<String> = []
     @State private var navigateToNext = false
 
-    let sizes = ["small", "medium", "large"]
-    let dogGenders = ["female", "male"]
+    let sizes: [String]
+    let dogGenders: [String]
 
+    init() {
+        self.sizes = Size.allCases.map { $0.rawValue }
+        self.dogGenders = DogGender.allCases.map { $0.rawValue }
+    }
+    
     var body: some View {
         
         VStack(spacing: 20) {
@@ -131,7 +136,6 @@ struct DogGenderSizeView: View {
 //            .hidden()
         }
         .padding(.top, 30)
-        .background(Color.white)
         .navigationBarBackButtonHidden()
         
         // Add this modifier to your outer VStack (or directly to the body)
@@ -154,7 +158,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedGenders.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedGenders.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {
@@ -200,7 +204,7 @@ struct DogGenderSizeView: View {
             HStack {
                 Spacer()
                 Text(title.capitalized)
-                    .foregroundColor(selectedSizes.contains(title) ? .primary : .gray)
+                    .foregroundColor(selectedSizes.contains(title) ? .black : .gray)
                     .font(.system(size: 16))
                 Spacer()
                 ZStack {

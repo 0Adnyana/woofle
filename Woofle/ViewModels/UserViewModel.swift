@@ -100,8 +100,23 @@ final class UserViewModel: ObservableObject {
         user = updatedUserProfile
         save()
     }
+    
+    func resetAllUserData() {
+        user = .empty
+        isUserOnboarded = false
+        userService.save(user)
+
+        let pastWinnersService = PastWinnersStorageService()
+        pastWinnersService.deleteAll()
+
+        print("🔁 All user data has been reset.")
+    }
+
 
     private func save() {
         userService.save(user)
     }
+    
+
+
 }

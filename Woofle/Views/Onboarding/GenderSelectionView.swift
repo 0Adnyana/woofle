@@ -66,9 +66,9 @@ struct GenderSelectionView: View {
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 50)
                                 .background(
-                                    selectedGender == gender ? Color(red: 0.996, green: 0.961, blue: 0.922) : Color.white
+                                    selectedGender == gender ? Color(red: 0.996, green: 0.961, blue: 0.922) : Color.primary
                                 )
-                                .foregroundColor(selectedGender == gender ? .primary : Color.gray)
+                                .foregroundColor(selectedGender == gender ? .black : Color.gray)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(
@@ -137,14 +137,10 @@ struct GenderSelectionView: View {
 
             }
             .padding(.top, 30)
-            .background(Color.white)
             .navigationDestination(isPresented: $navigateToNext) {
                 LocationView()
             }
             .navigationBarBackButtonHidden()
-
-        
-        
     }
 }
 

@@ -128,7 +128,6 @@ struct BreedPreferenceView: View {
                 
         }
         .padding(.top, 30)
-        .background(Color.white)
     }
 
     // MARK: - Breed Row
@@ -141,8 +140,8 @@ struct BreedPreferenceView: View {
             }
         }) {
             HStack {
-                Text(title)
-                    .foregroundColor(selectedBreeds.contains(title) ? .primary : .gray)
+                Text(title.capitalized)
+                    .foregroundColor(selectedBreeds.contains(title) ? .black : .gray)
                     .frame(maxWidth: .infinity, alignment: .center)
 
                 ZStack {

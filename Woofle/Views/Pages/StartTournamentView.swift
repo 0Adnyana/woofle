@@ -66,12 +66,10 @@ struct StartTournamentView: View {
                             .padding()
                     }
                 }
-
                 // NavigationLink trigger
                 .navigationDestination(isPresented: $navigateToTournament) {
                     TournamentView()
                 }
-                .hidden()
             }
         }
     }

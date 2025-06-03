@@ -27,7 +27,8 @@ struct TournamentView: View {
                    let winner = tournamentVM.winners.first,
                    let shelter = tournamentVM.shelter(for: winner) {
                     CongratulationsView(dog: winner, shelter: shelter)
-                }
+                    }
+                
             }
             .padding(.horizontal)
         }
@@ -52,6 +53,7 @@ struct TournamentView: View {
                    let shelter2 = tournamentVM.shelter(for: match[1]) {
 
                     DogCard(dog: match[0], shelter: shelter1, onSelect: {
+                        playWoofSound()
                         tournamentVM.selectWinner(match[0])
                     })
 
@@ -61,6 +63,7 @@ struct TournamentView: View {
                         .frame(minWidth: 40)
 
                     DogCard(dog: match[1], shelter: shelter2, onSelect: {
+                        playWoofSound2()
                         tournamentVM.selectWinner(match[1])
                     })
                 } else {
@@ -83,6 +86,14 @@ struct TournamentView: View {
                     .presentationCornerRadius(25)
             }
         }
+    }
+    
+    func playWoofSound() {
+        SoundPlayer.shared.playSounds(soundNames: ["pug-woof-2-103762"])
+    }
+    
+    func playWoofSound2() {
+        SoundPlayer.shared.playSounds(soundNames: ["woofbig-96560"])
     }
 }
 
@@ -107,47 +118,4 @@ struct TournamentView: View {
     return TournamentView()
         .environmentObject(vm)
 }
-
-
-//#Preview {
-//    let fallbackUser = UserProfile(
-//        id: UUID(),
-//        name: "Preview User",
-//        gender: .other,
-//        age: 25,
-//        location: GeoLocation(latitude: -8.67, longitude: 115.21),
-//        preferences: .init(
-//            preferredBreeds: nil,
-//            sizePreferences: [.medium],
-//            genderPreferences: [.female, .male],
-//            activityLevels: [.moderate],
-//            goodWithKids: false,
-//            goodWithOtherDogs: nil,
-//            personalityPreferences: [.playful],
-//            preferredRadius: 30
-//        )
-//    )
-//
-//    let userService = UserStorageService()
-//    let matchingService = TournamentMatchingService()
-//    let engine = TournamentEngine()
-//    let winnersStorage = PastWinnersStorageService()
-//
-//    let vm = TournamentViewModel(
-//        userService: userService,
-//        matchingService: matchingService,
-//        engine: engine,
-//        winnersStorage: winnersStorage
-//    )
-//
-//    // Injecting dummy user into storage (preview-safe write)
-////    userService.save(fallbackUser)
-//
-//    vm.startNewTournament(
-//        dogs: DummyData.dogs,
-//        shelters: DummyData.shelters
-//    )
-//
-//    TournamentView().environmentObject(vm)
-//}
 

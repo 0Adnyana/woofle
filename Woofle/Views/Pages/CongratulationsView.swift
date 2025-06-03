@@ -10,6 +10,7 @@ import SwiftUI
 struct CongratulationsView: View {
     let dog: Dog
     let shelter: Shelter
+    @EnvironmentObject var tournamentVM: TournamentViewModel
 
     @State private var goToTabBarView = false
     
@@ -57,7 +58,9 @@ struct CongratulationsView: View {
                             .foregroundColor(Color(hex: "B67A4B"))
                             .fontWeight(.medium)
                     }
-                }
+                }.simultaneousGesture(TapGesture().onEnded{
+                    tournamentVM.phase = .idle
+                })
             }
             .padding(.top, 30)
         }

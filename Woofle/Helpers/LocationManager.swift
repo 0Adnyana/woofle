@@ -7,11 +7,18 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentLocation: String = "Unknown"
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var lastKnownCoordinate: CLLocationCoordinate2D?
+    var hasSetRegion = false
+    
+    @Published var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    )
 
     let locationManager = CLLocationManager()
 
@@ -36,17 +43,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        lastKnownCoordinate = location.coordinate
-
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { placemarks, _ in
-            if let place = placemarks?.first {
-                DispatchQueue.main.async {
-                    self.currentLocation = [place.locality, place.country].compactMap { $0 }.joined(separator: ", ")
-                }
-            }
+        guard let location = locations.first, !hasSetRegion else { return }
+        hasSetRegion = true
+        DispatchQueue.main.async {
+            self.region = MKCoordinateRegion(center: location.coordinate,
+                                             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         }
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

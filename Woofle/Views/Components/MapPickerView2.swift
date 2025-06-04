@@ -27,7 +27,9 @@ struct MapPickerView2: View {
         NavigationView {
             ZStack(alignment: .top) {
                 // Full-screen Map
-                Map(coordinateRegion: $mapRegion, annotationItems: selectedCoordinate.map { [MapPin(coordinate: $0)] } ?? []) { pin in
+//                Map(coordinateRegion: $locationManager.lastKnownCoordinate)
+                
+                Map(coordinateRegion: $locationManager.region, annotationItems: selectedCoordinate.map { [MapPin(coordinate: $0)] } ?? []) { pin in
                     MapMarker(coordinate: pin.coordinate, tint: .blue)
                 }
                 .ignoresSafeArea()
@@ -104,12 +106,12 @@ struct MapPickerView2: View {
                 }
             }
             .onReceive(locationManager.$lastKnownCoordinate) { location in
-                if let location = location {
-                    mapRegion.center = location
-                } else {
-                    // fallback if location can't be determined
-                    mapRegion.center = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // SF
-                }
+//                if let location = location {
+//                    mapRegion.center = location
+//                } else {
+//                    // fallback if location can't be determined
+//                    mapRegion.center = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // SF
+//                }
             }
         }
     }
